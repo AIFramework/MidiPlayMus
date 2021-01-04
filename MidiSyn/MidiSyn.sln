@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MidiPlay", "MidiPlay\MidiPl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AI", "D:\Проекты\git\AINetFrame\AI\AI.csproj", "{165D777E-8A8E-450B-891A-9046913B6143}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSFTest", "SSFTest\SSFTest.csproj", "{0B0E291A-CA80-4EA9-8374-1128540A747C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,18 @@ Global
 		{165D777E-8A8E-450B-891A-9046913B6143}.Release|x64.Build.0 = Release|x64
 		{165D777E-8A8E-450B-891A-9046913B6143}.Release|x86.ActiveCfg = Release|x86
 		{165D777E-8A8E-450B-891A-9046913B6143}.Release|x86.Build.0 = Release|x86
+		{0B0E291A-CA80-4EA9-8374-1128540A747C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B0E291A-CA80-4EA9-8374-1128540A747C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B0E291A-CA80-4EA9-8374-1128540A747C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0B0E291A-CA80-4EA9-8374-1128540A747C}.Debug|x64.Build.0 = Debug|Any CPU
+		{0B0E291A-CA80-4EA9-8374-1128540A747C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0B0E291A-CA80-4EA9-8374-1128540A747C}.Debug|x86.Build.0 = Debug|Any CPU
+		{0B0E291A-CA80-4EA9-8374-1128540A747C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B0E291A-CA80-4EA9-8374-1128540A747C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B0E291A-CA80-4EA9-8374-1128540A747C}.Release|x64.ActiveCfg = Release|Any CPU
+		{0B0E291A-CA80-4EA9-8374-1128540A747C}.Release|x64.Build.0 = Release|Any CPU
+		{0B0E291A-CA80-4EA9-8374-1128540A747C}.Release|x86.ActiveCfg = Release|Any CPU
+		{0B0E291A-CA80-4EA9-8374-1128540A747C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

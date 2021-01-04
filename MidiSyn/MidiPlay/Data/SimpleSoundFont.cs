@@ -5,7 +5,7 @@ namespace MidiPlay.Data
     public class SimpleSoundFont : IBinSerial
     {
         public string Instrument { get; set; }
-        public SempleFont[] Semples { get; set; }
+        public SampleFont[] Semples { get; set; }
 
         public void FromBts(byte[] bts)
         {
@@ -14,11 +14,11 @@ namespace MidiPlay.Data
 
             Instrument = binary.ReadString();
             int len = binary.ReadInt();
-            Semples = new SempleFont[len];
+            Semples = new SampleFont[len];
 
             for (int i = 0; i < len; i++)
             {
-                Semples[i] = new SempleFont();
+                Semples[i] = new SampleFont();
                 Semples[i].FromBts(binary.ReadBytes());
             }
 
@@ -33,6 +33,7 @@ namespace MidiPlay.Data
             return binary.ToByteArray();
         }
 
+
         public void Save(string path)
         {
             BinarySerializaterDataInMemory binary = new BinarySerializaterDataInMemory();
@@ -42,8 +43,7 @@ namespace MidiPlay.Data
 
         public static SimpleSoundFont Load(string path)
         {
-            BinarySerializaterDataInMemory binary = new BinarySerializaterDataInMemory(path, isZip: true);
-            binary.UnZipped();
+            BinarySerializaterDataInMemory binary = new BinarySerializaterDataInMemory(path);
             SimpleSoundFont simpleSoundFont = new SimpleSoundFont();
             simpleSoundFont.FromBts(binary.ReadBytes());
             return simpleSoundFont;

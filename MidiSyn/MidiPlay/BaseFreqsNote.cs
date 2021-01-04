@@ -1,4 +1,6 @@
 ﻿using AI;
+using AI.DSP;
+using AI.DSP.Modulation;
 using System;
 using System.Collections.Generic;
 
@@ -47,6 +49,29 @@ namespace MidiPlay
 
             return fr;
         }
+
+        /// <summary>
+        /// Основной тон ноты
+        /// </summary>
+        /// <param name="note"></param>
+        /// <param name="octave"></param>
+        /// <returns></returns>
+        public static double GetFreqNote(string note, int octave) 
+        {
+            return (1 << octave) * freqNotes[note.ToLower()];
+        }
+
+
+        public static Vector TransferNote(string nameBaseNot, int octaveBase, string nameTargetNote, int octaveTarget, Vector signalBase, int fd = 44100)
+        {
+            double stFreq = GetFreqNote(nameBaseNot, octaveBase);
+            double target = GetFreqNote(nameTargetNote, octaveTarget);
+            double dif = target - stFreq;
+
+            SSB ssb = new SSB(fd, dif, SSBType.Up);
+            return ssb.Modulate(new Channel(signalBase, fd)).ChData;
+        }
+
 
     }
 }

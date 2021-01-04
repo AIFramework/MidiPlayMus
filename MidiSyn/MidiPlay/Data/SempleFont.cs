@@ -3,7 +3,7 @@ using AI.DataStructs;
 
 namespace MidiPlay.Data
 {
-    public sealed class SempleFont : IBinSerial
+    public sealed class SampleFont : IBinSerial
     {
         public string NameNote { get; set; }
         public Vector Signal { get; set; }
