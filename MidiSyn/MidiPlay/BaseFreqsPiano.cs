@@ -9,7 +9,7 @@ namespace MidiPlay
     /// </summary>
     public class BaseFreqsNote
     {
-        private static readonly Dictionary<string, double> freqNotes = new Dictionary<string, double>
+        static Dictionary<string, double> freqNotes = new Dictionary<string, double>
         {
             { "c",  16.35 },
             { "c#", 17.32},
@@ -35,9 +35,7 @@ namespace MidiPlay
             string name = noteName.ToLower();
 
             if (!freqNotes.ContainsKey(name))
-            {
                 throw new Exception("noteName incorrect");
-            }
 
             double fGarm = freqNotes[name];
             double[] fr = new double[count];

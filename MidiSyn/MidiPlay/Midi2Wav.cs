@@ -2,16 +2,19 @@
 using MidiPlay.Data;
 using MidiPlay.Instruments;
 using NAudio.Midi;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace MidiPlay
 {
     public class Midi2Wav
     {
-        private readonly Notes notes = new Notes();
-        private readonly double ticsPerSeconds = 1.0/1000;
-        private readonly int _fd;
+        Notes notes = new Notes();
+        double ticsPerSeconds = 1.0/1000;
+        int _fd;
 
         public Midi2Wav(string path, int fd) 
         {
@@ -24,13 +27,13 @@ namespace MidiPlay
             gPiano.Create(fd);
 
             // Создание басса (Гармонический синтез)
-            IInstrument gBass = new GSBass();
-            gBass.Create(fd);
+           // IInstrument gBass = new GSBass();
+          //  gBass.Create(fd);
 
             // Проход по каналам
-            foreach (IList<MidiEvent> eventsIList in midi.Events)
+            foreach (var eventsIList in midi.Events)
             {
-                List<MidiEvent> events = ToRealTime(eventsIList.ToList(), midi.DeltaTicksPerQuarterNote, ref currentMicroSecondsPerTick);
+                 var events = ToRealTime(eventsIList.ToList(), midi.DeltaTicksPerQuarterNote, ref currentMicroSecondsPerTick);
 
                 // Проход по событиям
                 for (int i = 0; i < events.Count; i++)
@@ -39,7 +42,7 @@ namespace MidiPlay
                     //Ноты
                     if (events[i] is NoteOnEvent)
                     {
-                        NoteOnEvent note = events[i] as NoteOnEvent;
+                        var note = events[i] as NoteOnEvent;
 
                         if (note.Velocity != 0)
                         {
@@ -68,7 +71,7 @@ namespace MidiPlay
                             {
                                 StartTime = note.AbsoluteTime * ticsPerSeconds,
                                 EndTime = (note.NoteLength + note.AbsoluteTime) * ticsPerSeconds,
-                                Note = gBass.GetNoteSignal(name, octave-2, note.NoteLength * ticsPerSeconds),
+                                Note = gPiano.GetNoteSignal(name, octave-2, note.NoteLength * ticsPerSeconds),
                                 Volume = 0.5*note.Velocity * 0.01
                             };
 
@@ -121,14 +124,14 @@ namespace MidiPlay
 
                 if (midiEvent.AbsoluteTime > lastAbsoluteTime)
                 {
-                    lastRealTime += (midiEvent.AbsoluteTime - lastAbsoluteTime) * currentMicroSecondsPerTick;
+                    lastRealTime += ((decimal)midiEvent.AbsoluteTime - lastAbsoluteTime) * currentMicroSecondsPerTick;
                 }
 
                 lastAbsoluteTime = midiEvent.AbsoluteTime;
 
                 if (tempoEvent != null)
                 {
-                    currentMicroSecondsPerTick = tempoEvent.MicrosecondsPerQuarterNote / (decimal)deltaTicksPerQuarterNote;
+                    currentMicroSecondsPerTick = (decimal)tempoEvent.MicrosecondsPerQuarterNote / (decimal)deltaTicksPerQuarterNote;
                     midiEvents.RemoveAt(i--);
                     continue;
                 }

@@ -906,6 +906,12 @@
             Добавление вектора
             </summary>
         </member>
+        <member name="M:AI.DataStructs.BinarySerializaterDataInMemory.Add(AI.DataStructs.IBinSerial[])">
+            <summary>
+            Add IBinSerial array
+            </summary>
+            <param name="arr">Array</param>
+        </member>
         <member name="M:AI.DataStructs.BinarySerializaterDataInMemory.Add(System.Byte[])">
             <summary>
             Добавить массив байт
@@ -10699,6 +10705,11 @@
             Создание вектора
             </summary>
             <param name="vector">Массив данных</param>
+        </member>
+        <member name="M:AI.ML.NeuralNetwork.CoreNNW.NNValue.CalcS">
+            <summary>
+            Calculate squre
+            </summary>
         </member>
         <member name="M:AI.ML.NeuralNetwork.CoreNNW.NNValue.ToString">
             <summary>

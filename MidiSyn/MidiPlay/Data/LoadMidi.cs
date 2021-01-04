@@ -1,7 +1,11 @@
 ﻿using AI;
 using NAudio.Midi;
+using NAudio.Wave;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace MidiPlay.Data
 {
@@ -11,7 +15,7 @@ namespace MidiPlay.Data
 
 
         public int Fd { get; set; } = -1; // Semple rate
-        private MidiFile midiFile { get; set; }
+        MidiFile midiFile { get; set; }
 
 
 
@@ -38,7 +42,7 @@ namespace MidiPlay.Data
 
            
 
-            foreach (IList<MidiEvent> item in midiFile.Events)
+            foreach (var item in midiFile.Events)
             {
 
             }
@@ -52,9 +56,9 @@ namespace MidiPlay.Data
         {
             MidiOut midiOut = new MidiOut(0);
             
-            foreach (IList<MidiEvent> item in midiFile.Events)
+            foreach (var item in midiFile.Events)
             {
-                foreach (MidiEvent item1 in item)
+                foreach (var item1 in item)
                 {
                     midiOut.Send(item1.GetAsShortMessage());
                 }

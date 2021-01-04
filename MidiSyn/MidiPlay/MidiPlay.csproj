@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseFreqsPiano.cs" />
+    <Compile Include="Data\Class1.cs" />
     <Compile Include="Data\DatasetGenerate.cs" />
     <Compile Include="Data\LoadMidi.cs" />
     <Compile Include="Data\Notes.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="Instruments\GSBass.cs" />
     <Compile Include="Instruments\GSyntPiano.cs" />
     <Compile Include="Instruments\IInstrument.cs" />
+    <Compile Include="Instruments\PianoWithFonts.cs" />
     <Compile Include="Midi2Wav.cs" />
     <Compile Include="Note.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

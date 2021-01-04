@@ -1,5 +1,7 @@
 ﻿using AI;
+using AI.DSP.MusicUtils;
 using AI.DSPCore;
+using System;
 
 namespace MidiPlay.Instruments
 {

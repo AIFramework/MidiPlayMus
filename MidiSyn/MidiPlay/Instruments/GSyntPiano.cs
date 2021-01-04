@@ -39,7 +39,7 @@ namespace MidiPlay.Instruments
         public virtual Note GetNoteSignal(string name, int octave, double time)
         {
 
-            string nameNote = $"{name}_{octave}";
+            var nameNote = $"{name}_{octave}";
             Vector freqs = (1 << octave) * BaseFreqsNote.GetFreq(name, Magns.Count);
 
             int steps = (int)(time * Fd);
@@ -74,13 +74,13 @@ namespace MidiPlay.Instruments
             return Signal / Magns.Sum();
         }
 
-        private double GetSempl(int ind, double step, Vector freqs)
+        double GetSempl(int ind, double step, Vector freqs)
         {
             return Magns[ind] * Math.Sin(6.282 * step * freqs[ind]);
         }
 
         // Огибающая
-        private double GetEnvSempl(double step, double per60)
+        double GetEnvSempl(double step, double per60)
         {
             return Math.Exp(-alpha * (step / per60));
         }

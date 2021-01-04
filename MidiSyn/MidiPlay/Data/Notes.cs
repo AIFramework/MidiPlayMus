@@ -6,8 +6,8 @@ namespace MidiPlay.Data
 {
     public class Notes : List<NoteWithTime>
     {
-        private int end = 0;
-        private double time = 0;
+        int end = 0;
+        double time = 0;
         public int Fd;
 
         public Vector Generate() 
@@ -30,7 +30,7 @@ namespace MidiPlay.Data
         }
 
         // Добавление ноты
-        private static void AddNote(Vector dat, NoteWithTime note, int fd) 
+        static void AddNote(Vector dat, NoteWithTime note, int fd) 
         {
             int margin = (int)(note.StartTime * fd);
             Vector sig = note.Note.Signal;
@@ -48,7 +48,8 @@ namespace MidiPlay.Data
             }
         }
 
-        private void CalcMeta()
+
+        void CalcMeta()
         {
             time = 0;
 
