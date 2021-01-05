@@ -3,6 +3,8 @@ using AI.DSP;
 using AI.DSP.Modulation;
 using MidiPlay;
 using MidiPlay.Data;
+using MidiPlay.Instruments;
+using MidiPlay.Instruments.TabelNotesGenerator;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,13 +26,24 @@ namespace SSFTest
 
             ssf = SimpleSoundFont.Load("piano.ssf1");
         }
-
+        int oct = 6;
         SimpleSoundFont ssf;
 
         private void button1_Click(object sender, EventArgs e)
         {
+            double k = BaseFreqsNote.GetFreqNote(comboBox1.Text, oct) / BaseFreqsNote.GetFreqNote("A", 3);
 
-            Vector signal = BaseFreqsNote.TransferNote("A", 3, comboBox1.Text, 6, ssf.Semples[2].Signal);
+
+            Vector signal = ssf.Semples[1].Signal;
+
+            WavMp3.Play(signal, (int)(k*44100));
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Vector signal = ssf.Semples[2].Signal;
+            //signal += k*syntPiano.GetNoteSignal(comboBox1.Text, oct, signal.Count / 44100).CutAndZero(signal.Count);
+            //signal /= 1+k;
             WavMp3.Play(signal, 44100);
         }
     }

@@ -20,8 +20,8 @@ namespace WindowsFormsApp1
             InitializeComponent();
 
             var a =  new Midi2Wav("2020-12-29_213219_3.mid", 44100);
-            //a.Save("synt.wav");
-            a.Play();
+            a.Save("synt.wav");
+      //      a.Play();
 
         }
 

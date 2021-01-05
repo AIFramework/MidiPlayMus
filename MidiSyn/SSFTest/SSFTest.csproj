@@ -80,6 +80,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\Desktop\NWaves-master\NWaves\NWaves.csproj">
+      <Project>{52cbf27a-5461-4d52-ae46-b4f1483c5532}</Project>
+      <Name>NWaves</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MidiPlay\MidiPlay.csproj">
       <Project>{d9d0edac-6b56-4cc3-97fc-3b10edd60b88}</Project>
       <Name>MidiPlay</Name>

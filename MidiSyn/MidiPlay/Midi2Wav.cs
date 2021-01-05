@@ -23,12 +23,15 @@ namespace MidiPlay
             decimal currentMicroSecondsPerTick = 0m;
 
             // Создание пианино (Гармонический синтез)
+            IInstrument electro = new SyntezElectro();
+            electro.Create(fd);
+
             IInstrument gPiano = new GSyntPiano();
             gPiano.Create(fd);
 
             // Создание басса (Гармонический синтез)
-           // IInstrument gBass = new GSBass();
-          //  gBass.Create(fd);
+            IInstrument gBass = new GSBass();
+            gBass.Create(fd);
 
             // Проход по каналам
             foreach (var eventsIList in midi.Events)
@@ -71,8 +74,8 @@ namespace MidiPlay
                             {
                                 StartTime = note.AbsoluteTime * ticsPerSeconds,
                                 EndTime = (note.NoteLength + note.AbsoluteTime) * ticsPerSeconds,
-                                Note = gPiano.GetNoteSignal(name, octave-2, note.NoteLength * ticsPerSeconds),
-                                Volume = 0.5*note.Velocity * 0.01
+                                Note = gBass.GetNoteSignal(name, octave-2, note.NoteLength * ticsPerSeconds),
+                                Volume = 1.7*note.Velocity * 0.01
                             };
 
 
