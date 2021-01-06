@@ -16,7 +16,7 @@ namespace MidiPlay.Instruments.TabelNotesGenerator
         /// </summary>
         public int Fd { get; protected set; }
 
-        protected double alpha = 0.12;
+        protected double alpha = 0.04;
 
 
         public ToneGenerator() 

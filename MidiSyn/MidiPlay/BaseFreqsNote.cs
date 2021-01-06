@@ -1,6 +1,7 @@
 ﻿using AI;
 using AI.DSP;
 using AI.DSP.Modulation;
+using MidiPlay.Instruments.TabelNotesGenerator;
 using System;
 using System.Collections.Generic;
 
@@ -11,6 +12,8 @@ namespace MidiPlay
     /// </summary>
     public class BaseFreqsNote
     {
+        public static ToneGenerator Generator = new ToneGenerator();
+
         static Dictionary<string, double> freqNotes = new Dictionary<string, double>
         {
             { "c",  16.35 },
@@ -62,7 +65,7 @@ namespace MidiPlay
         }
 
 
-        public static Vector TransferNote(string nameBaseNot, int octaveBase, string nameTargetNote, int octaveTarget, Vector signalBase, int fd = 44100)
+        public static Vector TransferFreq(string nameBaseNot, int octaveBase, string nameTargetNote, int octaveTarget, Vector signalBase, int fd = 44100)
         {
             double stFreq = GetFreqNote(nameBaseNot, octaveBase);
             double target = GetFreqNote(nameTargetNote, octaveTarget);
@@ -71,6 +74,18 @@ namespace MidiPlay
             SSB ssb = new SSB(fd, dif, SSBType.Up);
             return ssb.Modulate(new Channel(signalBase, fd)).ChData;
         }
+
+        public static Vector TransferNote(double baseFreq, string nameTargetNote, int octaveTarget, Vector signalBase)
+        {
+            double target = GetFreqNote(nameTargetNote, octaveTarget);
+            double k = target / baseFreq;
+
+            Vector s = SpectrumStretching.SpectrumStretch(signalBase, k).CutAndZero(signalBase.Count);
+            s += 0.3 * Generator.GetNoteSignal(nameTargetNote, octaveTarget, signalBase.Count / 44100).CutAndZero(signalBase.Count);
+            return s;
+        }
+
+
 
 
     }

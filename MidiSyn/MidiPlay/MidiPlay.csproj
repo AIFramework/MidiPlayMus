@@ -30,6 +30,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="NAudio, Version=1.10.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\NAudio.1.10.0\lib\net35\NAudio.dll</HintPath>
@@ -47,11 +50,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseFreqsNote.cs" />
+    <Compile Include="Data\ArrayETF.cs" />
     <Compile Include="Data\DatasetGenerate.cs" />
+    <Compile Include="Data\ElementTableFont.cs" />
     <Compile Include="Data\LoadMidi.cs" />
     <Compile Include="Data\Notes.cs" />
     <Compile Include="Data\SempleFont.cs" />
     <Compile Include="Data\SimpleSoundFont.cs" />
+    <Compile Include="Data\TabelFonts.cs" />
     <Compile Include="Data\WavMp3.cs" />
     <Compile Include="Instruments\GSBass.cs" />
     <Compile Include="Instruments\GSyntPiano.cs" />
@@ -65,13 +71,13 @@
     <Compile Include="Setting.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="D:\Проекты\git\AINetFrame\AI\AI.csproj">
       <Project>{165d777e-8a8e-450b-891a-9046913b6143}</Project>
       <Name>AI</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
