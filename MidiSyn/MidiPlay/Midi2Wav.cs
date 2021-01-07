@@ -22,16 +22,10 @@ namespace MidiPlay
             MidiFile midi = new MidiFile(path);
             decimal currentMicroSecondsPerTick = 0m;
 
-            // Создание пианино (Гармонический синтез)
-            IInstrument electro = new SyntezElectro();
-            electro.Create(fd);
+            TabelFonts tabelFonts = TabelFonts.Load("tabel.tsf");
 
-            IInstrument gPiano = new GSyntPiano();
-            gPiano.Create(fd);
-
-            // Создание басса (Гармонический синтез)
-            IInstrument gBass = new GSBass();
-            gBass.Create(fd);
+            IInstrument gPiano = new PianoWithFonts(tabelFonts);
+            gPiano.Create(Setting.Fd);
 
             // Проход по каналам
             foreach (var eventsIList in midi.Events)
@@ -69,18 +63,18 @@ namespace MidiPlay
                                 Volume = note.Velocity * 0.01
                             };
 
-                            // Данные ноты (Дублирование на октаву ниже)
-                            NoteWithTime noteWithTimeD = new NoteWithTime()
-                            {
-                                StartTime = note.AbsoluteTime * ticsPerSeconds,
-                                EndTime = (note.NoteLength + note.AbsoluteTime) * ticsPerSeconds,
-                                Note = gBass.GetNoteSignal(name, octave-2, note.NoteLength * ticsPerSeconds),
-                                Volume = 1.7*note.Velocity * 0.01
-                            };
+                            //// Данные ноты (Дублирование на октаву ниже)
+                            //NoteWithTime noteWithTimeD = new NoteWithTime()
+                            //{
+                            //    StartTime = note.AbsoluteTime * ticsPerSeconds,
+                            //    EndTime = (note.NoteLength + note.AbsoluteTime) * ticsPerSeconds,
+                            //    Note = gBass.GetNoteSignal(name, octave-2, note.NoteLength * ticsPerSeconds),
+                            //    Volume = 1.7*note.Velocity * 0.01
+                            //};
 
 
                             notes.Add(noteWithTime); // Добавлнение ноты в список
-                            notes.Add(noteWithTimeD); // Добавлнение ноты в список
+                            //notes.Add(noteWithTimeD); // Добавлнение ноты в список
                         }
                     }
                 }

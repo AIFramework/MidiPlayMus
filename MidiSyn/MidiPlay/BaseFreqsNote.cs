@@ -81,7 +81,7 @@ namespace MidiPlay
             double k = target / baseFreq;
 
             Vector s = SpectrumStretching.SpectrumStretch(signalBase, k).CutAndZero(signalBase.Count);
-            s += 0.3 * Generator.GetNoteSignal(nameTargetNote, octaveTarget, signalBase.Count / 44100).CutAndZero(signalBase.Count);
+          //  s += 0.3 * Generator.GetNoteSignal(nameTargetNote, octaveTarget, signalBase.Count / 44100).CutAndZero(signalBase.Count);
             return s;
         }
 

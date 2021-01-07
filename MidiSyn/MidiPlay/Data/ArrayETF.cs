@@ -1,5 +1,8 @@
 ﻿namespace MidiPlay.Data
 {
+    /// <summary>
+    /// Массив элементов шрифта
+    /// </summary>
     public static class ArrayETF 
     {
 

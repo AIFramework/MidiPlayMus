@@ -1206,10 +1206,22 @@
             Echo effect
             </summary>
         </member>
-        <member name="T:AI.DSP.MusicUtils.PhaseCorrectingWindow">
+        <member name="T:AI.DSP.PhaseCorrectingWindow">
             <summary>
             Windows for correcting phase discontinuities
             </summary>
+        </member>
+        <member name="T:AI.DSP.SpectrumStretching">
+            <summary>
+            Spectrum stretching and compression class
+            </summary>
+        </member>
+        <member name="M:AI.DSP.SpectrumStretching.SpectrumStretch(AI.Vector,System.Double)">
+            <summary>
+            Spectrum stretching
+            </summary>
+            <param name="signal">Input signal</param>
+            <param name="k">Stretch ratio</param>
         </member>
         <member name="T:AI.DSP.Analyse.FrequencyResponse">
             <summary>

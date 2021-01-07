@@ -64,6 +64,7 @@
     <Compile Include="Instruments\IInstrument.cs" />
     <Compile Include="Instruments\PianoWithFonts.cs" />
     <Compile Include="Instruments\SyntezElectro.cs" />
+    <Compile Include="Instruments\TabelNotesGenerator\Generator.cs" />
     <Compile Include="Instruments\TabelNotesGenerator\ToneGenerator.cs" />
     <Compile Include="Midi2Wav.cs" />
     <Compile Include="Note.cs" />

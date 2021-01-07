@@ -22,8 +22,8 @@ namespace MidiPlay.Data
                 AddNote(data, this[i], Fd);
             }
 
-            EchoReverb echo = new EchoReverb(Fd);
-            echo.Echo(data, 0.16); // Эхо
+           // EchoReverb echo = new EchoReverb(Fd);
+            //echo.Echo(data, 0.16); // Эхо
             //echo.EchoInvers(data, 0.05); // Эхо
 
             return data/data.Max(); // Нормализация

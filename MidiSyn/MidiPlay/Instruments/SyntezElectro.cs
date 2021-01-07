@@ -56,8 +56,6 @@ namespace MidiPlay.Instruments
         private Vector Generate(int steps, double freq, Vector window)
         {
             Vector Signal = new Vector(steps);
-            double period = 1.0 / freq;
-            double per60 = 10 * period;
 
             double kS1 = 0;
             double kS2 = 0;

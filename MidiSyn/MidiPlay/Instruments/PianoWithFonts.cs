@@ -1,34 +1,37 @@
 ﻿using AI;
+using AI.DSP;
+using MidiPlay.Data;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MidiPlay.Instruments
 {
     public class PianoWithFonts : IInstrument
     {
-        public Dictionary<string, Vector> font = new Dictionary<string, Vector>();
-        Dictionary<int, Vector> C_notes = new Dictionary<int, Vector>();
+        TabelFonts tFont;
+        int _fd;
 
-        public PianoWithFonts()
+        public PianoWithFonts(TabelFonts tabelFonts)
         {
-        
+            tFont = tabelFonts;
         }
 
 
         public void Create(int fd)
         {
-            if (fd != 44100)
-                throw new Exception("Font fd is 44.1 kHz");
+            if (fd != Setting.Fd)
+                throw new Exception($"Font fd is {Setting.Fd} kHz");
 
-
+            _fd = fd;
         }
 
         public Note GetNoteSignal(string name, int octave, double time)
         {
-            throw new NotImplementedException();
+            var nameNote = $"{name}_{octave}";
+            double freq = BaseFreqsNote.GetFreqNote(name, octave);
+            int len = (int)(time * _fd);
+            Vector window = PhaseCorrectingWindow.Trapezoid(len, 0.07);
+            Vector signal = tFont.GetSignal(freq).CutAndZero(len) *window;
+            return new Note(nameNote, time, signal);
         }
     }
 }

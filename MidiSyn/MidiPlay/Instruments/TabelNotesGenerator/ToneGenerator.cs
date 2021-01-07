@@ -21,8 +21,8 @@ namespace MidiPlay.Instruments.TabelNotesGenerator
 
         public ToneGenerator() 
         {
-            Fd = 44100;
-            Magns = new double[] { 1, 0.9, 0.518 };
+            Fd = Setting.Fd;
+            Magns = new double[] { 1};
         }
 
 

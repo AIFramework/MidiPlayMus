@@ -39,15 +39,20 @@ namespace SSFTest
 
             Vector s = BaseFreqsNote.TransferNote(k, comboBox1.Text, oct, signal);
 
-            WavMp3.Play(s, 44100);
+            WavMp3.Play(s, Setting.Fd);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Vector signal = ssf.Semples[3].Signal;
+            Vector signal = ssf.Semples[7].Signal;
             //signal += k*syntPiano.GetNoteSignal(comboBox1.Text, oct, signal.Count / 44100).CutAndZero(signal.Count);
             //signal /= 1+k;
-            WavMp3.Play(signal, 44100);
+            WavMp3.Play(signal, Setting.Fd);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Generator.GenFonts(ssf).Save("tabel.tsf");
         }
     }
 }
