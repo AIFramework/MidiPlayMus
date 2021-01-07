@@ -25,6 +25,14 @@ namespace SSFTest
             InitializeComponent();
 
             ssf = SimpleSoundFont.Load("piano.ssf1");
+            comboBox1.Items.Clear();
+            comboBox1.Text = "0";
+
+            for (int i = 0; i < ssf.Semples.Length; i++)
+            {
+                comboBox1.Items.Add(""+i);
+            }
+
         }
 
         int oct = 5;
@@ -32,12 +40,8 @@ namespace SSFTest
 
         private void button1_Click(object sender, EventArgs e)
         {
-            double k = BaseFreqsNote.GetFreqNote("A", 4);
 
-
-            Vector signal = ssf.Semples[2].Signal;
-
-            Vector s = BaseFreqsNote.TransferNote(k, comboBox1.Text, oct, signal);
+            Vector s = ssf.Semples[int.Parse(comboBox1.Text)].Signal;
 
             WavMp3.Play(s, Setting.Fd);
         }

@@ -1,7 +1,7 @@
 ﻿using AI;
 using AI.DataStructs;
 
-namespace MidiPlay.Data
+namespace Midi.Data
 {
     public sealed class SampleFont : IBinSerial
     {

@@ -1,6 +1,6 @@
 ﻿using AI;
 
-namespace MidiPlay.Data
+namespace Midi.Data
 {
     /// <summary>
     /// Элемент шрифта

@@ -1,6 +1,6 @@
 ﻿using AI.DataStructs;
 
-namespace MidiPlay.Data
+namespace Midi.Data
 {
     public class SimpleSoundFont : IBinSerial
     {

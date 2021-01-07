@@ -1,4 +1,4 @@
-﻿namespace MidiPlay
+﻿namespace Midi
 {
     public class Setting
     {

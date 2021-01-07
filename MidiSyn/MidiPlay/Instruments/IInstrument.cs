@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MidiPlay.Instruments
+namespace Midi.Instruments
 {
     public interface IInstrument
     {

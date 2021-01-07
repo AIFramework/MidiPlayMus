@@ -1,11 +1,11 @@
 ﻿using AI;
 using AI.DSP;
 using AI.DSP.Modulation;
-using MidiPlay.Instruments.TabelNotesGenerator;
+using Midi.Instruments.TabelNotesGenerator;
 using System;
 using System.Collections.Generic;
 
-namespace MidiPlay
+namespace Midi
 {
     /// <summary>
     /// Базовые частоты

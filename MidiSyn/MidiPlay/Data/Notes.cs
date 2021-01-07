@@ -1,8 +1,9 @@
 ﻿using AI;
 using AI.DSP.MusicUtils;
+using AI.DSPCore;
 using System.Collections.Generic;
 
-namespace MidiPlay.Data
+namespace Midi.Data
 {
     public class Notes : List<NoteWithTime>
     {
@@ -22,9 +23,12 @@ namespace MidiPlay.Data
                 AddNote(data, this[i], Fd);
             }
 
-           // EchoReverb echo = new EchoReverb(Fd);
-            //echo.Echo(data, 0.16); // Эхо
+            data = Filters.ExpAv(data, 0.7);
+            //EchoReverb echo = new EchoReverb(Fd);
+           // echo.Echo(data, 0.05); // Эхо
             //echo.EchoInvers(data, 0.05); // Эхо
+
+            //data = Filters.ExpAv(data, 0.7);
 
             return data/data.Max(); // Нормализация
         }

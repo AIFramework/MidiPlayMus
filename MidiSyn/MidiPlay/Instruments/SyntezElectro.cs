@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MidiPlay.Instruments
+namespace Midi.Instruments
 {
     public class SyntezElectro : IInstrument
     {

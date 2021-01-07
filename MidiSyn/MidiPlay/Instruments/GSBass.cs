@@ -3,7 +3,7 @@ using AI.DSP.MusicUtils;
 using AI.DSPCore;
 using System;
 
-namespace MidiPlay.Instruments
+namespace Midi.Instruments
 {
     public class GSBass : GSyntPiano
     {

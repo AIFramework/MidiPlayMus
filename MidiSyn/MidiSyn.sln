@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30711.63
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp1", "WindowsFormsApp1\WindowsFormsApp1.csproj", "{5F8E989F-08C5-4DBB-BBAD-5E2FD9849ACB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MidiPlay", "MidiPlay\MidiPlay.csproj", "{D9D0EDAC-6B56-4CC3-97FC-3B10EDD60B88}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Midi", "MidiPlay\Midi.csproj", "{D9D0EDAC-6B56-4CC3-97FC-3B10EDD60B88}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AI", "D:\Проекты\git\AINetFrame\AI\AI.csproj", "{165D777E-8A8E-450B-891A-9046913B6143}"
 EndProject

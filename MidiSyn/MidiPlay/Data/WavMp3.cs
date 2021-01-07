@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 
 
-namespace MidiPlay.Data
+namespace Midi.Data
 {
     public class WavMp3
     {

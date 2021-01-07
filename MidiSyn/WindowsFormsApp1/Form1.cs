@@ -1,6 +1,6 @@
 ﻿using AI;
-using MidiPlay;
-using MidiPlay.Data;
+using Midi;
+using Midi.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

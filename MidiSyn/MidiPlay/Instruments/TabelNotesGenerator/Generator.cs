@@ -1,12 +1,12 @@
 ﻿using AI;
-using MidiPlay.Data;
+using Midi.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MidiPlay.Instruments.TabelNotesGenerator
+namespace Midi.Instruments.TabelNotesGenerator
 {
     public class Generator
     {

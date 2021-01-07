@@ -1,4 +1,4 @@
-﻿namespace MidiPlay.Data
+﻿namespace Midi.Data
 {
     /// <summary>
     /// Массив элементов шрифта

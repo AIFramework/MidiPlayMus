@@ -80,9 +80,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MidiPlay\MidiPlay.csproj">
+    <ProjectReference Include="..\MidiPlay\Midi.csproj">
       <Project>{d9d0edac-6b56-4cc3-97fc-3b10edd60b88}</Project>
-      <Name>MidiPlay</Name>
+      <Name>Midi</Name>
     </ProjectReference>
     <ProjectReference Include="D:\Проекты\git\AINetFrame\AI\AI.csproj">
       <Project>{165d777e-8a8e-450b-891a-9046913b6143}</Project>

@@ -2,7 +2,7 @@
 using AI.DSP.MusicUtils;
 using System;
 
-namespace MidiPlay.Instruments.TabelNotesGenerator
+namespace Midi.Instruments.TabelNotesGenerator
 {
     public class ToneGenerator
     {

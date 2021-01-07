@@ -8,7 +8,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MidiPlay.Data
+namespace Midi.Data
 {
     public class TabelFonts
     {

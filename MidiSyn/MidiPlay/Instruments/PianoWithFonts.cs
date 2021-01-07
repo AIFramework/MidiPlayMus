@@ -1,9 +1,9 @@
 ﻿using AI;
 using AI.DSP;
-using MidiPlay.Data;
+using Midi.Data;
 using System;
 
-namespace MidiPlay.Instruments
+namespace Midi.Instruments
 {
     public class PianoWithFonts : IInstrument
     {
@@ -30,7 +30,7 @@ namespace MidiPlay.Instruments
             double freq = BaseFreqsNote.GetFreqNote(name, octave);
             int len = (int)(time * _fd);
             Vector window = PhaseCorrectingWindow.Trapezoid(len, 0.07);
-            Vector signal = tFont.GetSignal(freq).CutAndZero(len) *window;
+            Vector signal = tFont.GetSignal(freq).CutAndZero(len)*window;
             return new Note(nameNote, time, signal);
         }
     }

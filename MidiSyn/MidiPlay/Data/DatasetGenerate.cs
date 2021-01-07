@@ -4,7 +4,7 @@ using System;
 using System.Drawing;
 using System.IO;
 
-namespace MidiPlay.Data
+namespace Midi.Data
 {
     public class DatasetGenerate
     {

@@ -1,6 +1,6 @@
 ﻿using AI;
-using MidiPlay.Data;
-using MidiPlay.Instruments;
+using Midi.Data;
+using Midi.Instruments;
 using NAudio.Midi;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MidiPlay
+namespace Midi
 {
     public class Midi2Wav
     {
@@ -59,18 +59,18 @@ namespace MidiPlay
                             {
                                 StartTime = note.AbsoluteTime * ticsPerSeconds,
                                 EndTime = (note.NoteLength + note.AbsoluteTime) * ticsPerSeconds,
-                                Note = gPiano.GetNoteSignal(name, octave, note.NoteLength * ticsPerSeconds),
+                                Note = gPiano.GetNoteSignal(name, octave+1, note.NoteLength * ticsPerSeconds),
                                 Volume = note.Velocity * 0.01
                             };
 
-                            //// Данные ноты (Дублирование на октаву ниже)
-                            //NoteWithTime noteWithTimeD = new NoteWithTime()
-                            //{
-                            //    StartTime = note.AbsoluteTime * ticsPerSeconds,
-                            //    EndTime = (note.NoteLength + note.AbsoluteTime) * ticsPerSeconds,
-                            //    Note = gBass.GetNoteSignal(name, octave-2, note.NoteLength * ticsPerSeconds),
-                            //    Volume = 1.7*note.Velocity * 0.01
-                            //};
+                            // Данные ноты (Дублирование на октаву ниже)
+                            NoteWithTime noteWithTimeD = new NoteWithTime()
+                            {
+                                StartTime = note.AbsoluteTime * ticsPerSeconds,
+                                EndTime = (note.NoteLength + note.AbsoluteTime) * ticsPerSeconds,
+                                Note = gPiano.GetNoteSignal(name, octave - 2, note.NoteLength * ticsPerSeconds),
+                                Volume = 1.7 * note.Velocity * 0.01
+                            };
 
 
                             notes.Add(noteWithTime); // Добавлнение ноты в список
@@ -107,7 +107,7 @@ namespace MidiPlay
 
 
         // Приведение к реальному времени
-        private static List<MidiEvent> ToRealTime(List<MidiEvent> midiEvents, int deltaTicksPerQuarterNote, ref decimal currentMicroSecondsPerTick)
+        public static List<MidiEvent> ToRealTime(List<MidiEvent> midiEvents, int deltaTicksPerQuarterNote, ref decimal currentMicroSecondsPerTick)
         {
 
             List<decimal> eventsTimesArr = new List<decimal>();
