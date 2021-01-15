@@ -23,12 +23,12 @@ namespace NoteSeqFramework.Base
 
         public Note(int pitch, int velocity, float startTime, float endTime, Instrument instrument, string name)
         {
-            this.Pitch = pitch;
-            this.Velocity = velocity;
-            this.StartTime = startTime;
-            this.EndTime = endTime;
-            this.Instrument = instrument;
-            this.Name = name;
+            Pitch = pitch;
+            Velocity = velocity;
+            StartTime = startTime;
+            EndTime = endTime;
+            Instrument = instrument;
+            Name = name;
         }
     }
 }

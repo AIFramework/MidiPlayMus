@@ -17,6 +17,7 @@ namespace NoteSeqFramework.Base
         /// <param name="compare">if T2 value more than T1 value return is true</param>
         public static void Quicksort<T>(this List<T> array, Func<T, T, bool> compare)
         {
+
             Quicksort(array, 0, array.Count - 1, compare);
         }
 
