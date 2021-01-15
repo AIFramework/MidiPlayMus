@@ -39,9 +39,9 @@ namespace NoteSeqFramework.Base
         /// <param name="deltaTicksPerQuarterNote"></param>
         /// <param name="currentMicroSecondsPerTick">параметр midi-файла</param>
         /// <returns></returns>
-        public static List<MidiEvent> ToRealTime(List<MidiEvent> midiEvents, int deltaTicksPerQuarterNote, ref decimal currentMicroSecondsPerTick)
+        public static List<Note> ToRealTime(List<MidiEvent> midiEvents, int deltaTicksPerQuarterNote, ref decimal currentMicroSecondsPerTick)
         {
-
+            var result = new List<Note>();
             List<decimal> eventsTimesArr = new List<decimal>();
             decimal lastRealTime = 0m;
             decimal lastAbsoluteTime = 0m;
@@ -56,6 +56,17 @@ namespace NoteSeqFramework.Base
                     lastRealTime += ((decimal)midiEvent.AbsoluteTime - lastAbsoluteTime) * currentMicroSecondsPerTick;
                 }
 
+                if (midiEvent is NoteOnEvent)
+                {
+                    var noteon = midiEvent as NoteOnEvent;
+                    if (noteon.Velocity != 0)
+                    {
+                        float startTime = (float)(lastRealTime / (decimal)1000000.0);
+                        float endTime = startTime;// + noteon.NoteLength/1000.0f;
+                        result.Add(new Note(noteon.NoteNumber, noteon.Velocity, startTime, endTime, Instrument.Default, noteon.NoteName));
+                    }
+                }
+
                 lastAbsoluteTime = midiEvent.AbsoluteTime;
 
                 if (tempoEvent != null)
@@ -68,12 +79,12 @@ namespace NoteSeqFramework.Base
                 eventsTimesArr.Add(lastRealTime);
             }
 
-            for (int i = 0; i < midiEvents.Count; i++)
-            {
-                midiEvents[i].AbsoluteTime = (long)(eventsTimesArr[i] / 1000);
-            }
+            //for (int i = 0; i < midiEvents.Count; i++)
+            //{
+            //    midiEvents[i].AbsoluteTime = (long)(eventsTimesArr[i] / 1000);
+            //}
 
-            return midiEvents;
+            return result;
         }
 
         /// <summary>

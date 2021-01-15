@@ -48,6 +48,7 @@
     <Compile Include="Base\Enums.cs" />
     <Compile Include="Base\ExtensionMethod.cs" />
     <Compile Include="Base\MidiConverter.cs" />
+    <Compile Include="Base\MIDISynthesizer.cs" />
     <Compile Include="Base\Note.cs" />
     <Compile Include="Base\QSortExtension.cs" />
     <Compile Include="Base\SourceInfo.cs" />

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using NAudio.Midi;
@@ -10,6 +12,7 @@ namespace NoteSeqFramework
 {
     public class NoteSeq
     {
+
         public List<Note> Notes { get; private set; }
         public double TotalTime { get { Sort(); return Notes.Last().EndTime; } private set { TotalTime = value; } }
         public SourceInfo SourceInfo { get; private set; }
@@ -50,20 +53,8 @@ namespace NoteSeqFramework
             decimal currentMicroSecondsPerTick = 0m;
             foreach (var midiEvent in midiEvents)
             {
-                var preproc = MidiConverter.ToRealTime(midiEvent, midiFile.DeltaTicksPerQuarterNote, ref currentMicroSecondsPerTick);
-                var events = preproc
-                        .Where(x => x is NoteOnEvent)
-                        .Select(x => (NoteOnEvent)x)
-                        .ToList();
-
-                noteSeq.AddRange(events.Select(note=>new Note(
-                    note.NoteNumber,
-                    note.Velocity,
-                    (float)(note.AbsoluteTime / 1000.0),
-                    (float)((note.AbsoluteTime + note.NoteLength) / 1000.0),
-                    Instrument.Default,
-                    note.NoteName
-                )));
+                var notes = MidiConverter.ToRealTime(midiEvent, midiFile.DeltaTicksPerQuarterNote, ref currentMicroSecondsPerTick);
+                noteSeq.AddRange(notes);
             }
             noteSeq.Sort();
             return noteSeq;
@@ -79,6 +70,7 @@ namespace NoteSeqFramework
 
             return channels;
         }
+
 
     }
 }
