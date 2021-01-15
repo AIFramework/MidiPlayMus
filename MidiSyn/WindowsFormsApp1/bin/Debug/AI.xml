@@ -5585,9 +5585,98 @@
             <param name="b"></param>
             <returns></returns>
         </member>
+        <member name="T:AI.ML.Clustering.KMeans">
+            <summary>Алгоритм k-means</summary>
+        </member>
+        <member name="P:AI.ML.Clustering.KMeans.MaxCount">
+            <summary>
+            Максимальное число циклов
+            </summary>
+        </member>
+        <member name="M:AI.ML.Clustering.KMeans.#ctor(System.Int32)">
+            <summary>K-Mean</summary>
+            <param name="clasterCount">Количество кластеров</param>
+        </member>
+        <member name="P:AI.ML.Clustering.KMeans.GroupCount">
+            <summary>Количество кластеров</summary>
+        </member>
+        <member name="P:AI.ML.Clustering.KMeans.DimentionOfData">
+            <summary>Размерность данных</summary>
+        </member>
+        <member name="P:AI.ML.Clustering.KMeans.Сentroids">
+            <summary>Цендроиды кластеров</summary>
+        </member>
+        <member name="M:AI.ML.Clustering.KMeans.Classify(AI.Vector)">
+            <summary>Классификация вектора</summary>
+            <param name="vector">Вектор</param>
+        </member>
+        <member name="M:AI.ML.Clustering.KMeans.Classify(System.Collections.Generic.IEnumerable{AI.Vector})">
+            <summary>Классификация векторов</summary>
+            <param name="vectors">Вектора</param>
+        </member>
+        <member name="M:AI.ML.Clustering.KMeans.Train(AI.Vector[],System.Int32)">
+            <summary>Обучение</summary>
+            <param name="vectors"> Набор векторов</param>
+            <param name="seed">Сид, для повторяемости результатов</param>
+        </member>
+        <member name="M:AI.ML.Clustering.KMeans.Initialize">
+            <summary>Инизиализация</summary>
+        </member>
+        <member name="M:AI.ML.Clustering.KMeans.NearestVector(AI.Vector)">
+            <summary>Ближайший вектор</summary>
+        </member>
+        <member name="M:AI.ML.Clustering.KMeans.ValidateData(System.Int32,AI.Vector[])">
+            <summary>Validate the sample</summary>
+        </member>
         <member name="T:AI.ML.CrossCorrMatrix">
             <summary>
             Cross-correlation matrix
+            </summary>
+        </member>
+        <member name="T:AI.ML.DataEncoding.PositionalEncoding.IPositionEncoding">
+            <summary>
+            Position encoder
+            </summary>
+        </member>
+        <member name="P:AI.ML.DataEncoding.PositionalEncoding.IPositionEncoding.Dim">
+            <summary>
+            Output vector dimension
+            </summary>
+        </member>
+        <member name="M:AI.ML.DataEncoding.PositionalEncoding.IPositionEncoding.GetCode(System.Int32)">
+            <summary>
+            Getting the vector position code
+            </summary>
+        </member>
+        <member name="M:AI.ML.DataEncoding.PositionalEncoding.IPositionEncoding.GetCode(System.Double)">
+            <summary>
+            Getting the vector position code
+            </summary>
+        </member>
+        <member name="T:AI.ML.DataEncoding.PositionalEncoding.TrigonometricPositionalEncoder">
+            <summary>
+            Position (index) coding based on orthogonal trigonometric functions
+            </summary>
+        </member>
+        <member name="P:AI.ML.DataEncoding.PositionalEncoding.TrigonometricPositionalEncoder.Dim">
+            <summary>
+            Output vector dimension
+            </summary>
+        </member>
+        <member name="M:AI.ML.DataEncoding.PositionalEncoding.TrigonometricPositionalEncoder.#ctor(System.Int32)">
+            <summary>
+            Position (index) coding based on orthogonal trigonometric functions
+            </summary>
+            <param name="dim">Output vector dimension</param>
+        </member>
+        <member name="M:AI.ML.DataEncoding.PositionalEncoding.TrigonometricPositionalEncoder.GetCode(System.Int32)">
+            <summary>
+            Getting the vector position code(index)
+            </summary>
+        </member>
+        <member name="M:AI.ML.DataEncoding.PositionalEncoding.TrigonometricPositionalEncoder.GetCode(System.Double)">
+            <summary>
+            Getting the vector position code(time)
             </summary>
         </member>
         <member name="M:AI.ML.Datasets.DataSetSingle.#ctor(AI.ML.NeuralNetwork.CoreNNW.NNValue[],AI.ML.NeuralNetwork.CoreNNW.Loss.ILoss,System.Double)">
@@ -6199,6 +6288,119 @@
             <param name="outputs">Идеальные выходы</param>
             <param name="los">Ошибка</param>
             <param name="valSplit">Доля выборки для валидации</param>
+        </member>
+        <member name="T:AI.ML.HMM.HMM">
+            <summary>
+            Basic block for constructing hidden Markov models, Markov chain
+            </summary>
+        </member>
+        <member name="F:AI.ML.HMM.HMM.stateMatrix">
+            <summary>
+            State Matrix
+            </summary>
+        </member>
+        <member name="F:AI.ML.HMM.HMM.stateAlter">
+            <summary>
+            Inverted state matrix
+            </summary>
+        </member>
+        <member name="M:AI.ML.HMM.HMM.#ctor">
+            <summary>
+            Markov chain
+            </summary>
+        </member>
+        <member name="M:AI.ML.HMM.HMM.Train(System.Int32[])">
+            <summary>
+            Train
+            </summary>
+            <param name="trainSeq">Training sequence</param>
+        </member>
+        <member name="M:AI.ML.HMM.HMM.GetMax(System.Double[0:,0:])">
+            <summary>
+            Maximum transition probability
+            </summary>
+            <param name="matrix">State Matrix</param>
+        </member>
+        <member name="M:AI.ML.HMM.HMM.Generate(System.Int32,System.Int32)">
+            <summary>
+            Generating text
+            </summary>
+            <param name="num">Steps count</param>
+            <param name="begin">The first word</param>
+        </member>
+        <member name="T:AI.ML.HMM.KMeanHMM">
+            <summary>
+            Hidden Markov model with state extraction based on the k-means algorithm
+            </summary>
+        </member>
+        <member name="M:AI.ML.HMM.KMeanHMM.#ctor(System.Int32)">
+            <summary>
+            Hidden Markov model with state extraction based on the k-means algorithm
+            </summary>
+        </member>
+        <member name="M:AI.ML.HMM.KMeanHMM.GetTransitionMatrix(AI.Vector[])">
+            <summary>
+            Obtaining a matrix of probabilities of transitions between states
+            </summary>
+            <param name="seq">sequence of vectors</param>
+        </member>
+        <member name="M:AI.ML.HMM.KMeanHMM.GetTransitionVector(AI.Vector[])">
+            <summary>
+            Obtaining a vector of probabilities of transitions between states
+            </summary>
+            <param name="seq">Sequence of vectors</param>
+        </member>
+        <member name="M:AI.ML.HMM.KMeanHMM.Train(AI.Vector[])">
+            <summary>
+            Model training
+            </summary>
+            <param name="seqInp">Sequence of vectors</param>
+        </member>
+        <member name="M:AI.ML.HMM.KMeanHMM.Generate(AI.Vector,System.Int32)">
+            <summary>
+            Generating a sequence of states
+            </summary>
+            <param name="start">Start vector</param>
+            <param name="len">Sequence length</param>
+        </member>
+        <member name="T:AI.ML.HMM.MChWords">
+            <summary>
+            Markov chain
+            </summary>
+        </member>
+        <member name="F:AI.ML.HMM.MChWords.stateMatrix">
+            <summary>
+            State Matrix
+            </summary>
+        </member>
+        <member name="F:AI.ML.HMM.MChWords.stateAlter">
+            <summary>
+            Inverted state matrix
+            </summary>
+        </member>
+        <member name="M:AI.ML.HMM.MChWords.#ctor">
+            <summary>
+            Markov chain
+            </summary>
+        </member>
+        <member name="M:AI.ML.HMM.MChWords.Train(System.String)">
+            <summary>
+            Train
+            </summary>
+            <param name="TrainText">Training text</param>
+        </member>
+        <member name="M:AI.ML.HMM.MChWords.GetMax(System.Double[0:,0:])">
+            <summary>
+            Maximum transition probability
+            </summary>
+            <param name="matrix">State Matrix</param>
+        </member>
+        <member name="M:AI.ML.HMM.MChWords.Generate(System.Int32,System.String)">
+            <summary>
+            Generating text
+            </summary>
+            <param name="num">How many words</param>
+            <param name="begin">The first word</param>
         </member>
         <member name="M:AI.ML.NeuralNetwork.Architectures.GanNet.NGen">
             <summary>
@@ -11485,365 +11687,365 @@
             <param name="inp">Вход</param>
             <returns></returns>
         </member>
-        <member name="T:AI.ML.NeuralNetwork.NeuralNetworkMeneger">
+        <member name="T:AI.ML.NeuralNetwork.NeuralNetworkManager">
             <summary>
             Нейронная сеть
             </summary>
         </member>
-        <member name="P:AI.ML.NeuralNetwork.NeuralNetworkMeneger.Graph">
+        <member name="P:AI.ML.NeuralNetwork.NeuralNetworkManager.Graph">
             <summary>
             Граф автодифференцирования
             </summary>
         </member>
-        <member name="P:AI.ML.NeuralNetwork.NeuralNetworkMeneger.Optimizer">
+        <member name="P:AI.ML.NeuralNetwork.NeuralNetworkManager.Optimizer">
             <summary>
             Оптимизатор
             </summary>
         </member>
-        <member name="P:AI.ML.NeuralNetwork.NeuralNetworkMeneger.Loss">
+        <member name="P:AI.ML.NeuralNetwork.NeuralNetworkManager.Loss">
             <summary>
             Функция потерь
             </summary>
         </member>
-        <member name="P:AI.ML.NeuralNetwork.NeuralNetworkMeneger.LearningRate">
+        <member name="P:AI.ML.NeuralNetwork.NeuralNetworkManager.LearningRate">
             <summary>
             Скорость обучения
             </summary>
         </member>
-        <member name="P:AI.ML.NeuralNetwork.NeuralNetworkMeneger.L1Reg">
+        <member name="P:AI.ML.NeuralNetwork.NeuralNetworkManager.L1Reg">
             <summary>
             L1 регуляризация
             </summary>
         </member>
-        <member name="P:AI.ML.NeuralNetwork.NeuralNetworkMeneger.L2Reg">
+        <member name="P:AI.ML.NeuralNetwork.NeuralNetworkManager.L2Reg">
             <summary>
             L2 регуляризация
             </summary>
         </member>
-        <member name="P:AI.ML.NeuralNetwork.NeuralNetworkMeneger.GradClip">
+        <member name="P:AI.ML.NeuralNetwork.NeuralNetworkManager.GradClip">
             <summary>
             Ограничение градиентов
             </summary>
         </member>
-        <member name="P:AI.ML.NeuralNetwork.NeuralNetworkMeneger.ValSplit">
+        <member name="P:AI.ML.NeuralNetwork.NeuralNetworkManager.ValSplit">
             <summary>
             Какая часть выборки идет на валидацию модели
             </summary>
         </member>
-        <member name="P:AI.ML.NeuralNetwork.NeuralNetworkMeneger.TrType">
+        <member name="P:AI.ML.NeuralNetwork.NeuralNetworkManager.TrType">
             <summary>
             Тип подачи обучающей выборки
             </summary>
         </member>
-        <member name="P:AI.ML.NeuralNetwork.NeuralNetworkMeneger.BatchSize">
+        <member name="P:AI.ML.NeuralNetwork.NeuralNetworkManager.BatchSize">
             <summary>
             Размер батча(учитываетс, если TrType — MiniBatch)
             </summary>
         </member>
-        <member name="P:AI.ML.NeuralNetwork.NeuralNetworkMeneger.Epoch">
+        <member name="P:AI.ML.NeuralNetwork.NeuralNetworkManager.Epoch">
             <summary>
             Число эпох
             </summary>
         </member>
-        <member name="P:AI.ML.NeuralNetwork.NeuralNetworkMeneger.MinValueLos">
+        <member name="P:AI.ML.NeuralNetwork.NeuralNetworkManager.MinValueLos">
             <summary>
             Минимальная ошибка после которой останавливается обучение
             </summary>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.#ctor">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.#ctor">
             <summary>
             Нейронная сеть
             </summary>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.#ctor(System.String)">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.#ctor(System.String)">
             <summary>
             Нейронная сеть
             </summary>
             <param name="path">Путь до сохраненной сети</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.#ctor(AI.ML.NeuralNetwork.CoreNNW.Layers.NNW)">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.#ctor(AI.ML.NeuralNetwork.CoreNNW.Layers.NNW)">
             <summary>
             Нейронная сеть
             </summary>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.Save(System.String)">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.Save(System.String)">
             <summary>
             Сохранение нейросети
             </summary>
             <param name="path">Путь до файла</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.AddNewLayer(AI.ML.NeuralNetwork.CoreNNW.Layers.ILayer)">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.AddNewLayer(AI.ML.NeuralNetwork.CoreNNW.Layers.ILayer)">
             <summary>
             Добавление НОВОГО слоя, (веса будут перегенерированы)
             </summary>
             <param name="layer">Слой</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.AddNewLayer(AI.ML.NeuralNetwork.CoreNNW.Shape,AI.ML.NeuralNetwork.CoreNNW.Layers.ILayer)">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.AddNewLayer(AI.ML.NeuralNetwork.CoreNNW.Shape,AI.ML.NeuralNetwork.CoreNNW.Layers.ILayer)">
             <summary>
             Добавление НОВОГО слоя, (веса будут перегенерированы)
             </summary>
             <param name="layer">Слой</param>
             <param name="inputShape">Input dimension</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.Restart">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.Restart">
             <summary>
             Сброс сети
             </summary>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.Forward(AI.ML.NeuralNetwork.CoreNNW.NNValue)">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.Forward(AI.ML.NeuralNetwork.CoreNNW.NNValue)">
             <summary>
             Прямой проход сети
             </summary>
             <param name="input">Вход</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.Forward(AI.Vector)">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.Forward(AI.Vector)">
             <summary>
             Прямой проход сети
             </summary>
             <param name="input">Вход</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.ForwardMatrix(AI.Vector)">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.ForwardMatrix(AI.Vector)">
             <summary>
             Прямой проход сети
             </summary>
             <param name="input">Вход</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.ForwardTensor(AI.Vector)">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.ForwardTensor(AI.Vector)">
             <summary>
             Прямой проход сети
             </summary>
             <param name="input">Вход</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.Forward(AI.Matrix)">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.Forward(AI.Matrix)">
             <summary>
             Прямой проход сети
             </summary>
             <param name="input">Вход</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.ForwardMatrix(AI.Matrix)">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.ForwardMatrix(AI.Matrix)">
             <summary>
             Прямой проход сети
             </summary>
             <param name="input">Вход</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.ForwardTensor(AI.Matrix)">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.ForwardTensor(AI.Matrix)">
             <summary>
             Прямой проход сети
             </summary>
             <param name="input">Вход</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.Forward(AI.Tensor)">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.Forward(AI.Tensor)">
             <summary>
             Прямой проход сети
             </summary>
             <param name="input">Вход</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.ForwardMatrix(AI.Tensor)">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.ForwardMatrix(AI.Tensor)">
             <summary>
             Прямой проход сети
             </summary>
             <param name="input">Вход</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.ForwardTensor(AI.Tensor)">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.ForwardTensor(AI.Tensor)">
             <summary>
             Прямой проход сети
             </summary>
             <param name="input">Вход</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.ForwardRecurrent(AI.Vector)">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.ForwardRecurrent(AI.Vector)">
             <summary>
             Прямой проход рекуррентной сети с одним входом и вектором выходов
             </summary>
             <param name="input">Вход</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.ForwardRecurrent(AI.Vector[])">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.ForwardRecurrent(AI.Vector[])">
             <summary>
             Прямой проход рекуррентной сети с вектором входом и вектором выходов
             </summary>
             <param name="input">Вход</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.ForwardRecurrentMatrix(AI.Vector[])">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.ForwardRecurrentMatrix(AI.Vector[])">
             <summary>
             Прямой проход рекуррентной сети
             </summary>
             <param name="input">Вход</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.ForwardRecurrentTensor(AI.Vector[])">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.ForwardRecurrentTensor(AI.Vector[])">
             <summary>
             Прямой проход рекуррентной сети
             </summary>
             <param name="input">Вход</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.ForwardRecurrent(AI.Matrix[])">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.ForwardRecurrent(AI.Matrix[])">
             <summary>
             Прямой проход рекуррентной сети
             </summary>
             <param name="input">Вход</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.ForwardRecurrentMatrix(AI.Matrix[])">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.ForwardRecurrentMatrix(AI.Matrix[])">
             <summary>
             Прямой проход рекуррентной сети
             </summary>
             <param name="input">Вход</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.ForwardRecurrentTensor(AI.Matrix[])">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.ForwardRecurrentTensor(AI.Matrix[])">
             <summary>
             Прямой проход рекуррентной сети
             </summary>
             <param name="input">Вход</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.ForwardRecurrent(AI.Tensor[])">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.ForwardRecurrent(AI.Tensor[])">
             <summary>
             Прямой проход рекуррентной сети с вектором входом и вектором выходов
             </summary>
             <param name="input">Вход</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.ForwardRecurrentMatrix(AI.Tensor[])">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.ForwardRecurrentMatrix(AI.Tensor[])">
             <summary>
             Прямой проход рекуррентной сети
             </summary>
             <param name="input">Вход</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.ForwardRecurrentTensor(AI.Tensor[])">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.ForwardRecurrentTensor(AI.Tensor[])">
             <summary>
             Прямой проход рекуррентной сети
             </summary>
             <param name="input">Вход</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.TrainNet(AI.Vector[],AI.Vector[])">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.TrainNet(AI.Vector[],AI.Vector[])">
             <summary>
             Обучение нейронной сети
             </summary>
             <param name="inputs">Входы</param>
             <param name="outputs">Выходы</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.TrainNet(AI.Matrix[],AI.Vector[])">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.TrainNet(AI.Matrix[],AI.Vector[])">
             <summary>
             Обучение нейронной сети
             </summary>
             <param name="inputs">Входы</param>
             <param name="outputs">Выходы</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.TrainNet(AI.Tensor[],AI.Vector[])">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.TrainNet(AI.Tensor[],AI.Vector[])">
             <summary>
             Обучение нейронной сети
             </summary>
             <param name="inputs">Входы</param>
             <param name="outputs">Выходы</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.TrainNet(AI.Vector[],AI.Matrix[])">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.TrainNet(AI.Vector[],AI.Matrix[])">
             <summary>
             Обучение нейронной сети
             </summary>
             <param name="inputs">Входы</param>
             <param name="outputs">Выходы</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.TrainNet(AI.Matrix[],AI.Matrix[])">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.TrainNet(AI.Matrix[],AI.Matrix[])">
             <summary>
             Обучение нейронной сети
             </summary>
             <param name="inputs">Входы</param>
             <param name="outputs">Выходы</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.TrainNet(AI.Tensor[],AI.Matrix[])">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.TrainNet(AI.Tensor[],AI.Matrix[])">
             <summary>
             Обучение нейронной сети
             </summary>
             <param name="inputs">Входы</param>
             <param name="outputs">Выходы</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.TrainNet(AI.Vector[],AI.Tensor[])">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.TrainNet(AI.Vector[],AI.Tensor[])">
             <summary>
             Обучение нейронной сети
             </summary>
             <param name="inputs">Входы</param>
             <param name="outputs">Выходы</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.TrainNet(AI.Matrix[],AI.Tensor[])">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.TrainNet(AI.Matrix[],AI.Tensor[])">
             <summary>
             Обучение нейронной сети
             </summary>
             <param name="inputs">Входы</param>
             <param name="outputs">Выходы</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.TrainNet(AI.Tensor[],AI.Tensor[])">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.TrainNet(AI.Tensor[],AI.Tensor[])">
             <summary>
             Обучение нейронной сети
             </summary>
             <param name="inputs">Входы</param>
             <param name="outputs">Выходы</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.TrainNetSignal(AI.Vector[],AI.Vector[])">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.TrainNetSignal(AI.Vector[],AI.Vector[])">
             <summary>
             Обучение нейронной сети
             </summary>
             <param name="inputs">Входы</param>
             <param name="outputs">Выходы</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.TrainNet(System.Collections.Generic.List{AI.Vector}[],System.Collections.Generic.List{AI.Vector}[])">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.TrainNet(System.Collections.Generic.List{AI.Vector}[],System.Collections.Generic.List{AI.Vector}[])">
             <summary>
             Обучение нейронной сети
             </summary>
             <param name="inputs">Входы</param>
             <param name="outputs">Выходы</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.TrainNet(System.Collections.Generic.List{AI.Matrix}[],System.Collections.Generic.List{AI.Vector}[])">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.TrainNet(System.Collections.Generic.List{AI.Matrix}[],System.Collections.Generic.List{AI.Vector}[])">
             <summary>
             Обучение нейронной сети
             </summary>
             <param name="inputs">Входы</param>
             <param name="outputs">Выходы</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.TrainNet(System.Collections.Generic.List{AI.Tensor}[],System.Collections.Generic.List{AI.Vector}[])">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.TrainNet(System.Collections.Generic.List{AI.Tensor}[],System.Collections.Generic.List{AI.Vector}[])">
             <summary>
             Обучение нейронной сети
             </summary>
             <param name="inputs">Входы</param>
             <param name="outputs">Выходы</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.TrainNet(System.Collections.Generic.List{AI.Vector}[],System.Collections.Generic.List{AI.Matrix}[])">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.TrainNet(System.Collections.Generic.List{AI.Vector}[],System.Collections.Generic.List{AI.Matrix}[])">
             <summary>
             Обучение нейронной сети
             </summary>
             <param name="inputs">Входы</param>
             <param name="outputs">Выходы</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.TrainNet(System.Collections.Generic.List{AI.Matrix}[],System.Collections.Generic.List{AI.Matrix}[])">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.TrainNet(System.Collections.Generic.List{AI.Matrix}[],System.Collections.Generic.List{AI.Matrix}[])">
             <summary>
             Обучение нейронной сети
             </summary>
             <param name="inputs">Входы</param>
             <param name="outputs">Выходы</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.TrainNet(System.Collections.Generic.List{AI.Tensor}[],System.Collections.Generic.List{AI.Matrix}[])">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.TrainNet(System.Collections.Generic.List{AI.Tensor}[],System.Collections.Generic.List{AI.Matrix}[])">
             <summary>
             Обучение нейронной сети
             </summary>
             <param name="inputs">Входы</param>
             <param name="outputs">Выходы</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.TrainNet(System.Collections.Generic.List{AI.Vector}[],System.Collections.Generic.List{AI.Tensor}[])">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.TrainNet(System.Collections.Generic.List{AI.Vector}[],System.Collections.Generic.List{AI.Tensor}[])">
             <summary>
             Обучение нейронной сети
             </summary>
             <param name="inputs">Входы</param>
             <param name="outputs">Выходы</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.TrainNet(System.Collections.Generic.List{AI.Matrix}[],System.Collections.Generic.List{AI.Tensor}[])">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.TrainNet(System.Collections.Generic.List{AI.Matrix}[],System.Collections.Generic.List{AI.Tensor}[])">
             <summary>
             Обучение нейронной сети
             </summary>
             <param name="inputs">Входы</param>
             <param name="outputs">Выходы</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.TrainNet(System.Collections.Generic.List{AI.Tensor}[],System.Collections.Generic.List{AI.Tensor}[])">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.TrainNet(System.Collections.Generic.List{AI.Tensor}[],System.Collections.Generic.List{AI.Tensor}[])">
             <summary>
             Обучение нейронной сети
             </summary>
             <param name="inputs">Входы</param>
             <param name="outputs">Выходы</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkMeneger.ToString">
+        <member name="M:AI.ML.NeuralNetwork.NeuralNetworkManager.ToString">
             <summary>
             Строковое представление
             </summary>
@@ -12970,61 +13172,6 @@
             Square of Euclidean distance
             </summary>
         </member>
-        <member name="T:AI.HMM.HiMaMoWords">
-            <summary>
-            Скрытая марковская модель
-            </summary>
-        </member>
-        <member name="F:AI.HMM.HiMaMoWords.stateMatrix">
-            <summary>
-            Матрица состояний
-            </summary>
-        </member>
-        <member name="F:AI.HMM.HiMaMoWords.stateAlter">
-            <summary>
-            Матрица состояний
-            </summary>
-        </member>
-        <member name="M:AI.HMM.HiMaMoWords.#ctor">
-            <summary>
-            Скрытая марковская модель
-            </summary>
-        </member>
-        <member name="M:AI.HMM.HiMaMoWords.Train(System.String)">
-            <summary>
-            Обучение
-            </summary>
-            <param name="TrainText">Тренировочный текст</param>
-        </member>
-        <member name="M:AI.HMM.HiMaMoWords.GetMax(System.Double[0:,0:])">
-            <summary>
-            Максимальное значение в матрице
-            </summary>
-            <param name="matrix">Матрица</param>
-            <returns>Максимальное значение</returns>
-        </member>
-        <member name="M:AI.HMM.HiMaMoWords.Generate(System.Int32,System.String)">
-            <summary>
-            Генерация текста
-            </summary>
-            <param name="num">Сколько слов</param>
-            <param name="begin">Первое слово</param>
-            <returns>Сгенерированный текст</returns>
-        </member>
-        <member name="M:AI.HMM.HiMaMoWords.GetInd(System.String)">
-            <summary>
-            Поиск индекса
-            </summary>
-            <param name="stateName">Имя состояния</param>
-            <returns></returns>
-        </member>
-        <member name="M:AI.HMM.HiMaMoWords.GetWords(System.String[])">
-            <summary>
-             Получение слов
-            </summary>
-            <param name="strs">Строки входа</param>
-            <returns></returns>
-        </member>
         <member name="T:AI.Algebra.Gauss">
             <summary>
             Метод Гаусса имеет вычислительную сложность O(n^3)
@@ -13957,6 +14104,14 @@
             <summary>
             Методы расширения из AI.dll
             </summary>
+        </member>
+        <member name="M:AI.ExtensionMath.GetDimention(AI.Vector[],System.Int32)">
+            <summary>
+            Getting the vector of the desired coordinate from the array of vectors
+            </summary>
+            <param name="array"></param>
+            <param name="dim"></param>
+            <returns></returns>
         </member>
         <member name="T:AI.Functions">
             <summary>

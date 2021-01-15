@@ -24,7 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -80,13 +80,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MidiPlay\Midi.csproj">
-      <Project>{d9d0edac-6b56-4cc3-97fc-3b10edd60b88}</Project>
-      <Name>Midi</Name>
-    </ProjectReference>
-    <ProjectReference Include="D:\Проекты\git\AINetFrame\AI\AI.csproj">
+    <ProjectReference Include="..\..\..\AINetFrame\AI\AI.csproj">
       <Project>{165d777e-8a8e-450b-891a-9046913b6143}</Project>
       <Name>AI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MidiPlay\MidiPlay.csproj">
+      <Project>{9d61202e-ba35-4946-89b3-b6f2fa2efb98}</Project>
+      <Name>MidiPlay</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NoteSeqFramework\NoteSeqFramework.csproj">
+      <Project>{8e57adc2-6a75-4435-a286-6aefc22c3971}</Project>
+      <Name>NoteSeqFramework</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

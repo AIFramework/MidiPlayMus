@@ -1,10 +1,10 @@
 ﻿using AI;
 using AI.DSP;
 using AI.DSP.Modulation;
-using MidiPlay;
-using MidiPlay.Data;
-using MidiPlay.Instruments;
-using MidiPlay.Instruments.TabelNotesGenerator;
+using Midi;
+using Midi.Data;
+using Midi.Instruments;
+using Midi.Instruments.TabelNotesGenerator;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
