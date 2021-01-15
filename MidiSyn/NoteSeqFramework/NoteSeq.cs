@@ -25,6 +25,12 @@ namespace NoteSeqFramework
             Notes.Add(note);
         }
 
+        public void AddRange(IEnumerable<Note> notes)
+        {
+            IsSorted = false;
+            Notes.AddRange(notes);
+        }
+
         private void Sort()
         {
             if (!IsSorted)
@@ -36,7 +42,7 @@ namespace NoteSeqFramework
 
         public static NoteSeq MidiFileToNoteSequence(string path)
         {
-            //Base();
+            var noteSeq = new NoteSeq();
             var midiFile = new MidiFile(path);
 
             var midiEvents = GetMidiEvents(midiFile);
@@ -46,27 +52,19 @@ namespace NoteSeqFramework
             {
                 var preproc = MidiConverter.ToRealTime(midiEvent, midiFile.DeltaTicksPerQuarterNote, ref currentMicroSecondsPerTick);
                 var events = preproc
-                        .Where(x => x is NoteEvent)
-                        .Select(x => (NoteEvent)x)
-                        .Where(x => x.CommandCode == MidiCommandCode.NoteOn)
-                        .Select(x => new NoteEvent(x.AbsoluteTime, x.Channel, x.CommandCode, x.NoteNumber, x.Velocity))
+                        .Where(x => x is NoteOnEvent)
+                        .Select(x => (NoteOnEvent)x)
                         .ToList();
-                if (events.Count > 0)
-                    noteEvents.Add(events);
-            }
 
-            NoteSeq noteSeq = new NoteSeq();
-            for (int i = 0; i < noteEvents.Count; i++)
-            {
-                for (int j = 0; j < noteEvents[i].Count; j++)
-                {
-                    var noteEvent = noteEvents[i][j];
-                    var startTime = (float)(noteEvent.AbsoluteTime / 1000.0);
-                    var endTime = (float)((noteEvent.AbsoluteTime + noteEvent.DeltaTime) / 1000.0);
-                    noteSeq.Add(new Note(noteEvent.NoteNumber, noteEvent.Velocity, startTime, endTime, Instrument.Default, noteEvent.NoteName));
-                }
+                noteSeq.AddRange(events.Select(note=>new Note(
+                    note.NoteNumber,
+                    note.Velocity,
+                    (float)(note.AbsoluteTime / 1000.0),
+                    (float)((note.AbsoluteTime + note.NoteLength) / 1000.0),
+                    Instrument.Default,
+                    note.NoteName
+                )));
             }
-
             noteSeq.Sort();
             return noteSeq;
         }

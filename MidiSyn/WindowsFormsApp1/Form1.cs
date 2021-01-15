@@ -24,8 +24,10 @@ namespace WindowsFormsApp1
             //var a =  new Midi2Wav("2020-12-29_213219_3.mid", Setting.Fd);
             //a.Play();
 
-            NoteSeq noteS = NoteSeq.MidiFileToNoteSequence("2020-12-29_213219_3.mid");
-            
+            //NoteSeq noteS = NoteSeq.MidiFileToNoteSequence("2020-12-29_213219_3.mid");
+            //var a =  new Midi2Wav(@"C:\Users\marat\Downloads\Cadillac.mid", Setting.Fd);
+            //var a = new Midi2Wav(@"2020-12-29_213219_3.mid", Setting.Fd);
+            //a.Play();
         }
 
         private void Form1_Load(object sender, EventArgs e)
