@@ -1,12 +1,9 @@
-﻿using System;
+﻿using NAudio.Midi;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AI;
-using NAudio.Midi;
 
-namespace NoteSeqFramework.Base
+namespace Midi.NoteSeqData.Base
 {
     public class MidiConverter
     {
@@ -18,13 +15,13 @@ namespace NoteSeqFramework.Base
         /// <returns></returns>
         public static List<NoteEvent> ToNewGrid(List<NoteEvent> notes, int time)
         {
-            var copy = notes.Copy();
-            var timeMax = notes.Max(x => x.AbsoluteTime);
-            var times = Enumerable.Range(0, (int)timeMax / time + 2).Select(x => x * time).ToArray();
+            List<NoteEvent> copy = notes.Copy();
+            long timeMax = notes.Max(x => x.AbsoluteTime);
+            int[] times = Enumerable.Range(0, (int)timeMax / time + 2).Select(x => x * time).ToArray();
             for (int i = 0; i < copy.Count; i++)
             {
-                var arr = times.Select(x => Math.Abs(x - copy[i].AbsoluteTime)).ToList();
-                var min = arr.Min();
+                List<long> arr = times.Select(x => Math.Abs(x - copy[i].AbsoluteTime)).ToList();
+                long min = arr.Min();
                 int block = arr.IndexOf(min);
                 copy[i].AbsoluteTime = times[block];
             }
@@ -41,7 +38,7 @@ namespace NoteSeqFramework.Base
         /// <returns></returns>
         public static List<Note> ToRealTime(List<MidiEvent> midiEvents, int deltaTicksPerQuarterNote, ref decimal currentMicroSecondsPerTick)
         {
-            var result = new List<Note>();
+            List<Note> result = new List<Note>();
             List<decimal> eventsTimesArr = new List<decimal>();
             decimal lastRealTime = 0m;
             decimal lastAbsoluteTime = 0m;
@@ -53,12 +50,12 @@ namespace NoteSeqFramework.Base
 
                 if (midiEvent.AbsoluteTime > lastAbsoluteTime)
                 {
-                    lastRealTime += ((decimal)midiEvent.AbsoluteTime - lastAbsoluteTime) * currentMicroSecondsPerTick;
+                    lastRealTime += (midiEvent.AbsoluteTime - lastAbsoluteTime) * currentMicroSecondsPerTick;
                 }
 
                 if (midiEvent is NoteOnEvent)
                 {
-                    var noteon = midiEvent as NoteOnEvent;
+                    NoteOnEvent noteon = midiEvent as NoteOnEvent;
                     if (noteon.Velocity != 0)
                     {
                         float startTime = (float)(lastRealTime / (decimal)1000000.0);
@@ -71,7 +68,7 @@ namespace NoteSeqFramework.Base
 
                 if (tempoEvent != null)
                 {
-                    currentMicroSecondsPerTick = (decimal)tempoEvent.MicrosecondsPerQuarterNote / (decimal)deltaTicksPerQuarterNote;
+                    currentMicroSecondsPerTick = tempoEvent.MicrosecondsPerQuarterNote / (decimal)deltaTicksPerQuarterNote;
                     midiEvents.RemoveAt(i--);
                     continue;
                 }
@@ -82,6 +79,12 @@ namespace NoteSeqFramework.Base
             //for (int i = 0; i < midiEvents.Count; i++)
             //{
             //    midiEvents[i].AbsoluteTime = (long)(eventsTimesArr[i] / 1000);
+            //}
+
+            //ToDo: test syntez
+            //for (int i = 0; i < result.Count; i++)
+            //{
+            //    result[i].EndTime = result[i].StartTime + 0.4f;
             //}
 
             return result;

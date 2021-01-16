@@ -1,10 +1,6 @@
 ﻿using AI;
 using Midi.Data;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Midi.Instruments.TabelNotesGenerator
 {
@@ -29,8 +25,8 @@ namespace Midi.Instruments.TabelNotesGenerator
             {
                 for (int j = 0; j < Notes.Length; j++)
                 {
-                    var freq = BaseFreqsNote.GetFreqNote(Notes[j], i);
-                    var signal = GenSig(Notes[j], i, freq, min, elementTableFonts);
+                    double freq = BaseFreqsNote.GetFreqNote(Notes[j], i);
+                    Vector signal = GenSig(Notes[j], i, freq, min, elementTableFonts);
                     font.Add(freq, signal);
                 }
             }
@@ -59,12 +55,16 @@ namespace Midi.Instruments.TabelNotesGenerator
         private static Vector GenSig(string name, int oct, double freq, double minFreq, ElementTableFont[] elementTableFonts)
         {
             if (freq < minFreq)
-              return  BaseFreqsNote.Generator.GetNoteSignal(name, oct, 4);
+            {
+                return  BaseFreqsNote.Generator.GetNoteSignal(name, oct, 4);
+            }
 
             ElementTableFont elementTableFont = elementTableFonts.ClosesFtromBottom(freq);
 
             if (elementTableFont.Dist < 1)
+            {
                 return elementTableFont.Signal;
+            }
 
             return BaseFreqsNote.TransferNote(elementTableFont.MainFreq, name, oct, elementTableFont.Signal);
 

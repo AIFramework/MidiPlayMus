@@ -1,6 +1,5 @@
 ﻿using AI;
 using AI.DSP;
-using AI.DSP.MusicUtils;
 using System;
 
 namespace Midi.Instruments
@@ -40,7 +39,7 @@ namespace Midi.Instruments
         public virtual Note GetNoteSignal(string name, int octave, double time)
         {
 
-            var nameNote = $"{name}_{octave}";
+            string nameNote = $"{name}_{octave}";
             Vector freqs = (1 << octave) * BaseFreqsNote.GetFreq(name, Magns.Count);
 
             int steps = (int)(time * Fd);
@@ -75,13 +74,13 @@ namespace Midi.Instruments
             return Signal / Magns.Sum();
         }
 
-        double GetSempl(int ind, double step, Vector freqs)
+        private double GetSempl(int ind, double step, Vector freqs)
         {
             return Magns[ind] * Math.Sin(6.282 * step * freqs[ind]);
         }
 
         // Огибающая
-        double GetEnvSempl(double step, double per60)
+        private double GetEnvSempl(double step, double per60)
         {
             return Math.Exp(-alpha * (step / per60));
         }

@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using NoteSeqFramework;
+using Midi.NoteSeqData;
 using System.Diagnostics;
 
 namespace WindowsFormsApp1
@@ -21,13 +21,11 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
-            //var a =  new Midi2Wav("2020-12-29_213219_3.mid", Setting.Fd);
-            //a.Play();
-
+            
             NoteSeq noteS = NoteSeq.MidiFileToNoteSequence("2020-12-29_213219_3.mid");
-            //var a =  new Midi2Wav(@"C:\Users\marat\Downloads\Cadillac.mid", Setting.Fd);
-            //var a = new Midi2Wav(@"2020-12-29_213219_3.mid", Setting.Fd);
-            //a.Play();
+            Vector[] data = noteS.ToVectors();
+            var melody = new Midi2Wav(noteS, Setting.Fd);
+            melody.Play();
         }
 
         private void Form1_Load(object sender, EventArgs e)

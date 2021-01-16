@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace NoteSeqFramework.Base
+namespace Midi.NoteSeqData.Base
 {
     public static class ExtensionMethod
     {
@@ -16,8 +13,8 @@ namespace NoteSeqFramework.Base
 
         public static List<T> Copy<T>(this IEnumerable<T> source)
         {
-            var s = source.ToList();
-            var t = new T[s.Count];
+            List<T> s = source.ToList();
+            T[] t = new T[s.Count];
             s.CopyTo(t);
             return t.ToList();
         }

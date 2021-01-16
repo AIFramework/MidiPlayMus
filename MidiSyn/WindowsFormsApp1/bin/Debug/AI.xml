@@ -6356,6 +6356,12 @@
             </summary>
             <param name="seqInp">Sequence of vectors</param>
         </member>
+        <member name="M:AI.ML.HMM.KMeanHMM.TrainHMM(AI.Vector[])">
+            <summary>
+            Only Markov chein train
+            </summary>
+            <param name="seqInp">Sequence of vectors</param>
+        </member>
         <member name="M:AI.ML.HMM.KMeanHMM.Generate(AI.Vector,System.Int32)">
             <summary>
             Generating a sequence of states
@@ -6406,6 +6412,76 @@
             <summary>
             Noise generator
             </summary>
+        </member>
+        <member name="P:AI.ML.NeuralNetwork.Architectures.VectorWithPositionEncoder.PositionEncoder">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:AI.ML.NeuralNetwork.Architectures.VectorPredictorStates">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:AI.ML.NeuralNetwork.Architectures.VectorPredictorStates.PositionEncoder">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:AI.ML.NeuralNetwork.Architectures.VectorPredictorStates.StateEncoder">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AI.ML.NeuralNetwork.Architectures.VectorPredictorStates.#ctor(AI.ML.DataEncoding.PositionalEncoding.IPositionEncoding,AI.ML.DataEncoding.PositionalEncoding.IPositionEncoding,System.Int32,System.Int32,System.Int32,System.Int32,AI.ML.NeuralNetwork.CoreNNW.Activations.IActivation,AI.ML.NeuralNetwork.CoreNNW.Activations.IActivation)">
+            <summary>
+            
+            </summary>
+            <param name="positionEncoding"></param>
+            <param name="stateEncoder"></param>
+            <param name="hidenLen"></param>
+            <param name="outDim"></param>
+            <param name="countHLayers"></param>
+            <param name="countState"></param>
+            <param name="outActivation"></param>
+            <param name="hActivation"></param>
+        </member>
+        <member name="M:AI.ML.NeuralNetwork.Architectures.VectorPredictorStates.Predict(System.Int32[],System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="states"></param>
+            <param name="position"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AI.ML.NeuralNetwork.Architectures.VectorPredictorStates.GetNNW">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AI.ML.NeuralNetwork.Architectures.VectorPredictorStates.Save(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="path"></param>
+        </member>
+        <member name="M:AI.ML.NeuralNetwork.Architectures.VectorPredictorStates.Train(System.Int32[][],System.Int32[],AI.Vector[])">
+            <summary>
+            
+            </summary>
+            <param name="states"></param>
+            <param name="positions"></param>
+            <param name="outps"></param>
+        </member>
+        <member name="M:AI.ML.NeuralNetwork.Architectures.VectorPredictorStates.Load(System.String,AI.ML.DataEncoding.PositionalEncoding.IPositionEncoding,AI.ML.DataEncoding.PositionalEncoding.IPositionEncoding)">
+            <summary>
+            
+            </summary>
+            <param name="path"></param>
+            <param name="positionEncoding"></param>
+            <param name="stateEncoder"></param>
+            <returns></returns>
         </member>
         <member name="T:AI.ML.NeuralNetwork.Architectures.ConvClassifier">
             <summary>

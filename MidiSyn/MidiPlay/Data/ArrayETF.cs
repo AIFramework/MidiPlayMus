@@ -15,7 +15,9 @@
             for (int i = 1; i < elementTableFonts.Length; i++)
             {
                 if (min > elementTableFonts[i].MainFreq)
+                {
                     min = elementTableFonts[i].MainFreq;
+                }
             }
 
             return min;
@@ -28,7 +30,9 @@
             for (int i = 1; i < elementTableFonts.Length; i++)
             {
                 if (min > elementTableFonts[i].MainFreq)
+                {
                     min = elementTableFonts[i].MainFreq;
+                }
             }
 
             return min;
@@ -41,9 +45,13 @@
                 double dif = freq - elementTableFonts[i].MainFreq;
 
                 if (dif < 0)
+                {
                     elementTableFonts[i].Dist = MAX;
+                }
                 else
+                {
                     elementTableFonts[i].Dist = dif;
+                }
             }
 
             ElementTableFont ret = elementTableFonts[0];

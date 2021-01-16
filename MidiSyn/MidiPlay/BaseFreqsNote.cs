@@ -13,8 +13,7 @@ namespace Midi
     public class BaseFreqsNote
     {
         public static ToneGenerator Generator = new ToneGenerator();
-
-        static Dictionary<string, double> freqNotes = new Dictionary<string, double>
+        private static readonly Dictionary<string, double> freqNotes = new Dictionary<string, double>
         {
             { "c",  16.35 },
             { "c#", 17.32},
@@ -40,7 +39,9 @@ namespace Midi
             string name = noteName.ToLower();
 
             if (!freqNotes.ContainsKey(name))
+            {
                 throw new Exception("noteName incorrect");
+            }
 
             double fGarm = freqNotes[name];
             double[] fr = new double[count];

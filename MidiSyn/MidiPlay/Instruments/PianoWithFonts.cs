@@ -7,8 +7,8 @@ namespace Midi.Instruments
 {
     public class PianoWithFonts : IInstrument
     {
-        TabelFonts tFont;
-        int _fd;
+        private readonly TabelFonts tFont;
+        private int _fd;
 
         public PianoWithFonts(TabelFonts tabelFonts)
         {
@@ -19,14 +19,16 @@ namespace Midi.Instruments
         public void Create(int fd)
         {
             if (fd != Setting.Fd)
+            {
                 throw new Exception($"Font fd is {Setting.Fd} kHz");
+            }
 
             _fd = fd;
         }
 
         public Note GetNoteSignal(string name, int octave, double time)
         {
-            var nameNote = $"{name}_{octave}";
+            string nameNote = $"{name}_{octave}";
             double freq = BaseFreqsNote.GetFreqNote(name, octave);
             int len = (int)(time * _fd);
             Vector window = PhaseCorrectingWindow.Trapezoid(len, 0.07);

@@ -2,17 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.Serialization.Formatters;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Midi.Data
 {
     public class TabelFonts
     {
-        Dictionary<double, Vector> font = new Dictionary<double, Vector>();
+        private readonly Dictionary<double, Vector> font = new Dictionary<double, Vector>();
 
         public TabelFonts(Dictionary<double, Vector> freqSig)
         {
@@ -30,7 +27,9 @@ namespace Midi.Data
             double freq = BaseFreqsNote.GetFreqNote(nameNote, octave);
 
             if (font.ContainsKey(freq))
+            {
                 font.Add(freq, signal);
+            }
         }
 
         /// <summary>

@@ -1,10 +1,6 @@
-﻿using Midi.Data;
-using NAudio.Midi;
-using System;
+﻿using NAudio.Midi;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Midi.Extract4T
 {
@@ -19,9 +15,9 @@ namespace Midi.Extract4T
             MidiFile midi = new MidiFile(path);
 
             // Проход по каналам
-            foreach (var eventsIList in midi.Events)
+            foreach (IList<MidiEvent> eventsIList in midi.Events)
             {
-                var events = Midi2Wav.ToRealTime(eventsIList.ToList(), midi.DeltaTicksPerQuarterNote, ref currentMicroSecondsPerTick);
+                List<MidiEvent> events = Midi2Wav.ToRealTime(eventsIList.ToList(), midi.DeltaTicksPerQuarterNote, ref currentMicroSecondsPerTick);
 
                 // Проход по событиям
                 for (int i = 0; i < events.Count; i++)
@@ -30,7 +26,7 @@ namespace Midi.Extract4T
                     //Ноты
                     if (events[i] is NoteOnEvent)
                     {
-                        var note = events[i] as NoteOnEvent;
+                        NoteOnEvent note = events[i] as NoteOnEvent;
 
                     }
 

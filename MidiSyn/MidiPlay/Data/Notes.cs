@@ -1,5 +1,4 @@
 ﻿using AI;
-using AI.DSP.MusicUtils;
 using AI.DSPCore;
 using System.Collections.Generic;
 
@@ -7,8 +6,8 @@ namespace Midi.Data
 {
     public class Notes : List<NoteWithTime>
     {
-        int end = 0;
-        double time = 0;
+        private int end = 0;
+        private double time = 0;
         public int Fd;
 
         public Vector Generate() 
@@ -34,7 +33,7 @@ namespace Midi.Data
         }
 
         // Добавление ноты
-        static void AddNote(Vector dat, NoteWithTime note, int fd) 
+        private static void AddNote(Vector dat, NoteWithTime note, int fd) 
         {
             int margin = (int)(note.StartTime * fd);
             Vector sig = note.Note.Signal;
@@ -52,8 +51,7 @@ namespace Midi.Data
             }
         }
 
-
-        void CalcMeta()
+        private void CalcMeta()
         {
             time = 0;
 

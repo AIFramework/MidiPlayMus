@@ -1,45 +1,44 @@
 ﻿using AI;
 using Midi.Data;
 using Midi.Instruments;
+using Midi.NoteSeqData;
 using NAudio.Midi;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Midi
 {
     public class Midi2Wav
     {
-        Notes notes = new Notes();
-        double ticsPerSeconds = 1.0/1000;
-        int _fd;
+        private readonly Notes notes = new Notes();
+        private readonly double ticsPerSeconds = 1.0/1000;
+        private readonly int _fd;
 
-        public Midi2Wav(string path, int fd) 
+        public Midi2Wav(string path, int fd)
         {
             _fd = notes.Fd = fd;
             MidiFile midi = new MidiFile(path);
             decimal currentMicroSecondsPerTick = 0m;
 
-            TabelFonts tabelFonts = TabelFonts.Load("tabel.tsf");
+            //TabelFonts tabelFonts = TabelFonts.Load("tabel.tsf");
 
-            IInstrument gPiano = new PianoWithFonts(tabelFonts);
+            IInstrument gPiano = new GSyntPiano(); //new PianoWithFonts(tabelFonts);
             gPiano.Create(Setting.Fd);
 
             // Проход по каналам
-            foreach (var eventsIList in midi.Events)
+            foreach (IList<MidiEvent> eventsIList in midi.Events)
             {
-                 var events = ToRealTime(eventsIList.ToList(), midi.DeltaTicksPerQuarterNote, ref currentMicroSecondsPerTick);
+                List<MidiEvent> events = ToRealTime(eventsIList.ToList(), midi.DeltaTicksPerQuarterNote, ref currentMicroSecondsPerTick);
 
                 // Проход по событиям
                 for (int i = 0; i < events.Count; i++)
                 {
-                    
+
                     //Ноты
                     if (events[i] is NoteOnEvent)
                     {
-                        var note = events[i] as NoteOnEvent;
+                        NoteOnEvent note = events[i] as NoteOnEvent;
 
                         if (note.Velocity != 0)
                         {
@@ -59,29 +58,62 @@ namespace Midi
                             {
                                 StartTime = note.AbsoluteTime * ticsPerSeconds,
                                 EndTime = (note.NoteLength + note.AbsoluteTime) * ticsPerSeconds,
-                                Note = gPiano.GetNoteSignal(name, octave+1, note.NoteLength * ticsPerSeconds),
-                                Volume = note.Velocity * 0.01
-                            };
-
-                            // Данные ноты (Дублирование на октаву ниже)
-                            NoteWithTime noteWithTimeD = new NoteWithTime()
-                            {
-                                StartTime = note.AbsoluteTime * ticsPerSeconds,
-                                EndTime = (note.NoteLength + note.AbsoluteTime) * ticsPerSeconds,
-                                Note = gPiano.GetNoteSignal(name, octave - 2, note.NoteLength * ticsPerSeconds),
-                                Volume = 1.7 * note.Velocity * 0.01
+                                Note = gPiano.GetNoteSignal(name, octave + 1, note.NoteLength * ticsPerSeconds),
+                                Volume = VelocityToVolum(note.Velocity)
                             };
 
 
                             notes.Add(noteWithTime); // Добавлнение ноты в список
-                            //notes.Add(noteWithTimeD); // Добавлнение ноты в список
                         }
                     }
                 }
             }
         }
 
-       
+
+
+        public Midi2Wav(NoteSeq noteSeq, int fd)
+        {
+            _fd = notes.Fd = fd;
+
+            // TabelFonts tabelFonts = TabelFonts.Load("tabel.tsf");
+
+            IInstrument gPiano = new GSyntPiano();//new PianoWithFonts(tabelFonts);
+            gPiano.Create(Setting.Fd);
+
+            foreach (var item in noteSeq.Notes)
+            {
+                //Имя ноты
+                string name = new string(
+                    item.Name.ToCharArray().
+                    Take(item.Name.Length - 1).
+                    ToArray());
+                //Октава
+                int octave = int.Parse(new string(
+                    item.Name.ToCharArray().
+                    Skip(name.Length).
+                    ToArray()));
+
+                // Данные ноты
+                NoteWithTime noteWithTime = new NoteWithTime()
+                {
+                    StartTime = item.StartTime,
+                    EndTime = item.EndTime,
+                    Note = gPiano.GetNoteSignal(name, octave + 1, item.EndTime - item.StartTime),
+                    Volume = VelocityToVolum(item.Velocity)
+                };
+
+
+                notes.Add(noteWithTime); // Добавлнение ноты в список
+            }
+             
+        }
+
+        private double VelocityToVolum(int velocity) 
+        {
+            double log = Math.Log(velocity / 127.0);
+            return Math.Pow(10, 2 * log);
+        }
 
 
         public void Play()
@@ -121,14 +153,14 @@ namespace Midi
 
                 if (midiEvent.AbsoluteTime > lastAbsoluteTime)
                 {
-                    lastRealTime += ((decimal)midiEvent.AbsoluteTime - lastAbsoluteTime) * currentMicroSecondsPerTick;
+                    lastRealTime += (midiEvent.AbsoluteTime - lastAbsoluteTime) * currentMicroSecondsPerTick;
                 }
 
                 lastAbsoluteTime = midiEvent.AbsoluteTime;
 
                 if (tempoEvent != null)
                 {
-                    currentMicroSecondsPerTick = (decimal)tempoEvent.MicrosecondsPerQuarterNote / (decimal)deltaTicksPerQuarterNote;
+                    currentMicroSecondsPerTick = tempoEvent.MicrosecondsPerQuarterNote / (decimal)deltaTicksPerQuarterNote;
                     midiEvents.RemoveAt(i--);
                     continue;
                 }
