@@ -59,7 +59,7 @@ namespace Midi.NoteSeqData.Base
                     if (noteon.Velocity != 0)
                     {
                         float startTime = (float)(lastRealTime / (decimal)1000000.0);
-                        float endTime = startTime;// + noteon.NoteLength/1000.0f;
+                        float endTime = startTime + (float)(noteon.NoteLength * currentMicroSecondsPerTick / 1000000.0m);
                         result.Add(new Note(noteon.NoteNumber, noteon.Velocity, startTime, endTime, Instrument.Default, noteon.NoteName));
                     }
                 }

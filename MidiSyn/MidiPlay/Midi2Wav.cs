@@ -76,9 +76,10 @@ namespace Midi
         {
             _fd = notes.Fd = fd;
 
-            // TabelFonts tabelFonts = TabelFonts.Load("tabel.tsf");
+             TabelFonts tabelFonts = TabelFonts.Load("tabel.tsf");
 
-            IInstrument gPiano = new GSyntPiano();//new PianoWithFonts(tabelFonts);
+            //IInstrument gPiano = new GSyntPiano();
+            IInstrument gPiano = new PianoWithFonts(tabelFonts);
             gPiano.Create(Setting.Fd);
 
             foreach (var item in noteSeq.Notes)
