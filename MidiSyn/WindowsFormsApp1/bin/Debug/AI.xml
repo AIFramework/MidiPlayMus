@@ -1257,7 +1257,7 @@
             <summary>
             АЧХ
             </summary>
-            <param name="fd">Частота дискретизации</param>
+            <param name="fd">Sampling frequency</param>
         </member>
         <member name="M:AI.DSP.Analyse.FrequencyResponse.Test(System.Func{AI.Vector,AI.Vector})">
             <summary>
@@ -1341,7 +1341,7 @@
         </member>
         <member name="P:AI.DSP.Channel.Fd">
             <summary>
-            Частота дискретизации
+            Sampling frequency
             </summary>
         </member>
         <member name="P:AI.DSP.Channel.Dt">
@@ -1404,7 +1404,7 @@
             Преобразует масив векторов в массив каналов
             </summary>
             <param name="vects">Массив векторов</param>
-            <param name="fd">Частота дискретизации</param>
+            <param name="fd">Sampling frequency</param>
             <returns></returns>
         </member>
         <member name="M:AI.DSP.Channel.ChansToVects(AI.DSP.Channel[])">
@@ -1496,7 +1496,7 @@
             Фильтр Баттерворта
             </summary>
             <param name="f0">Частота среза</param>
-            <param name="fd">Частота дискретизации</param>
+            <param name="fd">Sampling frequency</param>
             <param name="signalLen">Длинна реализации</param>
             <param name="order">Порядок фильтра</param>
         </member>
@@ -1520,8 +1520,8 @@
             <summary>
             Инициализация фильтра
             </summary>
-            <param name="ht">Импульсная характеристика фильтра</param>
-            <param name="fd">Частота дискретизации</param>
+            <param name="ht">Impulse response фильтра</param>
+            <param name="fd">Sampling frequency</param>
             <param name="calcConvType">Метод расчета свертки</param>
         </member>
         <member name="M:AI.DSP.FIR.FIRFilter.FilterOutp(AI.Vector)">
@@ -1665,16 +1665,16 @@
         </member>
         <member name="T:AI.DSP.Modulation.AM">
             <summary>
-            Амплитудная модуляция
+            Amplitude modulation
             </summary>
         </member>
         <member name="M:AI.DSP.Modulation.AM.#ctor(System.Int32,System.Double,System.Double)">
             <summary>
             Инициализация модулятора ампл. модуляции
             </summary>
-            <param name="fd">Частота дискретизации</param>
-            <param name="f0">Несущая частота</param>
-            <param name="m">Коэффициент модуляции</param>
+            <param name="fd">Sampling frequency</param>
+            <param name="f0">Carrier frequency</param>
+            <param name="m">Modulation rate</param>
         </member>
         <member name="M:AI.DSP.Modulation.AM.Modulate(AI.DSP.Channel)">
             <summary>
@@ -1704,8 +1704,8 @@
             <summary>
             Инициализация модулятора ампл. модуляции с подавленной несущей
             </summary>
-            <param name="fd">Частота дискретизации</param>
-            <param name="f0">Несущая частота</param>
+            <param name="fd">Sampling frequency</param>
+            <param name="f0">Carrier frequency</param>
         </member>
         <member name="M:AI.DSP.Modulation.DSB.Demodulate(AI.DSP.Channel)">
             <summary>
@@ -1735,8 +1735,8 @@
             <summary>
             Инициализация модулятора частотной модуляции
             </summary>
-            <param name="fd">Частота дискретизации</param>
-            <param name="f0">Несущая частота</param>
+            <param name="fd">Sampling frequency</param>
+            <param name="f0">Carrier frequency</param>
             <param name="deltF">Дифиация частоты</param>
         </member>
         <member name="M:AI.DSP.Modulation.FM.Demodulate(AI.DSP.Channel)">
@@ -1785,8 +1785,8 @@
             <summary>
             Инициализация модулятора однополосной ампл. модуляции
             </summary>
-            <param name="fd">Частота дискретизации</param>
-            <param name="f0">Несущая частота</param>
+            <param name="fd">Sampling frequency</param>
+            <param name="f0">Carrier frequency</param>
             <param name="ssbType">Какая полоса будет подавлена</param>
         </member>
         <member name="M:AI.DSP.Modulation.SSB.Modulate(AI.DSP.Channel)">
@@ -1833,7 +1833,7 @@
             Увеличение частоты дискретизации(Фильтр с прямоугольной АЧХ)
             </summary>
             <param name="signal">Сигнал</param>
-            <param name="fd">Частота дискретизации</param>
+            <param name="fd">Sampling frequency</param>
             <param name="kUpSemp">Во сколько раз увеличить</param>
         </member>
         <member name="M:AI.DSP.Oversampling.UpSampling.UpSamplingButterworthFilter(AI.Vector,System.Int32,System.Int32,System.Int32)">
@@ -1841,7 +1841,7 @@
             Увеличение частоты дискретизации(Фильтр Баттерворта)
             </summary>
             <param name="signal">Сигнал</param>
-            <param name="fd">Частота дискретизации</param>
+            <param name="fd">Sampling frequency</param>
             <param name="kUpSemp">Во сколько раз увеличить</param>
             <param name="order">Порядок фильтра</param>
         </member>
@@ -1850,7 +1850,7 @@
             Увеличение частоты дискретизации(Фильтр Баттерворта)
             </summary>
             <param name="signal">Сигнал</param>
-            <param name="fd">Частота дискретизации</param>
+            <param name="fd">Sampling frequency</param>
             <param name="kUpSemp">Во сколько раз увеличить</param>
             <param name="order">Порядок фильтра</param>
         </member>
@@ -1871,7 +1871,7 @@
         </member>
         <member name="P:AI.DSP.Signal1D.Fd">
             <summary>
-            Частота дискретизации
+            Sampling frequency
             </summary>
         </member>
         <member name="P:AI.DSP.Signal1D.Dt">
@@ -1889,7 +1889,7 @@
             Инициализация многоканальным сигналом
             </summary>
             <param name="channels">Сигнал</param>
-            <param name="fd">Частота дискретизации</param>
+            <param name="fd">Sampling frequency</param>
         </member>
         <member name="M:AI.DSP.Signal1D.#ctor">
             <summary>
@@ -1901,7 +1901,7 @@
             Инициализация многоканальным сигналом
             </summary>
             <param name="signal">Сигнал</param>
-            <param name="fd">Частота дискретизации</param>
+            <param name="fd">Sampling frequency</param>
         </member>
         <member name="M:AI.DSP.Signal1D.#ctor(AI.DSP.Channel)">
             <summary>
@@ -3010,17 +3010,22 @@
         </member>
         <member name="T:AI.AISetting">
             <summary>
-            Настройки
+            Global settings
+            </summary>
+        </member>
+        <member name="P:AI.AISetting.GlobalEps">
+            <summary>
+            Global epsilon (default = 1e-8)
             </summary>
         </member>
         <member name="M:AI.AISetting.GetProvider">
             <summary>
-            Получить провайдер для конвертирования  с точкой-разделителем 
+            Get a provider for a dot as decimal separator conversion 
             </summary>
         </member>
         <member name="M:AI.AISetting.GetProviderComa">
             <summary>
-            Получить провайдер для конвертирования c запятой
+            Get a comma conversion provider
             </summary>
         </member>
         <member name="T:AI.ComputerVision.BinaryImg">
@@ -3846,7 +3851,7 @@
             Быстрая свертка
             </summary>
             <param name="signal">Сигнал</param>
-            <param name="ht">Импульсная характеристика</param>
+            <param name="ht">Impulse response</param>
             <returns></returns>
         </member>
         <member name="M:AI.DSPCore.FastConv.FastConvolution(AI.Vector,AI.Vector,System.Double)">
@@ -3854,8 +3859,8 @@
             Быстрая свертка
             </summary>
             <param name="signal">Сигнал</param>
-            <param name="ht">Импульсная характеристика</param>
-            <param name="fd">Частота дискретизации</param>
+            <param name="ht">Impulse response</param>
+            <param name="fd">Sampling frequency</param>
             <returns></returns>
         </member>
         <member name="M:AI.DSPCore.FastConv.FastConvolutionNorm(AI.Vector,AI.Vector)">
@@ -3863,7 +3868,7 @@
             Быстрая нормированная свертка
             </summary>
             <param name="signal">Сигнал</param>
-            <param name="ht">Импульсная характеристика</param>
+            <param name="ht">Impulse response</param>
             <returns></returns>
         </member>
         <member name="M:AI.DSPCore.FastConv.FastCorrelation(System.Double[])">
@@ -3977,7 +3982,7 @@
             <param name="st">Вектор сигнала</param>
             <param name="Q">Добротность</param>
             <param name="f0">Резонансная частота</param>
-            <param name="fd">Частота дискретизации</param>
+            <param name="fd">Sampling frequency</param>
             <returns>Фильтрованный сигнал</returns>
         </member>
         <member name="M:AI.DSPCore.Filters.FilterLow(AI.Vector,System.Double,System.Int32)">
@@ -3986,7 +3991,7 @@
             </summary>
             <param name="signal">Отсчеты сигнала</param>
             <param name="sr">Частота среза</param>
-            <param name="fd">Частота дискретизации</param>
+            <param name="fd">Sampling frequency</param>
             <returns>Фильтрованный сигнал</returns>
         </member>
         <member name="M:AI.DSPCore.Filters.FilterLowButterworthCFH(AI.Vector,System.Double,System.Int32,System.Int32)">
@@ -3995,7 +4000,7 @@
             </summary>
             <param name="signal">Отсчеты сигнала</param>
             <param name="sr">Частота среза</param>
-            <param name="fd">Частота дискретизации</param>
+            <param name="fd">Sampling frequency</param>
             <param name="order">Порядок фильтра</param>
             <returns>Фильтрованный сигнал</returns>
         </member>
@@ -4005,7 +4010,7 @@
             </summary>
             <param name="signal">Отсчеты сигнала</param>
             <param name="sr">Частота среза</param>
-            <param name="fd">Частота дискретизации</param>
+            <param name="fd">Sampling frequency</param>
             <param name="order">Порядок фильтра</param>
             <returns>Фильтрованный сигнал</returns>
         </member>
@@ -4016,7 +4021,7 @@
             <param name="signal">Отсчеты сигнала</param>
             <param name="sr1">Нижняя частота полосы</param>
             <param name="sr2">Верхняя частота полосы</param>
-            <param name="fd">Частота дискретизации</param>
+            <param name="fd">Sampling frequency</param>
             <returns>Фильтрованный сигнал</returns>
         </member>
         <member name="M:AI.DSPCore.Filters.FilterHigh(AI.Vector,System.Double,System.Int32)">
@@ -4025,7 +4030,7 @@
             </summary>
             <param name="signal">Отсчеты сигнала</param>
             <param name="sr">Частота среза</param>
-            <param name="fd">Частота дискретизации</param>
+            <param name="fd">Sampling frequency</param>
             <returns>Фильтрованный сигнал</returns>
         </member>
         <member name="M:AI.DSPCore.Filters.FilterRezector(AI.Vector,System.Double,System.Double,System.Int32)">
@@ -4035,7 +4040,7 @@
             <param name="signal">Отсчеты сигнала</param>
             <param name="sr1">Нижняя частота полосы</param>
             <param name="sr2">Верхняя частота полосы</param>
-            <param name="fd">Частота дискретизации</param>
+            <param name="fd">Sampling frequency</param>
             <returns>Фильтрованный сигнал</returns>
         </member>
         <member name="M:AI.DSPCore.Filters.GetAFH(AI.Vector,System.Double[],AI.DSPCore.AFHType)">
@@ -4082,7 +4087,7 @@
             </summary>
             <param name="Count">Число отсчетов сигнала</param>
             <param name="sr">Частота среза</param>
-            <param name="fd">Частота дискретизации</param>
+            <param name="fd">Sampling frequency</param>
             <param name="order">Порядок фильтра</param>
         </member>
         <member name="M:AI.DSPCore.Filters.ButterworthLowCFH(System.Int32,System.Double,System.Int32,System.Int32)">
@@ -4091,7 +4096,7 @@
             </summary>
             <param name="Count">Число отсчетов сигнала</param>
             <param name="sr">Частота среза</param>
-            <param name="fd">Частота дискретизации</param>
+            <param name="fd">Sampling frequency</param>
             <param name="order">Порядок фильтра</param>
         </member>
         <member name="T:AI.DSPCore.AFHType">
@@ -4128,7 +4133,7 @@
             <summary>
             Анализ формант
             </summary>
-            <param name="fd">Частота дискретизации</param>
+            <param name="fd">Sampling frequency</param>
         </member>
         <member name="M:AI.DSPCore.GetSpectrEnerge.Add(System.Double,System.Double)">
             <summary>
@@ -4240,7 +4245,7 @@
             Массив частот
             </summary>
             <param name="Count">Кол-во значений</param>
-            <param name="fd">Частота дискретизации</param>
+            <param name="fd">Sampling frequency</param>
             <returns>Вектор частот</returns>
         </member>
         <member name="M:AI.DSPCore.Signal.FrequencyCentr(System.Int32,System.Double)">
@@ -4248,7 +4253,7 @@
             Центрированный массив частот 
             </summary>
             <param name="Count">Кол-во значений</param>
-            <param name="fd">Частота дискретизации</param>
+            <param name="fd">Sampling frequency</param>
             <returns>Вектор частот</returns>
         </member>
         <member name="M:AI.DSPCore.Signal.Sin(AI.Vector,System.Double,AI.Vector)">
@@ -4370,11 +4375,11 @@
             </summary>
             <param name="t">Вектор времени</param>
             <param name="A">Амплитуда</param>
-            <param name="f1">Несущая частота</param>
+            <param name="f1">Carrier frequency</param>
             <param name="fi1">Фаза модулирующего сигала</param>
             <param name="f2">Частота модулятора</param>
             <param name="fi2">Фаза модулируемого сигала</param>
-            <param name="k">Коэффициент модуляции</param>
+            <param name="k">Modulation rate</param>
             <returns>Вектор отсчетов</returns>
         </member>
         <member name="M:AI.DSPCore.Signal.AmkRect(AI.Vector,System.Double,System.Double,System.Double,System.Double,System.Double)">
@@ -4383,10 +4388,10 @@
             </summary>
             <param name="t">Вектор времени</param>
             <param name="A">Амплитуда</param>
-            <param name="f1">Несущая частота</param>
+            <param name="f1">Carrier frequency</param>
             <param name="f2">Частота модулятора</param>
             <param name="fi2">Фаза модулируемого сигала</param>
-            <param name="k">Коэффициент модуляции</param>
+            <param name="k">Modulation rate</param>
             <returns>Вектор отсчетов</returns>
         </member>
         <member name="M:AI.DSPCore.Signal.AmkRect(AI.Vector,System.Double,System.Double,System.Double,System.Double)">
@@ -4395,9 +4400,9 @@
             </summary>
             <param name="t">Вектор времени</param>
             <param name="A">Амплитуда</param>
-            <param name="f1">Несущая частота</param>
+            <param name="f1">Carrier frequency</param>
             <param name="f2">Частота модулятора</param>
-            <param name="k">Коэффициент модуляции</param>
+            <param name="k">Modulation rate</param>
             <returns>Вектор отсчетов</returns>
         </member>
         <member name="M:AI.DSPCore.Signal.AmkRectK(AI.Vector,System.Double,System.Double,System.Double)">
@@ -4405,9 +4410,9 @@
             Амплитудно-модулированые колебания (прямоугольное модулирующее колебание)
             </summary>
             <param name="t">Вектор времени</param>
-            <param name="f1">Несущая частота</param>
+            <param name="f1">Carrier frequency</param>
             <param name="f2">Частота модулятора</param>
-            <param name="k">Коэффициент модуляции</param>
+            <param name="k">Modulation rate</param>
             <returns>Вектор отсчетов</returns>
         </member>
         <member name="M:AI.DSPCore.Signal.AmkRectA(AI.Vector,System.Double,System.Double,System.Double)">
@@ -4416,7 +4421,7 @@
             </summary>
             <param name="t">Вектор времени</param>
             <param name="A">Амплитуда</param>
-            <param name="f1">Несущая частота</param>
+            <param name="f1">Carrier frequency</param>
             <param name="f2">Частота модулятора</param>
             <returns>Вектор отсчетов</returns>
         </member>
@@ -5211,7 +5216,6 @@
             </summary>
             <param name="tDataset">Выборка</param>
             <param name="numClass">Имя класса</param>
-            <returns></returns>
         </member>
         <member name="M:AI.ML.Classifiers.NN.Save(System.String)">
             <summary>
@@ -5401,37 +5405,6 @@
             <param name="inp"></param>
             <returns></returns>
         </member>
-        <member name="T:AI.ML.Classifiers.StructClass">
-            <summary>
-            Структура для хранения класса
-            </summary>
-        </member>
-        <member name="P:AI.ML.Classifiers.StructClass.NumCl">
-            <summary>
-            Номер класса
-            </summary>
-        </member>
-        <member name="P:AI.ML.Classifiers.StructClass.Features">
-            <summary>
-            Признаки
-            </summary>
-        </member>
-        <member name="P:AI.ML.Classifiers.StructClass.R">
-            <summary>
-            Расстояние
-            </summary>
-        </member>
-        <member name="M:AI.ML.Classifiers.StructClass.FromBts(System.Byte[])">
-            <summary>
-            Чтение данных класса из массива байт
-            </summary>
-        </member>
-        <member name="M:AI.ML.Classifiers.StructClass.GetBts">
-            <summary>
-            Преобразование данных класса в массив байт 
-            </summary>
-            <returns></returns>
-        </member>
         <member name="T:AI.ML.Classifiers.StructClasses">
             <summary>
             Структура классификатора
@@ -5447,143 +5420,79 @@
             Сохранение в массив байт
             </summary>
         </member>
-        <member name="T:AI.ML.Clasterisators.CorrForel">
+        <member name="T:AI.ML.Clustering.Cluster">
             <summary>
-            Кластеризатор - Форель с корреляционной метрикой
+            Cluster structure
             </summary>
         </member>
-        <member name="P:AI.ML.Clasterisators.CorrForel.Clasters">
+        <member name="P:AI.ML.Clustering.Cluster.Dataset">
             <summary>
-            Кластеры
+            Dataset
             </summary>
         </member>
-        <member name="M:AI.ML.Clasterisators.CorrForel.#ctor(AI.Vector[])">
+        <member name="P:AI.ML.Clustering.Cluster.Centr">
             <summary>
-            Корреляционный форель
+            Cluster center
             </summary>
         </member>
-        <member name="M:AI.ML.Clasterisators.CorrForel.#ctor(AI.Vector[],System.Int32)">
+        <member name="T:AI.ML.Clustering.Forel">
             <summary>
-            Корреляционный форель
+            FOREL clustering
             </summary>
         </member>
-        <member name="M:AI.ML.Clasterisators.CorrForel.GetGipersfer(System.Double,AI.Vector,AI.Vector[])">
+        <member name="P:AI.ML.Clustering.Forel.Clusters">
+            <summary>
+            Clusters array
+            </summary>
+        </member>
+        <member name="P:AI.ML.Clustering.Forel.DistanceFunction">
+            <summary>
+            Distance function
+            </summary>
+        </member>
+        <member name="M:AI.ML.Clustering.Forel.#ctor">
+            <summary>
+            FOREL clustering
+            </summary>
+        </member>
+        <member name="M:AI.ML.Clustering.Forel.Train(AI.Vector[],System.Int32)">
+            <summary>
+            Clustering training
+            </summary>
+            <param name="dataset">Vectors</param>
+            <param name="minR">Minimum cluster radius</param>
+        </member>
+        <member name="M:AI.ML.Clustering.Forel.Classify(AI.Vector)">
+            <summary>
+            Classify vector
+            </summary>
+        </member>
+        <member name="M:AI.ML.Clustering.Forel.Classify(System.Collections.Generic.IEnumerable{AI.Vector})">
+            <summary>Classify vectors</summary>
+            <param name="vectors">Vectors</param>
+        </member>
+        <member name="M:AI.ML.Clustering.Forel.GetHypersphere(System.Double,AI.Vector,AI.Vector[])">
             <summary>
             Проводит гиперсферу нужного радиуса из конкретной точки и на заданном множестве
             </summary>
             <param name="R">Радиус</param>
             <param name="m">Центр масс</param>
-            <param name="mass">Множество точек</param>
+            <param name="pointsSet">Множество точек</param>
             <returns></returns>
         </member>
-        <member name="M:AI.ML.Clasterisators.CorrForel.Max(AI.Vector[],AI.Vector)">
+        <member name="M:AI.ML.Clustering.Forel.Max(AI.Vector[],AI.Vector)">
             <summary>
             Максимальная дистанция
             </summary>
             <returns></returns>
         </member>
-        <member name="M:AI.ML.Clasterisators.CorrForel.AWithOutB(AI.Vector[],AI.Vector[])">
+        <member name="M:AI.ML.Clustering.Forel.AWithOutB(AI.Vector[],AI.Vector[])">
             <summary>
             Множество А\В
             </summary>
             <param name="A">Множество А</param>
             <param name="B">Множество В</param>
             <returns>А\B</returns>
-        </member>
-        <member name="M:AI.ML.Clasterisators.CorrForel.GetCentr(AI.Vector[])">
-            <summary>
-            Поиск центра класса
-            </summary>
-            <param name="vectors">Точки класса</param>
-            <returns></returns>
-        </member>
-        <member name="T:AI.ML.Clasterisators.Claster">
-            <summary>
-            Структура кластера
-            </summary>
-        </member>
-        <member name="P:AI.ML.Clasterisators.Claster.Dataset">
-            <summary>
-            Выборка
-            </summary>
-        </member>
-        <member name="P:AI.ML.Clasterisators.Claster.Centr">
-            <summary>
-            Центр кластера
-            </summary>
-        </member>
-        <member name="T:AI.ML.Clasterisators.Forel">
-            <summary>
-            Кластеризатор Форель
-            </summary>
-        </member>
-        <member name="P:AI.ML.Clasterisators.Forel.Clasters">
-            <summary>
-            Массив кластеров
-            </summary>
-        </member>
-        <member name="M:AI.ML.Clasterisators.Forel.#ctor(AI.Vector[])">
-            <summary>
-            Конструктор класса
-            </summary>
-        </member>
-        <member name="M:AI.ML.Clasterisators.Forel.#ctor(AI.Vector[],System.Int32)">
-            <summary>
-            Конструктор класса
-            </summary>
-            <param name="dataset">Выборка</param>
-            <param name="minR">Минимальный радиус</param>
-        </member>
-        <member name="M:AI.ML.Clasterisators.Forel.GetGipersfer(System.Double,AI.Vector,AI.Vector[])">
-            <summary>
-            Проводит гиперсферу нужного радиуса из конкретной точки и на заданном множестве
-            </summary>
-            <param name="R">Радиус</param>
-            <param name="m">Центр масс</param>
-            <param name="mass">Множество точек</param>
-            <returns></returns>
-        </member>
-        <member name="M:AI.ML.Clasterisators.Forel.Max(AI.Vector[],AI.Vector)">
-            <summary>
-            Максимальная дистанция
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:AI.ML.Clasterisators.Forel.AWithOutB(AI.Vector[],AI.Vector[])">
-            <summary>
-            Множество А\В
-            </summary>
-            <param name="A">Множество А</param>
-            <param name="B">Множество В</param>
-            <returns>А\B</returns>
-        </member>
-        <member name="M:AI.ML.Clasterisators.Forel.GetCentr(AI.Vector[])">
-            <summary>
-            Поиск центра класса
-            </summary>
-            <param name="vectors">Точки класса</param>
-            <returns></returns>
-        </member>
-        <member name="T:AI.ML.Distance">
-            <summary>
-            Расстояния
-            </summary>
-        </member>
-        <member name="M:AI.ML.Distance.ManhattanDistance(AI.Vector,AI.Vector)">
-            <summary>
-            Матхэтенское расстояние (L1)
-            </summary>
-            <param name="a"></param>
-            <param name="b"></param>
-            <returns></returns>
-        </member>
-        <member name="M:AI.ML.Distance.CorrDist(AI.Vector,AI.Vector)">
-            <summary>
-            Корреляционная метрика
-            </summary>
-            <param name="a"></param>
-            <param name="b"></param>
-            <returns></returns>
         </member>
         <member name="T:AI.ML.Clustering.KMeans">
             <summary>Алгоритм k-means</summary>
@@ -5606,18 +5515,25 @@
         <member name="P:AI.ML.Clustering.KMeans.Сentroids">
             <summary>Цендроиды кластеров</summary>
         </member>
+        <member name="P:AI.ML.Clustering.KMeans.DistanceFunction">
+            <summary>
+            Distance function
+            </summary>
+        </member>
         <member name="M:AI.ML.Clustering.KMeans.Classify(AI.Vector)">
-            <summary>Классификация вектора</summary>
-            <param name="vector">Вектор</param>
+            <summary>Classify vector</summary>
+            <param name="vector">Vector</param>
         </member>
         <member name="M:AI.ML.Clustering.KMeans.Classify(System.Collections.Generic.IEnumerable{AI.Vector})">
-            <summary>Классификация векторов</summary>
-            <param name="vectors">Вектора</param>
+            <summary>Classify vectors</summary>
+            <param name="vectors">Vectors</param>
         </member>
         <member name="M:AI.ML.Clustering.KMeans.Train(AI.Vector[],System.Int32)">
-            <summary>Обучение</summary>
-            <param name="vectors"> Набор векторов</param>
-            <param name="seed">Сид, для повторяемости результатов</param>
+            <summary>
+            Clustering training
+            </summary>
+            <param name="dataset">Vectors</param>
+            <param name="seed">Seed</param>
         </member>
         <member name="M:AI.ML.Clustering.KMeans.Initialize">
             <summary>Инизиализация</summary>
@@ -5627,6 +5543,33 @@
         </member>
         <member name="M:AI.ML.Clustering.KMeans.ValidateData(System.Int32,AI.Vector[])">
             <summary>Validate the sample</summary>
+        </member>
+        <member name="T:AI.ML.Clustering.IClustering">
+            <summary>
+            Interface for metric clustering algorithms
+            </summary>
+        </member>
+        <member name="M:AI.ML.Clustering.IClustering.Classify(AI.Vector)">
+            <summary>
+            Classify vector
+            </summary>
+        </member>
+        <member name="M:AI.ML.Clustering.IClustering.Classify(System.Collections.Generic.IEnumerable{AI.Vector})">
+            <summary>
+            Classify vectors
+            </summary>
+        </member>
+        <member name="M:AI.ML.Clustering.IClustering.Train(AI.Vector[],System.Int32)">
+            <summary>
+            Clustering training
+            </summary>
+            <param name="dataset">Vectors</param>
+            <param name="param">Free parametr</param>
+        </member>
+        <member name="P:AI.ML.Clustering.IClustering.DistanceFunction">
+            <summary>
+            Distance function
+            </summary>
         </member>
         <member name="T:AI.ML.CrossCorrMatrix">
             <summary>
@@ -5652,6 +5595,34 @@
             <summary>
             Getting the vector position code
             </summary>
+        </member>
+        <member name="T:AI.ML.DataEncoding.PositionalEncoding.MultiscaleEncoder">
+            <summary>
+            Multiscale position coding
+            </summary>
+        </member>
+        <member name="P:AI.ML.DataEncoding.PositionalEncoding.MultiscaleEncoder.Dim">
+            <summary>
+            Dimension
+            </summary>
+        </member>
+        <member name="M:AI.ML.DataEncoding.PositionalEncoding.MultiscaleEncoder.#ctor(System.Int32)">
+            <summary>
+            Multiscale position coding, it is assumed that the dimension can be represented as 2^N
+            </summary>
+            <param name="dim">Dimension</param>
+        </member>
+        <member name="M:AI.ML.DataEncoding.PositionalEncoding.MultiscaleEncoder.GetCode(System.Int32)">
+            <summary>
+            Getting a multi-scale position code, the code is represented by a vector
+            </summary>
+            <param name="position">Position</param>
+        </member>
+        <member name="M:AI.ML.DataEncoding.PositionalEncoding.MultiscaleEncoder.GetCode(System.Double)">
+            <summary>
+            Getting a multi-scale position code, the code is represented by a vector
+            </summary>
+            <param name="position">Position</param>
         </member>
         <member name="T:AI.ML.DataEncoding.PositionalEncoding.TrigonometricPositionalEncoder">
             <summary>
@@ -5695,6 +5666,47 @@
             <param name="outputs">Идеальные выходы</param>
             <param name="los">Ошибка</param>
             <param name="valSplit">Доля выборки для валидации</param>
+        </member>
+        <member name="T:AI.ML.Datasets.SyntheticDatasets.PointClouds">
+            <summary>
+            Point clouds synthesis
+            </summary>
+        </member>
+        <member name="P:AI.ML.Datasets.SyntheticDatasets.PointClouds.Dimention">
+            <summary>
+            Dimention
+            </summary>
+        </member>
+        <member name="M:AI.ML.Datasets.SyntheticDatasets.PointClouds.#ctor(System.Int32)">
+            <summary>
+            Point cloud synthesis
+            </summary>
+            <param name="dim">Dimention</param>
+        </member>
+        <member name="M:AI.ML.Datasets.SyntheticDatasets.PointClouds.AddCloud(System.Int32,AI.Vector,AI.ML.Datasets.SyntheticDatasets.PointClouds.CloudType)">
+            <summary>
+            Add point cloud
+            </summary>
+        </member>
+        <member name="M:AI.ML.Datasets.SyntheticDatasets.PointClouds.GetArray">
+            <summary>
+            Output as an array
+            </summary>
+        </member>
+        <member name="T:AI.ML.Datasets.SyntheticDatasets.PointClouds.CloudType">
+            <summary>
+            Point cloud type
+            </summary>
+        </member>
+        <member name="F:AI.ML.Datasets.SyntheticDatasets.PointClouds.CloudType.Hypersphere">
+            <summary>
+            Hypersphere
+            </summary>
+        </member>
+        <member name="F:AI.ML.Datasets.SyntheticDatasets.PointClouds.CloudType.Hypercube">
+            <summary>
+            Hypercube 
+            </summary>
         </member>
         <member name="M:AI.ML.Datasets.ComplexDatasetNoRecurrent.#ctor(AI.ML.NeuralNetwork.ComplexNet.NNComplexValue[],AI.ML.NeuralNetwork.ComplexNet.NNComplexValue[],AI.ML.NeuralNetwork.ComplexNet.Base.ICLoss,System.Double)">
             <summary>
@@ -5992,6 +6004,26 @@
             <param name="dataset"></param>
             <returns></returns>
         </member>
+        <member name="T:AI.ML.Datasets.Img2Img">
+            <summary>
+            Датасет для преобразования картинки в картинку
+            </summary>
+        </member>
+        <member name="T:AI.ML.Datasets.Img2ImgEl">
+            <summary>
+            Элемент датасета для преобразования картинки в картинку
+            </summary>
+        </member>
+        <member name="P:AI.ML.Datasets.Img2ImgEl.InputImg">
+            <summary>
+            Входное изображение
+            </summary>
+        </member>
+        <member name="P:AI.ML.Datasets.Img2ImgEl.TargetImg">
+            <summary>
+            Целевое изображение
+            </summary>
+        </member>
         <member name="T:AI.ML.Datasets.MatrixInt">
             <summary>
             Датасет с картинками матрица-нормер класса
@@ -6091,7 +6123,7 @@
             Представляет структуру вектор-класс
             </summary>
         </member>
-        <member name="F:AI.ML.Datasets.VectorClass.InpVector">
+        <member name="F:AI.ML.Datasets.VectorClass.Features">
             <summary>
             Вектор для классификации
             </summary>
@@ -6107,6 +6139,17 @@
             </summary>
             <param name="vector">Вектор</param>
             <param name="mark">Метка класса</param>
+        </member>
+        <member name="M:AI.ML.Datasets.VectorClass.FromBts(System.Byte[])">
+            <summary>
+            Чтение данных класса из массива байт
+            </summary>
+        </member>
+        <member name="M:AI.ML.Datasets.VectorClass.GetBts">
+            <summary>
+            Преобразование данных класса в массив байт 
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:AI.ML.Datasets.VectorIntDataset">
             <summary>
@@ -6289,6 +6332,71 @@
             <param name="los">Ошибка</param>
             <param name="valSplit">Доля выборки для валидации</param>
         </member>
+        <member name="T:AI.ML.Distances.DistancesBetweenDistributions">
+            <summary>
+            Distances between distributions
+            </summary>
+        </member>
+        <member name="T:AI.ML.Distances.DistancesIntoAccountDistributions">
+            <summary>
+            Distances between points taking into account distributions, or distances from a point to a distribution.
+            </summary>
+        </member>
+        <member name="T:AI.ML.Distances.ProbabilityDistances">
+            <summary>
+            Probability (entropy) distances
+            </summary>
+        </member>
+        <member name="M:AI.ML.Distances.ProbabilityDistances.DKL(AI.Vector,AI.Vector)">
+            <summary>
+            Kullback–Leibler divergence
+            </summary>
+        </member>
+        <member name="M:AI.ML.Distances.ProbabilityDistances.DKLSymmetrical(AI.Vector,AI.Vector)">
+            <summary>
+            Symmetrical Kullback - Leibler divergence
+            </summary>
+        </member>
+        <member name="T:AI.ML.Distances.BaseDist">
+            <summary>
+            Basic distance functions
+            </summary>
+        </member>
+        <member name="M:AI.ML.Distances.BaseDist.LpDist(AI.IAlgebraicStructureDouble,AI.IAlgebraicStructureDouble,System.Int32)">
+            <summary>
+            Lp family distances
+            </summary>
+        </member>
+        <member name="M:AI.ML.Distances.BaseDist.EuclideanDistance(AI.IAlgebraicStructureDouble,AI.IAlgebraicStructureDouble)">
+            <summary>
+            Euclidean distance
+            </summary>
+        </member>
+        <member name="M:AI.ML.Distances.BaseDist.LinfDist(AI.IAlgebraicStructureDouble,AI.IAlgebraicStructureDouble)">
+            <summary>
+            Distance L-infinity
+            </summary>
+        </member>
+        <member name="M:AI.ML.Distances.BaseDist.Cos(AI.IAlgebraicStructureDouble,AI.IAlgebraicStructureDouble)">
+            <summary>
+            Cosine similarity
+            </summary>
+        </member>
+        <member name="M:AI.ML.Distances.BaseDist.CosDist(AI.IAlgebraicStructureDouble,AI.IAlgebraicStructureDouble)">
+            <summary>
+            Cosine distance
+            </summary>
+        </member>
+        <member name="M:AI.ML.Distances.BaseDist.SquareEucl(AI.IAlgebraicStructureDouble,AI.IAlgebraicStructureDouble)">
+            <summary>
+            Square of Euclidean distance
+            </summary>
+        </member>
+        <member name="M:AI.ML.Distances.BaseDist.ManhattanDistance(AI.IAlgebraicStructureDouble,AI.IAlgebraicStructureDouble)">
+            <summary>
+            Square of Euclidean distance
+            </summary>
+        </member>
         <member name="T:AI.ML.HMM.HMM">
             <summary>
             Basic block for constructing hidden Markov models, Markov chain
@@ -6413,27 +6521,27 @@
             Noise generator
             </summary>
         </member>
-        <member name="P:AI.ML.NeuralNetwork.Architectures.VectorWithPositionEncoder.PositionEncoder">
+        <member name="P:AI.ML.NeuralNetwork.Architectures.Encoders.VectorWithPositionEncoder.PositionEncoder">
             <summary>
             
             </summary>
         </member>
-        <member name="T:AI.ML.NeuralNetwork.Architectures.VectorPredictorStates">
+        <member name="T:AI.ML.NeuralNetwork.Architectures.ClassifierNet.VectorPredictorStates">
             <summary>
             
             </summary>
         </member>
-        <member name="P:AI.ML.NeuralNetwork.Architectures.VectorPredictorStates.PositionEncoder">
+        <member name="P:AI.ML.NeuralNetwork.Architectures.ClassifierNet.VectorPredictorStates.PositionEncoder">
             <summary>
             
             </summary>
         </member>
-        <member name="P:AI.ML.NeuralNetwork.Architectures.VectorPredictorStates.StateEncoder">
+        <member name="P:AI.ML.NeuralNetwork.Architectures.ClassifierNet.VectorPredictorStates.StateEncoder">
             <summary>
             
             </summary>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.Architectures.VectorPredictorStates.#ctor(AI.ML.DataEncoding.PositionalEncoding.IPositionEncoding,AI.ML.DataEncoding.PositionalEncoding.IPositionEncoding,System.Int32,System.Int32,System.Int32,System.Int32,AI.ML.NeuralNetwork.CoreNNW.Activations.IActivation,AI.ML.NeuralNetwork.CoreNNW.Activations.IActivation)">
+        <member name="M:AI.ML.NeuralNetwork.Architectures.ClassifierNet.VectorPredictorStates.#ctor(AI.ML.DataEncoding.PositionalEncoding.IPositionEncoding,AI.ML.DataEncoding.PositionalEncoding.IPositionEncoding,System.Int32,System.Int32,System.Int32,System.Int32,AI.ML.NeuralNetwork.CoreNNW.Activations.IActivation,AI.ML.NeuralNetwork.CoreNNW.Activations.IActivation)">
             <summary>
             
             </summary>
@@ -6446,7 +6554,7 @@
             <param name="outActivation"></param>
             <param name="hActivation"></param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.Architectures.VectorPredictorStates.Predict(System.Int32[],System.Int32)">
+        <member name="M:AI.ML.NeuralNetwork.Architectures.ClassifierNet.VectorPredictorStates.Predict(System.Int32[],System.Int32)">
             <summary>
             
             </summary>
@@ -6454,19 +6562,19 @@
             <param name="position"></param>
             <returns></returns>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.Architectures.VectorPredictorStates.GetNNW">
+        <member name="M:AI.ML.NeuralNetwork.Architectures.ClassifierNet.VectorPredictorStates.GetNNW">
             <summary>
             
             </summary>
             <returns></returns>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.Architectures.VectorPredictorStates.Save(System.String)">
+        <member name="M:AI.ML.NeuralNetwork.Architectures.ClassifierNet.VectorPredictorStates.Save(System.String)">
             <summary>
             
             </summary>
             <param name="path"></param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.Architectures.VectorPredictorStates.Train(System.Int32[][],System.Int32[],AI.Vector[])">
+        <member name="M:AI.ML.NeuralNetwork.Architectures.ClassifierNet.VectorPredictorStates.Train(System.Int32[][],System.Int32[],AI.Vector[])">
             <summary>
             
             </summary>
@@ -6474,7 +6582,7 @@
             <param name="positions"></param>
             <param name="outps"></param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.Architectures.VectorPredictorStates.Load(System.String,AI.ML.DataEncoding.PositionalEncoding.IPositionEncoding,AI.ML.DataEncoding.PositionalEncoding.IPositionEncoding)">
+        <member name="M:AI.ML.NeuralNetwork.Architectures.ClassifierNet.VectorPredictorStates.Load(System.String,AI.ML.DataEncoding.PositionalEncoding.IPositionEncoding,AI.ML.DataEncoding.PositionalEncoding.IPositionEncoding)">
             <summary>
             
             </summary>
@@ -6483,19 +6591,19 @@
             <param name="stateEncoder"></param>
             <returns></returns>
         </member>
-        <member name="T:AI.ML.NeuralNetwork.Architectures.ConvClassifier">
+        <member name="T:AI.ML.NeuralNetwork.Architectures.ClassifierNet.ConvClassifier">
             <summary>
             Сверточный классификатор
             </summary>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.Architectures.ConvClassifier.#ctor(AI.ML.NeuralNetwork.CoreNNW.Shape,System.Int32)">
+        <member name="M:AI.ML.NeuralNetwork.Architectures.ClassifierNet.ConvClassifier.#ctor(AI.ML.NeuralNetwork.CoreNNW.Shape,System.Int32)">
             <summary>
             Сверточный классификатор
             </summary>
             <param name="shape">Форма тензора</param>
             <param name="classes">Number of classes</param>
         </member>
-        <member name="M:AI.ML.NeuralNetwork.Architectures.ConvClassifier.GetNNW">
+        <member name="M:AI.ML.NeuralNetwork.Architectures.ClassifierNet.ConvClassifier.GetNNW">
             <summary>
             Получение нейронной сети
             </summary>
@@ -12127,26 +12235,6 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="T:AI.ML.ML.Datasets.Img2Img">
-            <summary>
-            Датасет для преобразования картинки в картинку
-            </summary>
-        </member>
-        <member name="T:AI.ML.ML.Datasets.Img2ImgEl">
-            <summary>
-            Элемент датасета для преобразования картинки в картинку
-            </summary>
-        </member>
-        <member name="P:AI.ML.ML.Datasets.Img2ImgEl.InputImg">
-            <summary>
-            Входное изображение
-            </summary>
-        </member>
-        <member name="P:AI.ML.ML.Datasets.Img2ImgEl.TargetImg">
-            <summary>
-            Целевое изображение
-            </summary>
-        </member>
         <member name="T:AI.ML.Genetic.GeneticCore.Cell">
             <summary>
             Клетка
@@ -12446,130 +12534,130 @@
             </summary>
             <param name="data">Input data vector</param>
         </member>
-        <member name="T:AI.ML.Regression.kNNCorR">
+        <member name="T:AI.ML.Regression.KNNCorR">
             <summary>
             Регрессия (метод k-ближайших соседей) (корреляционная метрика)
             </summary>
         </member>
-        <member name="P:AI.ML.Regression.kNNCorR.K">
+        <member name="P:AI.ML.Regression.KNNCorR.K">
             <summary>
             Число соседей
             </summary>
         </member>
-        <member name="P:AI.ML.Regression.kNNCorR.FixedH">
+        <member name="P:AI.ML.Regression.KNNCorR.FixedH">
             <summary>
             Фиксирована ли ширина
             </summary>
         </member>
-        <member name="F:AI.ML.Regression.kNNCorR.isMutation">
+        <member name="F:AI.ML.Regression.KNNCorR.isMutation">
             <summary>
             Запускать ли мутацию соседей
             </summary>
         </member>
-        <member name="F:AI.ML.Regression.kNNCorR.mutCount">
+        <member name="F:AI.ML.Regression.KNNCorR.mutCount">
             <summary>
             Число мутировавших соседей
             </summary>
         </member>
-        <member name="P:AI.ML.Regression.kNNCorR.Dist">
+        <member name="P:AI.ML.Regression.KNNCorR.Dist">
             <summary>
             Функция растояния
             </summary>
         </member>
-        <member name="P:AI.ML.Regression.kNNCorR.Reg">
+        <member name="P:AI.ML.Regression.KNNCorR.Reg">
             <summary>
             Данные для регрессии
             </summary>
         </member>
-        <member name="M:AI.ML.Regression.kNNCorR.#ctor">
+        <member name="M:AI.ML.Regression.KNNCorR.#ctor">
             <summary>
             Регрессия (Метод ближайшего соседа)
             </summary>
         </member>
-        <member name="M:AI.ML.Regression.kNNCorR.#ctor(System.String)">
+        <member name="M:AI.ML.Regression.KNNCorR.#ctor(System.String)">
             <summary>
             Регрессия (Метод ближайшего соседа)
             </summary>
             <param name="path">Путь до файла</param>
         </member>
-        <member name="M:AI.ML.Regression.kNNCorR.#ctor(AI.ML.Regression.StructRegres)">
+        <member name="M:AI.ML.Regression.KNNCorR.#ctor(AI.ML.Regression.StructRegres)">
             <summary>
             Регрессия (Метод ближайшего соседа)
             </summary>
             <param name="reg"> Данные для регрессии</param>
         </member>
-        <member name="M:AI.ML.Regression.kNNCorR.Save(System.String)">
+        <member name="M:AI.ML.Regression.KNNCorR.Save(System.String)">
             <summary>
             Сохранение классификатора
             </summary>
             <param name="path">Путь</param>
         </member>
-        <member name="M:AI.ML.Regression.kNNCorR.Open(System.String)">
+        <member name="M:AI.ML.Regression.KNNCorR.Open(System.String)">
             <summary>
             Загрузка классификатора
             </summary>
             <param name="path">Путь</param>
         </member>
-        <member name="M:AI.ML.Regression.kNNCorR.ToData(System.Int32,System.Double@)">
+        <member name="M:AI.ML.Regression.KNNCorR.ToData(System.Int32,System.Double@)">
             <summary>
             Перевод в double
             </summary>
             <param name="i">Индекс</param>
             <param name="R">Вес окна</param>
         </member>
-        <member name="M:AI.ML.Regression.kNNCorR.Rang(AI.Vector)">
+        <member name="M:AI.ML.Regression.KNNCorR.Rang(AI.Vector)">
             <summary>
             Ранжирование
             </summary>
         </member>
-        <member name="M:AI.ML.Regression.kNNCorR.Train(AI.Vector,System.Double)">
+        <member name="M:AI.ML.Regression.KNNCorR.Train(AI.Vector,System.Double)">
             <summary>
             Добавление класса
             </summary>
             <param name="tData">Центральный вектор</param>
             <param name="targ">Зависимая переменная</param>
         </member>
-        <member name="M:AI.ML.Regression.kNNCorR.AddData(AI.Vector,System.Double)">
+        <member name="M:AI.ML.Regression.KNNCorR.AddData(AI.Vector,System.Double)">
             <summary>
             Добавление данных для обучения
             </summary>
             <param name="tData">Input data vector</param>
             <param name="targ">Выход</param>
         </member>
-        <member name="M:AI.ML.Regression.kNNCorR.Train(AI.Vector[],AI.Vector)">
+        <member name="M:AI.ML.Regression.KNNCorR.Train(AI.Vector[],AI.Vector)">
             <summary>
             Обучение регрессии
             </summary>
             <param name="tData">Тренировочные данные входов</param>
             <param name="targs">Идеальные выходы</param>
         </member>
-        <member name="M:AI.ML.Regression.kNNCorR.Train(AI.Vector,AI.Vector)">
+        <member name="M:AI.ML.Regression.KNNCorR.Train(AI.Vector,AI.Vector)">
             <summary>
             Обучение регрессии
             </summary>
             <param name="tData">Тренировочные данные входов</param>
             <param name="targs">Идеальные выходы</param>
         </member>
-        <member name="M:AI.ML.Regression.kNNCorR.Predict(AI.Vector)">
+        <member name="M:AI.ML.Regression.KNNCorR.Predict(AI.Vector)">
             <summary>
             Возращает вектор, его длинна - Number of classes, на номере нужного класса стоит 1
             </summary>
             <param name="inp">Input data vector</param>
             <returns></returns>
         </member>
-        <member name="M:AI.ML.Regression.kNNCorR.ImpObj">
+        <member name="M:AI.ML.Regression.KNNCorR.ImpObj">
             <summary>
             Расчет распределения важности объектов для прогноза
             </summary>
             <returns></returns>
         </member>
-        <member name="M:AI.ML.Regression.kNNCorR.OnlyImp(System.Int32)">
+        <member name="M:AI.ML.Regression.KNNCorR.OnlyImp(System.Int32)">
             <summary>
             Оставляет только важные для прогноза объекты
             </summary>
             <param name="n">Число оставляемых объектов</param>
         </member>
-        <member name="M:AI.ML.Regression.kNNCorR.PredictV(AI.Vector)">
+        <member name="M:AI.ML.Regression.KNNCorR.PredictV(AI.Vector)">
             <summary>
             Прогноз вектора
             </summary>
@@ -13203,51 +13291,6 @@
             <param name="data">Известная часть последовательности</param>
             <param name="n">Сколько шагов предсказать</param>
         </member>
-        <member name="T:AI.Distances.BaseDist">
-            <summary>
-            Basic distance functions
-            </summary>
-        </member>
-        <member name="M:AI.Distances.BaseDist.LpDist(AI.IAlgebraicStructureDouble,AI.IAlgebraicStructureDouble,System.Int32)">
-            <summary>
-            Lp family distances
-            </summary>
-        </member>
-        <member name="M:AI.Distances.BaseDist.EuclideanDistance(AI.IAlgebraicStructureDouble,AI.IAlgebraicStructureDouble)">
-            <summary>
-            Euclidean distance
-            </summary>
-        </member>
-        <member name="M:AI.Distances.BaseDist.LinfDist(AI.Vector,AI.Vector)">
-            <summary>
-            Distance L-infinity
-            </summary>
-        </member>
-        <member name="M:AI.Distances.BaseDist.LinfDist(AI.IAlgebraicStructureDouble,AI.IAlgebraicStructureDouble)">
-            <summary>
-            Distance L-infinity
-            </summary>
-        </member>
-        <member name="M:AI.Distances.BaseDist.Cos(AI.Vector,AI.Vector)">
-            <summary>
-            Cosine distance
-            </summary>
-        </member>
-        <member name="M:AI.Distances.BaseDist.Cos(AI.IAlgebraicStructureDouble,AI.IAlgebraicStructureDouble)">
-            <summary>
-            Cosine distance
-            </summary>
-        </member>
-        <member name="M:AI.Distances.BaseDist.SquareEucl(AI.Vector,AI.Vector)">
-            <summary>
-            Square of Euclidean distance
-            </summary>
-        </member>
-        <member name="M:AI.Distances.BaseDist.SquareEucl(AI.IAlgebraicStructureDouble,AI.IAlgebraicStructureDouble)">
-            <summary>
-            Square of Euclidean distance
-            </summary>
-        </member>
         <member name="T:AI.Algebra.Gauss">
             <summary>
             Метод Гаусса имеет вычислительную сложность O(n^3)
@@ -13295,99 +13338,89 @@
         </member>
         <member name="T:AI.ComplexVector">
             <summary>
-            Класс реализует работу с комплексными векторами
+            The class implements work with vectors of complex numbers
             </summary>
         </member>
         <member name="M:AI.ComplexVector.op_Implicit(AI.ComplexVector)~System.Numerics.Complex[]">
             <summary>
-            Приведение к массиву double
+            Casting to a Complex array
             </summary>
-            <param name="vect">Вектор</param>
+            <param name="vect">Vector</param>
         </member>
         <member name="M:AI.ComplexVector.op_Implicit(System.Numerics.Complex[])~AI.ComplexVector">
             <summary>
-            Приведение массива double к вектору
+            Casting a Complex array to a vector
             </summary>
-            <param name="dbs">Массив double</param>
+            <param name="dbs">Complex array</param>
         </member>
         <member name="M:AI.ComplexVector.op_Implicit(System.Double[])~AI.ComplexVector">
             <summary>
-            Приведение массива double к вектору
+            Casting a double array to a vector
             </summary>
-            <param name="dbs">Массив double</param>
+            <param name="dbs">Double array</param>
         </member>
         <member name="M:AI.ComplexVector.op_Implicit(AI.Vector)~AI.ComplexVector">
             <summary>
-            Приведение массива double к вектору
+            
             </summary>
-            <param name="dbs">Массив double</param>
+            <param name="dbs"></param>
         </member>
         <member name="P:AI.ComplexVector.DataInVector">
             <summary>
-            Массив типа Complex содержащий отсчеты вектора
+            Complex array containing vector samples
             </summary>
         </member>
         <member name="P:AI.ComplexVector.Count">
             <summary>
-            Размерность комплексного вектора
+            Complex vector dimension
             </summary>
         </member>
         <member name="P:AI.ComplexVector.Item(System.Int32)">
             <summary>
-            Доступ по индексу
+            Accessing an item by index
             </summary>
-            <param name="i">Индекс</param>
-            <returns>Значение вектора</returns>
+            <param name="i">Index</param>
         </member>
         <member name="M:AI.ComplexVector.#ctor">
             <summary>
-            Создает вектор с нулями (0+0j) размерности 3
+            Creates a vector with zeros (0 + 0j) of dimension 3
             </summary>
         </member>
         <member name="M:AI.ComplexVector.#ctor(System.Int32)">
             <summary>
-            Создает вектор с нулями (0+0j) размерности n
+            Creates a vector with zeros (0 + 0j) of dimension n
             </summary>
         </member>
         <member name="M:AI.ComplexVector.#ctor(System.Numerics.Complex[])">
             <summary>
-            Создает вектор на основе массива
+            Creates a vector from an array
             </summary>
         </member>
         <member name="M:AI.ComplexVector.#ctor(System.Double[],System.Double[])">
             <summary>
-            Создает вектор на основе массивов действительной и мнимой части
+            Creates a vector based on arrays of real and imaginary parts
             </summary>
-            <param name="vectorReal">Действительная часть</param>
-            <param name="vectorImg">Мнимая часть</param>
+            <param name="vectorReal">Real part</param>
+            <param name="vectorImg">Imaginary part</param>
         </member>
         <member name="M:AI.ComplexVector.#ctor(AI.Vector,AI.Vector)">
             <summary>
-            Создает вектор на основе векторов действительной и мнимой части
+            Creates a vector based on arrays of real and imaginary parts
             </summary>
-            <param name="vectorReal">Действительная часть</param>
-            <param name="vectorImg">Мнимая часть</param>
+            <param name="vectorReal">Real part</param>
+            <param name="vectorImg">Imaginary part</param>
         </member>
         <member name="M:AI.ComplexVector.#ctor(AI.Vector)">
             <summary>
-            Создает вектор на основе векторов действительной части мнимая заполнена нулями
+            Creates a vector based on vectors of real part, imaginary filled with zeros
             </summary>
-            <param name="vectorReal">Реальная часть</param>
+            <param name="vectorReal">Real part</param>
         </member>
         <member name="M:AI.ComplexVector.CutAndZero(System.Int32)">
             <summary>
-            Дополнение нулями или обрезание до нужного размера 
-            вектора.
+            Zero padding or cropping to the desired vector size.
             </summary>
-            <param name="n">Новый размер</param>
-        </member>
-        <member name="M:AI.ComplexVector.op_Multiply(AI.ComplexVector,AI.ComplexVector)">
-            <summary>
-            Поэлементное умножение
-            </summary>
-            <param name="A">Первый вектор</param>
-            <param name="B">Второй</param>
-            <returns>Результат</returns>
+            <param name="n">New dimension</param>
         </member>
         <member name="M:AI.ComplexVector.op_Addition(AI.ComplexVector,AI.ComplexVector)">
             <summary>
@@ -13396,78 +13429,6 @@
             <param name="A">Первый вектор</param>
             <param name="B">Второй</param>
             <returns>Результат</returns>
-        </member>
-        <member name="M:AI.ComplexVector.op_Division(AI.ComplexVector,AI.ComplexVector)">
-            <summary>
-            Поэлементное деление
-            </summary>
-            <param name="A">Первый вектор</param>
-            <param name="B">Второй</param>
-            <returns>Результат</returns>
-        </member>
-        <member name="M:AI.ComplexVector.op_Subtraction(AI.ComplexVector,AI.ComplexVector)">
-            <summary>
-            Поэлементное вычитание
-            </summary>
-            <param name="A">Первый вектор</param>
-            <param name="B">Второй</param>
-            <returns>Результат</returns>
-        </member>
-        <member name="M:AI.ComplexVector.op_Multiply(AI.ComplexVector,AI.Vector)">
-            <summary>
-            Поэлементное умножение на реальный вектор
-            </summary>
-            <param name="A">Первый вектор</param>
-            <param name="B">Второй</param>
-            <returns>Результат</returns>
-        </member>
-        <member name="M:AI.ComplexVector.op_Multiply(AI.Vector,AI.ComplexVector)">
-            <summary>
-            Поэлементное умножение на реальный вектор
-            </summary>
-            <param name="A">Первый вектор</param>
-            <param name="B">Второй</param>
-            <returns>Результат</returns>
-        </member>
-        <member name="M:AI.ComplexVector.op_Multiply(System.Numerics.Complex,AI.ComplexVector)">
-            <summary>
-            Умножение на число
-            </summary>
-            <param name="k">комплексное число</param>
-            <param name="A">Комплексный вектор</param>
-            <returns>Комплексный вектор</returns>
-        </member>
-        <member name="M:AI.ComplexVector.op_Subtraction(System.Numerics.Complex,AI.ComplexVector)">
-            <summary>
-            Вычитание из числа
-            </summary>
-            <param name="k">комплексное число</param>
-            <param name="A">Комплексный вектор</param>
-            <returns>Комплексный вектор</returns>
-        </member>
-        <member name="M:AI.ComplexVector.op_Subtraction(AI.ComplexVector,System.Numerics.Complex)">
-            <summary>
-            Вычитание числа
-            </summary>
-            <param name="k">комплексное число</param>
-            <param name="A">Комплексный вектор</param>
-            <returns>Комплексный вектор</returns>
-        </member>
-        <member name="M:AI.ComplexVector.op_Subtraction(System.Double,AI.ComplexVector)">
-            <summary>
-            Вычитание из числа
-            </summary>
-            <param name="k">реальное число</param>
-            <param name="A">Комплексный вектор</param>
-            <returns>Комплексный вектор</returns>
-        </member>
-        <member name="M:AI.ComplexVector.op_Subtraction(AI.ComplexVector,System.Double)">
-            <summary>
-            Вычитание числа
-            </summary>
-            <param name="k"> число</param>
-            <param name="A">Комплексный вектор</param>
-            <returns>Комплексный вектор</returns>
         </member>
         <member name="M:AI.ComplexVector.op_Addition(System.Numerics.Complex,AI.ComplexVector)">
             <summary>
@@ -13508,6 +13469,46 @@
             <param name="A">Комплексный вектор</param>
             <returns>Комплексный вектор</returns>
         </member>
+        <member name="M:AI.ComplexVector.op_Subtraction(AI.ComplexVector,AI.ComplexVector)">
+            <summary>
+            Поэлементное вычитание
+            </summary>
+            <param name="A">Первый вектор</param>
+            <param name="B">Второй</param>
+            <returns>Результат</returns>
+        </member>
+        <member name="M:AI.ComplexVector.op_Subtraction(System.Numerics.Complex,AI.ComplexVector)">
+            <summary>
+            Вычитание из числа
+            </summary>
+            <param name="k">комплексное число</param>
+            <param name="A">Комплексный вектор</param>
+            <returns>Комплексный вектор</returns>
+        </member>
+        <member name="M:AI.ComplexVector.op_Subtraction(AI.ComplexVector,System.Numerics.Complex)">
+            <summary>
+            Вычитание числа
+            </summary>
+            <param name="k">комплексное число</param>
+            <param name="A">Комплексный вектор</param>
+            <returns>Комплексный вектор</returns>
+        </member>
+        <member name="M:AI.ComplexVector.op_Subtraction(System.Double,AI.ComplexVector)">
+            <summary>
+            Вычитание из числа
+            </summary>
+            <param name="k">реальное число</param>
+            <param name="A">Комплексный вектор</param>
+            <returns>Комплексный вектор</returns>
+        </member>
+        <member name="M:AI.ComplexVector.op_Subtraction(AI.ComplexVector,System.Double)">
+            <summary>
+            Вычитание числа
+            </summary>
+            <param name="k"> число</param>
+            <param name="A">Комплексный вектор</param>
+            <returns>Комплексный вектор</returns>
+        </member>
         <member name="M:AI.ComplexVector.op_Multiply(AI.ComplexVector,System.Numerics.Complex)">
             <summary>
             Умножение
@@ -13515,6 +13516,38 @@
             <param name="k">Число</param>
             <param name="A">Комплексный вектор</param>
             <returns>Комплексный вектор</returns>
+        </member>
+        <member name="M:AI.ComplexVector.op_Multiply(AI.ComplexVector,AI.Vector)">
+            <summary>
+            Поэлементное умножение на реальный вектор
+            </summary>
+            <param name="A">Первый вектор</param>
+            <param name="B">Второй</param>
+            <returns>Результат</returns>
+        </member>
+        <member name="M:AI.ComplexVector.op_Multiply(AI.Vector,AI.ComplexVector)">
+            <summary>
+            Поэлементное умножение на реальный вектор
+            </summary>
+            <param name="A">Первый вектор</param>
+            <param name="B">Второй</param>
+            <returns>Результат</returns>
+        </member>
+        <member name="M:AI.ComplexVector.op_Multiply(System.Numerics.Complex,AI.ComplexVector)">
+            <summary>
+            Умножение на число
+            </summary>
+            <param name="k">комплексное число</param>
+            <param name="A">Комплексный вектор</param>
+            <returns>Комплексный вектор</returns>
+        </member>
+        <member name="M:AI.ComplexVector.op_Multiply(AI.ComplexVector,AI.ComplexVector)">
+            <summary>
+            Поэлементное умножение
+            </summary>
+            <param name="A">Первый вектор</param>
+            <param name="B">Второй</param>
+            <returns>Результат</returns>
         </member>
         <member name="M:AI.ComplexVector.op_Division(System.Numerics.Complex,AI.ComplexVector)">
             <summary>
@@ -13532,165 +13565,158 @@
             <param name="A">Комплексный вектор</param>
             <returns>Комплексный вектор</returns>
         </member>
-        <member name="M:AI.ComplexVector.op_LogicalNot(AI.ComplexVector)">
+        <member name="M:AI.ComplexVector.op_Division(AI.ComplexVector,AI.ComplexVector)">
             <summary>
-            Комплексно сопряженный вектор
+            Поэлементное деление
             </summary>
-            <param name="A">Комплексный вектор</param>
-            <returns>Комплексный вектор</returns>
+            <param name="A">Первый вектор</param>
+            <param name="B">Второй</param>
+            <returns>Результат</returns>
         </member>
         <member name="M:AI.ComplexVector.Copy">
             <summary>
-            Копирование вектора
+            Vector copy
             </summary>
-            <returns>Возвращает копию</returns>
         </member>
         <member name="M:AI.ComplexVector.Revers">
-             <summary>
-            Реверс вектора
-             </summary>
+            <summary>
+            Vector reverse (mirror image)
+            </summary>
         </member>
         <member name="M:AI.ComplexVector.Shift(System.Int32)">
             <summary>
-            Сдвиг последовательности на определенное число
-            Пример: последовательность 1 2 3 сдвинута на 2
-            это 0 0 1 2 3, на 4 это 0 0 0 0 1 2 3
+             Shift the sequence by a certain number.Example: the sequence 1 2 3 is shifted by 2 - this is {0 0 1 2 3}, by 4 - {0 0 0 0 1 2 3}
             </summary>
-            <param name="valueShift"> На сколько сдвинуть</param>
-            <returns>возвращает вектор длинны Count+valueShift</returns>
+            <param name="valueShift">Shift amount</param>
         </member>
         <member name="M:AI.ComplexVector.FurCentr">
             <summary>
-            Центровка массива значений полученных при преобразовании Фурье
+            Centering an array of values ​​obtained by the Fourier transform
             </summary>
         </member>
         <member name="M:AI.ComplexVector.ImgToVector">
             <summary>
-            Возвращает вектор мнимой части комплексного вектора
+            Returns the vector of the imaginary part of a complex vector
             </summary>
-            <returns></returns>
         </member>
         <member name="M:AI.ComplexVector.RealToVector">
             <summary>
-            Возвращает вектор действительной части комплексного вектора
+            Returns the vector of the real part of a complex vector
             </summary>
-            <returns></returns>
         </member>
         <member name="M:AI.ComplexVector.PhaseToVector">
             <summary>
-            Возвращает вектор фаз комплексного вектора
+            Returns the phase vector of a complex vector
             </summary>
-            <returns></returns>
         </member>
         <member name="M:AI.ComplexVector.MagnitudeToVector">
             <summary>
-            Возвращает вектор модулей комплексного вектора
+            Returns the modulus vector of a complex vector
             </summary>
-            <returns></returns>
         </member>
-        <member name="M:AI.ComplexVector.Decim(System.Int32)">
+        <member name="M:AI.ComplexVector.Decimation(System.Int32)">
             <summary>
-            Децимация(прореживание) вектора
+            Decimation (thinning) vector
             </summary>
-            <param name="kDecim">Коэффициент децимации</param>
-            <returns></returns>
+            <param name="kDecim">Decimation factor</param>
         </member>
         <member name="M:AI.ComplexVector.AddSimmetr">
             <summary>
-            Добавление отраженного вектора
+            Adding a reflected Vector
             </summary>
-            <returns></returns>
         </member>
         <member name="M:AI.ComplexVector.InterpolayrZero(System.Int32)">
             <summary>
-            Интерполяция поленомом нулевого порядка
+            Interpolation by a polynomial of order zero
             </summary>
-            <param name="kInterp">коэффициент интерполяции</param>
-            <returns></returns>
+            <param name="kInterp">Interpolation factor</param>
         </member>
         <member name="M:AI.ComplexVector.ToList">
             <summary>
-            Преобразование вектора в структуру типа List"Complex" 
+            Convert vector to list
             </summary>
         </member>
         <member name="M:AI.ComplexVector.Transform(System.Func{System.Numerics.Complex,System.Numerics.Complex})">
             <summary>
-            Преобразование вектора
+            Element-wise vector transformation
             </summary>
-            <param name="func">Функция преобразования</param>
-            <returns></returns>
+            <param name="func">Conversion function</param>
         </member>
         <member name="M:AI.ComplexVector.TransformSelf(System.Func{System.Numerics.Complex,System.Numerics.Complex})">
             <summary>
-            Преобразование вектора
+            Element-wise vector transformation
             </summary>
-            <param name="func">Функция преобразования</param>
-            <returns></returns>
+            <param name="func">Conversion function</param>
         </member>
         <member name="M:AI.ComplexVector.ComplexConjugate">
             <summary>
-            Комплексно сопряженное число
+            Complex conjugate number
             </summary>
         </member>
         <member name="M:AI.ComplexVector.ComplexConjugateSelf">
             <summary>
-            Комплексно сопряженное число
+            Complex conjugate number
             </summary>
         </member>
         <member name="M:AI.ComplexVector.Save(System.String)">
             <summary>
-            Сохранение комплексного вектора
+            Saving a complex vector
             </summary>
-            <param name="path">Путь до файла</param>
+            <param name="path">File path</param>
         </member>
         <member name="M:AI.ComplexVector.Open(System.String)">
             <summary>
-            Загрузка комплексного вектора
+            Loading a complex vector
             </summary>
-            <param name="path">Путь до файла</param>		
+            <param name="path">File path</param>	
         </member>
         <member name="M:AI.ComplexVector.ComplexVectorPhaseMagn(AI.Vector,AI.Vector)">
             <summary>
-            Преобразование вектора фаз и амплитуд в комплексный вектор
+            Converting the vector of phases and amplitudes into a complex vector
             </summary>
-            <param name="magn">Вектор амплитуд</param>
-            <param name="phase">Вектор фаз(рад)</param>
+            <param name="magn">Amplitude vector</param>
+            <param name="phase"> Phase vector(rad)</param>
         </member>
         <member name="M:AI.ComplexVector.ComplexVectorPhaseDegMagnDb(AI.Vector,AI.Vector,AI.DbType)">
             <summary>
-            Преобразование вектора фаз и амплитуд в комплексный вектор
+            Converting the vector of phases and amplitudes into a complex vector
             </summary>
-            <param name="magnDb">Вектор амплитуд(дб)</param>
-            <param name="phaseDeg">Вектор фаз(градусы)</param>
+            <param name="magnDb">Amplitude vector(db)</param>
+            <param name="phaseDeg"> Phase vector(deg)</param>
             <param name="dbType">Тип дб по энергия/амплитуда</param>
         </member>
         <member name="M:AI.ComplexVector.TransformVectorX(AI.Vector,System.Func{System.Double,System.Numerics.Complex})">
             <summary>
-            Преобразование вектора(Используется вектор вещественных аргументов)
+            Vector transformation(A vector of real arguments is used)
             </summary>
-            <param name="transformFunc">Функция преобразования, фунция от значения вектора аргументов</param>
-            <param name="x">Вектор аргументов</param>
+            <param name="transformFunc">Conversion function, a function of the value of a vector of arguments</param>
+            <param name="x">Argument vector</param>
         </member>
         <member name="M:AI.ComplexVector.TransformVectorX(AI.ComplexVector,System.Func{System.Numerics.Complex,System.Numerics.Complex})">
             <summary>
-            Преобразование вектора(Используется вектор комплексных аргументов)
+            Vector transformation(Using a vector of complex arguments)
             </summary>
-            <param name="transformFunc">Функция преобразования, фунция от значения вектора аргументов</param>
-            <param name="x">Вектор аргументов</param>
+            <param name="transformFunc"> Conversion function, a function of the value of a vector of arguments</param>
+            <param name="x">Argument vector</param>
+        </member>
+        <member name="M:AI.ComplexVector.Mean">
+            <summary>
+            Arithmetic mean of a complex vector
+            </summary>
         </member>
         <member name="T:AI.DbType">
             <summary>
-            Тип децибелов
+            Decibel type
             </summary>
         </member>
         <member name="F:AI.DbType.Energy">
             <summary>
-            Энергетический
+            Energetic
             </summary>
         </member>
         <member name="F:AI.DbType.Ampl">
             <summary>
-            Амплитудный
+            Amplitude
             </summary>
         </member>
         <member name="T:AI.Correlation">
@@ -13701,27 +13727,24 @@
         </member>
         <member name="M:AI.Correlation.CrossCorrelation(AI.Vector,AI.Vector)">
             <summary>
-            Взаимокорелляция двух действительных векторов
+            Cross-correlation of two real vectors
             </summary>
-            <param name="A">Первый вектор</param>
-            <param name="B">Второй вектор</param>
-            <returns>Возвращает отсчеты ВКФ</returns>
+            <param name="A">First vector</param>
+            <param name="B">Second vector</param>
         </member>
         <member name="M:AI.Correlation.CrossCorrelation(AI.VectorFloat,AI.VectorFloat)">
             <summary>
-            Взаимокорелляция двух действительных векторов
+            Cross-correlation of two real vectors
             </summary>
-            <param name="A">Первый вектор</param>
-            <param name="B">Второй вектор</param>
-            <returns>Возвращает отсчеты ВКФ</returns>
+            <param name="A">First vector</param>
+            <param name="B">Second vector</param>
         </member>
         <member name="M:AI.Correlation.CrossCorrelation(AI.ComplexVector,AI.ComplexVector)">
             <summary>
-            Взаимокорелляция двух комплексных векторов
+            Cross-correlation of two complex vectors
             </summary>
-            <param name="A">Первый вектор</param>
-            <param name="B">Второй вектор</param>
-            <returns>Возвращает отсчеты ВКФ</returns>
+            <param name="A">First vector</param>
+            <param name="B">Second vector</param>
         </member>
         <member name="M:AI.Correlation.AutoCorrelation(AI.Vector)">
             <summary>
@@ -13743,23 +13766,6 @@
             </summary>
             <param name="A">Вектор</param>
             <returns>Возвращает осчеты АКФ</returns>	
-        </member>
-        <member name="T:AI.Calculator">
-            <summary>
-            Калькулятор
-            </summary>
-        </member>
-        <member name="M:AI.Calculator.#ctor">
-            <summary>
-            Калькулятор
-            </summary>
-        </member>
-        <member name="M:AI.Calculator.Calculate(System.String)">
-            <summary>
-            Вычисление строки
-            </summary>
-            <param name="strExpression">Выражение</param>
-            <returns>Ответ</returns>
         </member>
         <member name="T:AI.ExtensionMath">
             <summary>
@@ -14151,36 +14157,6 @@
             Методы расширения из AI.dll
             </summary>
         </member>
-        <member name="M:AI.ExtensionMath.ExpressionToDouble(System.String)">
-            <summary>
-            Методы расширения из AI.dll
-            </summary>
-        </member>
-        <member name="M:AI.ExtensionMath.ExpressionToInt(System.String)">
-            <summary>
-            Методы расширения из AI.dll
-            </summary>
-        </member>
-        <member name="M:AI.ExtensionMath.ExpressionToLong(System.String)">
-            <summary>
-            Методы расширения из AI.dll
-            </summary>
-        </member>
-        <member name="M:AI.ExtensionMath.ExpressionToByte(System.String)">
-            <summary>
-            Методы расширения из AI.dll
-            </summary>
-        </member>
-        <member name="M:AI.ExtensionMath.ExpressionToDecimal(System.String)">
-            <summary>
-            Методы расширения из AI.dll
-            </summary>
-        </member>
-        <member name="M:AI.ExtensionMath.ExpressionToFloat(System.String)">
-            <summary>
-            Методы расширения из AI.dll
-            </summary>
-        </member>
         <member name="M:AI.ExtensionMath.GetDimention(AI.Vector[],System.Int32)">
             <summary>
             Getting the vector of the desired coordinate from the array of vectors
@@ -14297,7 +14273,7 @@
             Вычисляет интегральную функцию действительный вектор
             </summary>
             <param name="A">Входной вектор</param>
-            <param name="fd">Частота дискретизации</param>
+            <param name="fd">Sampling frequency</param>
         </member>
         <member name="M:AI.Functions.Integral(AI.ComplexVector)">
             <summary>
@@ -14316,14 +14292,14 @@
             Вычисляет диференциальную функцию действительный вектор
             </summary>
             <param name="A"> Входной вектор</param>   
-            <param name="fd"> Частота дискретизации</param>
+            <param name="fd"> Sampling frequency</param>
         </member>
         <member name="M:AI.Functions.DiffWithOutF(AI.Vector,System.Double)">
             <summary>
             Вычисляет диференциальную функцию действительный вектор (без первого отсчета)
             </summary>
             <param name="A"> Входной вектор</param>
-            <param name="fd"> Частота дискретизации</param>
+            <param name="fd"> Sampling frequency</param>
         </member>
         <member name="M:AI.Functions.Diff(AI.ComplexVector)">
             <summary>
@@ -15754,7 +15730,7 @@
         </member>
         <member name="F:AI.Sound.sampleRate">
             <summary>
-            Частота дискретизации
+            Sampling frequency
             </summary>
         </member>
         <member name="F:AI.Sound.fmtAvgBPS">
@@ -16090,14 +16066,14 @@
             <param name="vector">Входной вектор</param>
             <returns></returns>
         </member>
-        <member name="M:AI.Statistics.Statistic.rand(System.Int32)">
+        <member name="M:AI.Statistics.Statistic.Rand(System.Int32)">
             <summary>
             Генератор случайных чисел с равномерным распределением
             </summary>
             <param name="n">Длинна вектора</param>
             <returns>Возвращает вектор случайных чисел</returns>
         </member>
-        <member name="M:AI.Statistics.Statistic.rand(System.Int32,System.Random)">
+        <member name="M:AI.Statistics.Statistic.Rand(System.Int32,System.Random)">
             <summary>
             Генератор случайных чисел с равномерным распределением
             </summary>
@@ -16117,7 +16093,7 @@
             </summary>
             <returns>Возвращает норм. распред величину СКО = 1, M = 0</returns>
         </member>
-        <member name="M:AI.Statistics.Statistic.randNormP(System.Int32,System.Int32)">
+        <member name="M:AI.Statistics.Statistic.RandNormP(System.Int32,System.Int32)">
             <summary>
             Генератор случайных чисел с нормальным распределением
             </summary>
@@ -16125,7 +16101,7 @@
             <param name="iter">Число итераций</param>
             <returns>Возвращает вектор случайных чисел</returns>
         </member>
-        <member name="M:AI.Statistics.Statistic.randNormP(System.Int32,System.Random,System.Int32)">
+        <member name="M:AI.Statistics.Statistic.RandNormP(System.Int32,System.Random,System.Int32)">
             <summary>
             Генератор случайных чисел с нормальным распределением
             </summary>
@@ -16134,14 +16110,14 @@
             <param name="iter">Число итераций</param>
             <returns>Возвращает вектор случайных чисел</returns>
         </member>
-        <member name="M:AI.Statistics.Statistic.randNorm(System.Int32)">
+        <member name="M:AI.Statistics.Statistic.RandNorm(System.Int32)">
             <summary>
             Генератор случайных чисел с нормальным распределением
             </summary>
             <param name="n">Длинна вектора</param>
             <returns>Возвращает вектор случайных чисел</returns>
         </member>
-        <member name="M:AI.Statistics.Statistic.randNorm(System.Int32,System.Random)">
+        <member name="M:AI.Statistics.Statistic.RandNorm(System.Int32,System.Random)">
             <summary>
             Генератор случайных чисел с нормальным распределением
             </summary>
@@ -16149,7 +16125,7 @@
             <param name="rnd">Генератор случайных чисел</param>
             <returns>Возвращает вектор случайных чисел</returns>
         </member>
-        <member name="M:AI.Statistics.Statistic.rand(System.Int32,System.Int32)">
+        <member name="M:AI.Statistics.Statistic.Rand(System.Int32,System.Int32)">
             <summary>
             Cоздает матрицу с равномерно распределенными значениями
             размерности m на n
@@ -16157,7 +16133,7 @@
             <param name="m">Количество строк</param>
             <param name="n">Количество столбцов</param>
         </member>
-        <member name="M:AI.Statistics.Statistic.rand(System.Int32,System.Int32,System.Random)">
+        <member name="M:AI.Statistics.Statistic.Rand(System.Int32,System.Int32,System.Random)">
             <summary>
             Cоздает матрицу с равномерно распределенными значениями
             размерности m на n
@@ -16166,7 +16142,7 @@
             <param name="n">Количество столбцов</param>
             <param name="random">Pseudo-random number generator</param>
         </member>
-        <member name="M:AI.Statistics.Statistic.rand(System.Int32,System.Int32,System.Int32)">
+        <member name="M:AI.Statistics.Statistic.Rand(System.Int32,System.Int32,System.Int32)">
             <summary>
             Тензор
             </summary>
@@ -16174,7 +16150,7 @@
             <param name="w">Ширина</param>
             <param name="d">Глубина</param>
         </member>
-        <member name="M:AI.Statistics.Statistic.rand(System.Int32,System.Int32,System.Int32,System.Random)">
+        <member name="M:AI.Statistics.Statistic.Rand(System.Int32,System.Int32,System.Int32,System.Random)">
             <summary>
             Тензор
             </summary>
@@ -16184,7 +16160,7 @@
             <param name="random"></param>
             <returns></returns>
         </member>
-        <member name="M:AI.Statistics.Statistic.randNorm(System.Int32,System.Int32,System.Int32)">
+        <member name="M:AI.Statistics.Statistic.RandNorm(System.Int32,System.Int32,System.Int32)">
             <summary>
             Тензор
             </summary>
@@ -16200,7 +16176,7 @@
             <param name="data">Данные</param>
             <returns></returns>
         </member>
-        <member name="M:AI.Statistics.Statistic.randNorm(System.Int32,System.Int32,System.Random)">
+        <member name="M:AI.Statistics.Statistic.RandNorm(System.Int32,System.Int32,System.Random)">
             <summary>
             Cоздает матрицу с нормально распределенными значениями
             размерности m на n
@@ -16209,7 +16185,7 @@
             <param name="n">Количество столбцов</param>
             <param name="rn">Pseudo-random number generator</param>
         </member>
-        <member name="M:AI.Statistics.Statistic.randNorm(System.Int32,System.Int32,System.Int32,System.Random)">
+        <member name="M:AI.Statistics.Statistic.RandNorm(System.Int32,System.Int32,System.Int32,System.Random)">
             <summary>
             Тензор
             </summary>
@@ -16230,7 +16206,7 @@
             </summary>
             <param name="vect">Вектор</param>
         </member>
-        <member name="M:AI.Statistics.Statistic.rand(System.Int16)">
+        <member name="M:AI.Statistics.Statistic.Rand(System.Int16)">
             <summary>
             Cоздает матрицу с равномерно распределенными значениями
             размерности n на n
@@ -16271,7 +16247,7 @@
             <param name="vector">вектор, содержащий отсчеты случайной величины</param>
             <returns></returns>
         </member>
-        <member name="M:AI.Statistics.Statistic.randNorm(System.Int32,System.Int32)">
+        <member name="M:AI.Statistics.Statistic.RandNorm(System.Int32,System.Int32)">
             <summary>
             Cоздает матрицу с нормально распределенными значениями
             размерности m на n
@@ -16279,13 +16255,13 @@
             <param name="m">Количество строк</param>
             <param name="n">Количество столбцов</param>
         </member>
-        <member name="M:AI.Statistics.Statistic.randNorm(System.Int16)">
+        <member name="M:AI.Statistics.Statistic.RandNorm(System.Int16)">
             <summary>
             Cоздает матрицу с нормально распределенными значениями
             размерности n на n
             </summary>
         </member>
-        <member name="M:AI.Statistics.Statistic.randNorm">
+        <member name="M:AI.Statistics.Statistic.RandNorm">
             <summary>
             Генератор случайных чисел с нормальным распределением
             </summary>
@@ -16415,7 +16391,7 @@
             Средняя частота сигнала
             </summary>
             <param name="signal">Сигнал</param>
-            <param name="fd">Частота дискретизации</param>
+            <param name="fd">Sampling frequency</param>
             <returns>Средняя частота [Гц]</returns>
         </member>
         <member name="M:AI.Statistics.Statistic.DivFreq(AI.Vector)">
@@ -16878,14 +16854,6 @@
             </summary>
             <param name="textPath">Путь до файла</param>
         </member>
-        <member name="M:AI.Vector.op_Multiply(AI.Vector,AI.Vector)">
-            <summary>
-            Умножение
-            </summary>
-            <param name="A"></param>
-            <param name="B"></param>
-            <returns></returns>
-        </member>
         <member name="M:AI.Vector.op_Addition(AI.Vector,AI.Vector)">
             <summary>
             Сложение
@@ -16926,6 +16894,14 @@
             <param name="k"></param>
             <returns></returns>
         </member>
+        <member name="M:AI.Vector.op_Subtraction(AI.Vector,AI.Vector)">
+            <summary>
+            Вычитание
+            </summary>
+            <param name="A"></param>
+            <param name="B"></param>
+            <returns></returns>
+        </member>
         <member name="M:AI.Vector.op_UnaryNegation(AI.Vector)">
             <summary>
             Отрицание
@@ -16933,17 +16909,9 @@
             <param name="A"></param>
             <returns></returns>
         </member>
-        <member name="M:AI.Vector.op_Division(AI.Vector,AI.Vector)">
+        <member name="M:AI.Vector.op_Multiply(AI.Vector,AI.Vector)">
             <summary>
-            Деление
-            </summary>
-            <param name="A"></param>
-            <param name="B"></param>
-            <returns></returns>
-        </member>
-        <member name="M:AI.Vector.op_Subtraction(AI.Vector,AI.Vector)">
-            <summary>
-            Вычитание
+            Умножение
             </summary>
             <param name="A"></param>
             <param name="B"></param>
@@ -16963,6 +16931,14 @@
             </summary>
             <param name="A"></param>
             <param name="k"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AI.Vector.op_Division(AI.Vector,AI.Vector)">
+            <summary>
+            Деление
+            </summary>
+            <param name="A"></param>
+            <param name="B"></param>
             <returns></returns>
         </member>
         <member name="M:AI.Vector.op_Division(System.Double,AI.Vector)">
@@ -17005,36 +16981,30 @@
             <param name="B"></param>
             <returns></returns>
         </member>
-        <member name="M:AI.Vector.op_BitwiseAnd(AI.Vector,AI.Vector)">
-            <summary>
-            Свертка
-            </summary>
-            <param name="A"></param>
-            <param name="B"></param>
-            <returns></returns>
-        </member>
-        <member name="M:AI.Vector.op_BitwiseOr(AI.Vector,AI.Vector)">
-            <summary>
-            Корреляция
-            </summary>
-            <param name="A"></param>
-            <param name="B"></param>
-            <returns></returns>
-        </member>
-        <member name="M:AI.Vector.op_LogicalNot(AI.Vector)">
-            <summary>
-            Автокорреляция
-            </summary>
-            <param name="A"></param>
-            <returns></returns>
-        </member>
         <member name="M:AI.Vector.op_Equality(AI.Vector,AI.Vector)">
             <summary>
             Проверка равенства
             </summary>
-            <param name="A"></param>
-            <param name="B"></param>
-            <returns></returns>
+        </member>
+        <member name="M:AI.Vector.op_Equality(AI.Vector,System.Object)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AI.Vector.op_Equality(System.Object,AI.Vector)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AI.Vector.op_Inequality(AI.Vector,System.Object)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AI.Vector.op_Inequality(System.Object,AI.Vector)">
+            <summary>
+            
+            </summary>
         </member>
         <member name="M:AI.Vector.op_Inequality(AI.Vector,AI.Vector)">
             <summary>
@@ -17320,14 +17290,19 @@
             Минимальное значение по модулю
             </summary>
         </member>
-        <member name="M:AI.Vector.Expend">
+        <member name="M:AI.Vector.Mean">
             <summary>
-            Мат. ожидание
+            Arithmetic mean of a vector
             </summary>
         </member>
         <member name="M:AI.Vector.Sum">
             <summary>
             Сумма
+            </summary>
+        </member>
+        <member name="M:AI.Vector.IsContainNan">
+            <summary>
+            Does the uncertainty vector contain
             </summary>
         </member>
         <member name="M:AI.Vector.Dispers">
@@ -17361,6 +17336,14 @@
             </summary>
             <param name="transformFunc">Функция преобразования, функция от значения вектора аргументов</param>
             <param name="x">Вектор аргументов</param>
+        </member>
+        <member name="M:AI.Vector.Crosser(AI.Vector,AI.Vector,System.Func{System.Double,System.Double,System.Double})">
+            <summary>
+            Creates one vector from two vectors by applying the cross function for each element.
+            </summary>
+            <param name="x">First vector</param>
+            <param name="y">Second vector</param>
+            <param name="cross">Mixing function(crossing)</param>
         </member>
         <member name="M:AI.Vector.SummWithCol(AI.Vector[],System.Int32)">
             <summary>
@@ -17411,7 +17394,7 @@
             <summary>
             Массив отсчетов времени
             </summary>
-            <param name="fd">Частота дискретизации</param>
+            <param name="fd">Sampling frequency</param>
             <param name="t">Время (сек)</param>
         </member>
         <member name="M:AI.Vector.GetWindows(AI.Vector,System.Int32,System.Int32)">
@@ -18904,7 +18887,7 @@
             <summary>
             Массив отсчетов времени
             </summary>
-            <param name="fd">Частота дискретизации</param>
+            <param name="fd">Sampling frequency</param>
             <param name="t">Время (сек)</param>
         </member>
         <member name="M:AI.VectorFloat.GetWindows(AI.VectorFloat,System.Int32,System.Int32)">
@@ -19891,37 +19874,43 @@
             Свертка
             </summary>
             <param name="signal">Сигнал</param>
-            <param name="Ht">Импульсная характеристика</param>
+            <param name="Ht">Impulse response</param>
         </member>
         <member name="M:AI.Convolution.DirectConvolution(AI.VectorFloat,AI.VectorFloat)">
             <summary>
             Свертка
             </summary>
             <param name="signal">Сигнал</param>
-            <param name="Ht">Импульсная характеристика</param>
+            <param name="Ht">Impulse response</param>
         </member>
         <member name="M:AI.Convolution.ConvolutionNormal(AI.Vector,AI.Vector)">
             <summary>
             Свертка
             </summary>
             <param name="signal">Сигнал</param>
-            <param name="Ht">Импульсная характеристика</param>
+            <param name="Ht">Impulse response</param>
         </member>
         <member name="M:AI.Convolution.DirectConvolution(AI.Vector,AI.Vector,System.Double)">
             <summary>
             Свертка
             </summary>
             <param name="signal">Сигнал</param>
-            <param name="ht">Импульсная характеристика</param>
-            <param name="fd">Частота дискретизации</param>
+            <param name="ht">Impulse response</param>
+            <param name="fd">Sampling frequency</param>
         </member>
         <member name="M:AI.Convolution.StWithHt(AI.Vector,System.Int32)">
             <summary>
-            Создание нового вектора отсчета сигнала
+            Creating a new signal reference vector
             </summary>
-            <param name="st">Сигнал</param>
-            <param name="htLen">Длинна импульсной характеристики</param>
-            <returns>Новый вектор</returns>
+            <param name="st">Signal</param>
+            <param name="htLen">Impulse response length</param>
+        </member>
+        <member name="M:AI.Convolution.StWithHt(AI.ComplexVector,System.Int32)">
+            <summary>
+            Creating a new signal reference vector
+            </summary>
+            <param name="st">Signal</param>
+            <param name="htLen">Impulse response length</param>
         </member>
         <member name="M:AI.Convolution.StWithHt(AI.VectorFloat,System.Int32)">
             <summary>

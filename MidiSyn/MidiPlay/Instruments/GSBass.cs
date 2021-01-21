@@ -17,7 +17,7 @@ namespace Midi.Instruments
 
         protected override Vector Postprocessing(Vector inp, Vector freq, Vector w)
         {
-            Vector k = Filters.FilterKontur(AI.Statistics.Statistic.rand(inp.Count), 3, freq[0], Fd);
+            Vector k = Filters.FilterKontur(AI.Statistics.Statistic.Rand(inp.Count), 3, freq[0], Fd);
             k /= k.Max();
             return  inp*(1+k) * w;
         }
