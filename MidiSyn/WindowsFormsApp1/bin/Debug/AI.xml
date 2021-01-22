@@ -6441,6 +6441,11 @@
             Hidden Markov model with state extraction based on the k-means algorithm
             </summary>
         </member>
+        <member name="P:AI.ML.HMM.KMeanHMM.KMean">
+            <summary>
+            Extractor based on the k-means algorithm
+            </summary>
+        </member>
         <member name="M:AI.ML.HMM.KMeanHMM.#ctor(System.Int32)">
             <summary>
             Hidden Markov model with state extraction based on the k-means algorithm
