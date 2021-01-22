@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using KHMM = AI.ML.HMM.KMeanHMM;
 using Encoder = AI.ML.NeuralNetwork.Architectures.Encoders.VectorWithPositionEncoder;
 using Decoder = AI.ML.NeuralNetwork.Architectures.ClassifierNet.VectorPredictorStates;
