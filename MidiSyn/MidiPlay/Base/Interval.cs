@@ -57,6 +57,7 @@ namespace Midi.Base
 
         public static string AddTone(string note, float tone)
         {
+            var noteLen = Constants._notesAll.Length;
             var lenF = tone * 2;
             var len = (int)lenF;
             var ind = Array.IndexOf(Constants._notesAll, note);
@@ -68,9 +69,9 @@ namespace Midi.Base
             ind += len;
             if (ind < 0)
             {
-                ind += 5 * (Math.Abs(ind) / 5 + 1);
+                ind += noteLen * (Math.Abs(ind) / noteLen + 1);
             }
-            ind %= Constants._notesAll.Length;
+            ind %= noteLen;
 
             return Constants._notesAll[ind];
         }
