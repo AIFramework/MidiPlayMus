@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSFTest", "SSFTest\SSFTest.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Midi", "MidiPlay\Midi.csproj", "{9D61202E-BA35-4946-89B3-B6F2FA2EFB98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AI", "D:\Проекты\git\AINetFrame\AI\AI.csproj", "{165D777E-8A8E-450B-891A-9046913B6143}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AI", "..\..\AINetFrame\AI\AI.csproj", "{165D777E-8A8E-450B-891A-9046913B6143}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -21,11 +21,12 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
-            
-            NoteSeq noteS = NoteSeq.MidiFileToNoteSequence("2020-12-29_213219_3.mid");
-            Vector[] data = noteS.ToVectors();
-            var melody = new Midi2Wav(noteS, Setting.Fd);
-            melody.Play();
+
+            NoteHelper.ParseInverval(null);
+            //NoteSeq noteS = NoteSeq.MidiFileToNoteSequence("2020-12-29_213219_3.mid");
+            //Vector[] data = noteS.ToVectors();
+            //var melody = new Midi2Wav(noteS, Setting.Fd);
+            //melody.Play();
         }
 
         private void Form1_Load(object sender, EventArgs e)
