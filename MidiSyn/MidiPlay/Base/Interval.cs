@@ -19,25 +19,6 @@ namespace Midi.Base
             Tone = tone;
         }
 
-        public static int GetBaseNote(IEnumerable<string> notes)
-        {
-            int ind = -1;
-            string min = null;
-
-            int i = 0;
-            foreach (var note in notes)
-            {
-                if(ind == -1 || string.Compare(note, min) < 0)
-                {
-                    min = note;
-                    ind = i;
-                }
-                i++;
-            }
-
-            return ind;
-        }
-
         /// <summary>
         /// Recognize tone of interval (noteGoal must be more or equal than noteBase)
         /// </summary>

@@ -54,7 +54,6 @@ namespace Midi.NoteSeqData
             MidiFile midiFile = new MidiFile(path);
 
             List<List<MidiEvent>> midiEvents = GetMidiEvents(midiFile);
-            List<List<NoteEvent>> noteEvents = new List<List<NoteEvent>>();
             decimal currentMicroSecondsPerTick = 0m;
             foreach (List<MidiEvent> midiEvent in midiEvents)
             {
@@ -65,9 +64,6 @@ namespace Midi.NoteSeqData
             return noteSeq;
         }
 
-
-
-
         private static List<List<MidiEvent>> GetMidiEvents(MidiFile midiFile)
         {
             List<List<MidiEvent>> channels = new List<List<MidiEvent>>();
@@ -77,6 +73,23 @@ namespace Midi.NoteSeqData
             }
 
             return channels;
+        }
+
+        private static NoteSeq ToNoteSeq(Vector[] vecs)
+        {
+            NoteSeq seq = new NoteSeq();
+            float len = 0;
+            foreach(var vec in vecs)
+            {
+                var bagOfWords = vec.GetInterval(0, Midi.Base.Constants._tonesCount);
+                var noteParams = vec.GetInterval(Midi.Base.Constants._tonesCount, vec.Count);
+                var note = NoteForSeq.NoteFromVector(len, noteParams);
+                seq.Add(note);
+
+                len += note.EndTime;
+            }
+
+            return seq;
         }
 
         private void Sort()
