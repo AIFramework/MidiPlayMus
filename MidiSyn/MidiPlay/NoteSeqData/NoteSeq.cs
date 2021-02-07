@@ -83,7 +83,14 @@ namespace Midi.NoteSeqData
         {
             if (!IsSorted)
             {
-                Notes.Quicksort((left, right) => right.StartTime > left.StartTime);
+                Notes.Sort((left, right) => {
+                    var dif = right.StartTime - left.StartTime;
+                    if (dif > 0)
+                        return 1;
+                    else if (dif < 0)
+                        return -1;
+                    else return 0;
+                });
                 IsSorted = true;
             }
         }

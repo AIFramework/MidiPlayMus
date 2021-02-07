@@ -71,7 +71,7 @@ namespace Midi.Data
 
     public class NoteWithTime 
     {
-        public Note Note { get; set; }
+        public NoteVec Note { get; set; }
         public double StartTime { get; set; }
         public double EndTime { get; set; }
         public double Volume { get; set; }

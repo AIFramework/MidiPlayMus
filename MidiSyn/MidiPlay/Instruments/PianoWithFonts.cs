@@ -26,14 +26,14 @@ namespace Midi.Instruments
             _fd = fd;
         }
 
-        public Note GetNoteSignal(string name, int octave, double time)
+        public NoteVec GetNoteSignal(string name, int octave, double time)
         {
             string nameNote = $"{name}_{octave}";
             double freq = BaseFreqsNote.GetFreqNote(name, octave);
             int len = (int)(time * _fd);
             Vector window = PhaseCorrectingWindow.Trapezoid(len, 0.07);
             Vector signal = tFont.GetSignal(freq).CutAndZero(len)*window;
-            return new Note(nameNote, time, signal);
+            return new NoteVec(nameNote, time, signal);
         }
     }
 }

@@ -32,7 +32,7 @@ namespace Midi.Instruments
         /// <param name="octave"></param>
         /// <param name="time"></param>
         /// <returns></returns>
-        public virtual Note GetNoteSignal(string name, int octave, double time)
+        public virtual NoteVec GetNoteSignal(string name, int octave, double time)
         {
 
             string nameNote = $"{name}_{octave}";
@@ -44,7 +44,7 @@ namespace Midi.Instruments
             Vector window = PhaseCorrectingWindow.Trapezoid(steps, 0.02);
             Vector sig = Generate(steps, freq, window);
 
-            return new Note(nameNote, time, sig);
+            return new NoteVec(nameNote, time, sig);
         }
 
         // Генерация звуковой волны

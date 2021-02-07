@@ -3,37 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Midi.Extensions;
 
 namespace Midi.Base
 {
-    public class Interval : IInterval
-    {
+    public class Interval
+    { 
         public string Note { get; set; }
 
         public float Tone { get; }
 
-        public IntervalType IntervalType { get; }
-
-        public Interval(string note, float tone, IntervalType intervalType)
+        public Interval(string note, float tone)
         {
             Note = note;
             Tone = tone;
-            IntervalType = intervalType;
-        }
-
-        public bool HasInterval(IEnumerable<string> notes)
-        {
-            var notesSrc = GetNotes();
-            var a = notesSrc.OrderBy(x => x);
-            var b = notes.OrderBy(x => x);
-
-            return Enumerable.SequenceEqual(a, b);
-        }
-
-        public IEnumerable<string> GetNotes()
-        {
-            yield return Note;
-            yield return AddTone(Note, Tone);
         }
 
         public static int GetBaseNote(IEnumerable<string> notes)
@@ -55,25 +38,51 @@ namespace Midi.Base
             return ind;
         }
 
-        public static string AddTone(string note, float tone)
+        /// <summary>
+        /// Recognize tone of interval (noteGoal must be more or equal than noteBase)
+        /// </summary>
+        /// <param name="noteBase">(examle: D#1)</param>
+        /// <param name="noteGoal">(examle: F#5)</param>
+        /// <returns></returns>
+        public static float RecognizeTone(string noteBase, string noteGoal)
         {
-            var noteLen = Constants._notesAll.Length;
-            var lenF = tone * 2;
-            var len = (int)lenF;
-            var ind = Array.IndexOf(Constants._notesAll, note);
-            if (lenF != len)
-                throw new Exception("tone must be 0.5x, where x is integer");
-            if (ind == -1)
-                throw new Exception($"{note} is not note");
+            int l = Constants._notesAll.Length;
+            int octaveBase, octaveGoal;
+            TryParseOctave(noteBase, out octaveBase);
+            TryParseOctave(noteGoal, out octaveGoal);
 
-            ind += len;
-            if (ind < 0)
+            noteBase = noteBase.Substring(0, noteBase.Length - $"{octaveBase}".Length);
+            noteGoal = noteGoal.Substring(0, noteGoal.Length - $"{octaveGoal}".Length);
+
+            var indBase = Constants._notesAll.IndexOf(noteBase);
+            var indGoal = Constants._notesAll.IndexOf(noteGoal);
+
+            indBase = (octaveBase - 1) * l + indBase;
+            indGoal = (octaveGoal - 1) * l + indGoal;
+
+            return (indGoal - indBase) / 2f;
+        }
+
+        private static bool TryParseOctave(string str, out int num)
+        {
+            num = int.MinValue;
+            var pos = str.Length;
+            for (int i = str.Length - 1; i > -1; i--)
             {
-                ind += noteLen * (Math.Abs(ind) / noteLen + 1);
+                if (!int.TryParse(str[i] + "", out _))
+                {
+                    pos = i + 1;
+                    break;
+                }
             }
-            ind %= noteLen;
 
-            return Constants._notesAll[ind];
+            if (pos == str.Length)
+                return false;
+
+            str = str.Substring(pos);
+            num = int.Parse(str);
+
+            return true;
         }
     }
 }

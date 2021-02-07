@@ -60,17 +60,7 @@
     <Compile Include="Base\AccordType.cs" />
     <Compile Include="Base\Constants.cs" />
     <Compile Include="Base\IAccord.cs" />
-    <Compile Include="Base\IInterval.cs" />
     <Compile Include="Base\Interval.cs" />
-    <Compile Include="Base\Intervals\Prima\DoubleEnlargedPrima.cs" />
-    <Compile Include="Base\Intervals\Prima\EnlargedPrima.cs" />
-    <Compile Include="Base\Intervals\Prima\PurePrima.cs" />
-    <Compile Include="Base\Intervals\Second\MinorSecond.cs" />
-    <Compile Include="Base\Intervals\Third\MajorThird.cs" />
-    <Compile Include="Base\Intervals\Third\MinorThird.cs" />
-    <Compile Include="Base\IntervalType.cs" />
-    <Compile Include="NoteHelper.cs" />
-    <Compile Include="Base\ToneType.cs" />
     <Compile Include="Data\ArrayETF.cs" />
     <Compile Include="Data\DatasetGenerate.cs" />
     <Compile Include="Data\ElementTableFont.cs" />
@@ -89,17 +79,17 @@
     <Compile Include="Instruments\TabelNotesGenerator\Generator.cs" />
     <Compile Include="Instruments\TabelNotesGenerator\ToneGenerator.cs" />
     <Compile Include="Midi2Wav.cs" />
-    <Compile Include="Note.cs" />
+    <Compile Include="NoteVec.cs" />
     <Compile Include="NoteGenerator\HMM\HMMNeuroGenerator.cs" />
     <Compile Include="NoteSeqData\Base\Enums.cs" />
-    <Compile Include="NoteSeqData\Base\ExtensionMethod.cs" />
+    <Compile Include="Extensions\ExtensionMethod.cs" />
     <Compile Include="NoteSeqData\Base\MidiConverter.cs" />
     <Compile Include="NoteSeqData\Base\Note.cs" />
-    <Compile Include="NoteSeqData\Base\QSortExtension.cs" />
     <Compile Include="NoteSeqData\Base\SourceInfo.cs" />
     <Compile Include="NoteSeqData\NoteSeq.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Setting.cs" />
+    <Compile Include="ToneConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

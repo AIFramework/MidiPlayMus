@@ -2,7 +2,7 @@
 
 namespace Midi
 {
-    public class Note
+    public class NoteVec
     {
         /// <summary>
         /// Имя ноты
@@ -18,7 +18,7 @@ namespace Midi
         public Vector Signal { get; private set; }
 
 
-        public Note(string name, double time, Vector signal)
+        public NoteVec(string name, double time, Vector signal)
         {
             Time = time;
             Name = name;

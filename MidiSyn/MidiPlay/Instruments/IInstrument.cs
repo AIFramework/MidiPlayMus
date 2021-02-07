@@ -3,6 +3,6 @@
     public interface IInstrument
     {
         void Create(int fd);
-        Note GetNoteSignal(string name, int octave, double time);
+        NoteVec GetNoteSignal(string name, int octave, double time);
     }
 }

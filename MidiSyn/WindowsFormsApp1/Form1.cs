@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Midi.NoteSeqData;
 using System.Diagnostics;
+using Midi.Base;
 
 namespace WindowsFormsApp1
 {
@@ -22,7 +23,8 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
 
-            NoteHelper.ParseInverval(null);
+
+            var v = ToneConverter.ToneToVector(1.5f);
             //NoteSeq noteS = NoteSeq.MidiFileToNoteSequence("2020-12-29_213219_3.mid");
             //Vector[] data = noteS.ToVectors();
             //var melody = new Midi2Wav(noteS, Setting.Fd);

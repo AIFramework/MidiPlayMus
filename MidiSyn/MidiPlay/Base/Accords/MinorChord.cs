@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Midi.Base.Intervals.Third;
 
 namespace Midi.Base.Accords
 {
