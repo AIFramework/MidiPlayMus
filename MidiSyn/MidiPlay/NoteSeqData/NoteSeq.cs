@@ -3,32 +3,32 @@ using Midi.NoteSeqData.Base;
 using NAudio.Midi;
 using System.Collections.Generic;
 using System.Linq;
-using NoteForSeq = Midi.NoteSeqData.Base.Note;
 using Source = Midi.NoteSeqData.Base.SourceInfo;
+using Constants = Midi.NoteBase.Constants;
 
 namespace Midi.NoteSeqData
 {
     public class NoteSeq
     {
 
-        public List<NoteForSeq> Notes { get; private set; }
-        public double TotalTime { get { Sort(); return Notes.Last().EndTime; } private set => TotalTime = value; }
+        public List<Note> Notes { get; private set; }
+        public double TotalTime { get { return GetLastEndTime(); } }
         public Source SourceInfo { get; private set; }
-        private bool IsSorted;
 
+        private bool IsSorted;
 
         public NoteSeq()
         {
-            Notes = new List<NoteForSeq>();
+            Notes = new List<Note>();
         }
 
-        public void Add(NoteForSeq note)
+        public void Add(Note note)
         {
             IsSorted = false;
             Notes.Add(note);
         }
 
-        public void AddRange(IEnumerable<NoteForSeq> notes)
+        public void AddRange(IEnumerable<Note> notes)
         {
             IsSorted = false;
             Notes.AddRange(notes);
@@ -48,7 +48,12 @@ namespace Midi.NoteSeqData
             return vectors;
         }
 
-        public static NoteSeq MidiFileToNoteSequence(string path)
+        /// <summary>
+        /// Load NoteSeq from file
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static NoteSeq LoadMidiAsNoteSequence(string path)
         {
             NoteSeq noteSeq = new NoteSeq();
             MidiFile midiFile = new MidiFile(path);
@@ -57,11 +62,46 @@ namespace Midi.NoteSeqData
             decimal currentMicroSecondsPerTick = 0m;
             foreach (List<MidiEvent> midiEvent in midiEvents)
             {
-                List<NoteForSeq> notes = MidiConverter.ToRealTime(midiEvent, midiFile.DeltaTicksPerQuarterNote, ref currentMicroSecondsPerTick);
+                List<Note> notes = MidiConverter.ToRealTime(midiEvent, midiFile.DeltaTicksPerQuarterNote, ref currentMicroSecondsPerTick);
                 noteSeq.AddRange(notes);
             }
             noteSeq.Sort();
             return noteSeq;
+        }
+
+        public static NoteSeq ToNoteSeq(Vector[] vecs)
+        {
+            NoteSeq seq = new NoteSeq();
+            float len = 0;
+            foreach (var vec in vecs)
+            {
+                var bagOfWords = vec.GetInterval(0, Constants._tonesCount);
+                var noteParams = vec.GetInterval(Constants._tonesCount, vec.Count);
+                var note = Note.NoteFromVector(len, noteParams);
+                seq.Add(note);
+
+                len += note.EndTime;
+            }
+
+            return seq;
+        }
+
+        /// <summary>
+        /// Группировка нот по времени (start time), для выделения аккордов
+        /// </summary>
+        /// <param name="noteSeq"></param>
+        /// <returns></returns>
+        public static Note[][] GroupByTimeStep(NoteSeq noteSeq)
+        {
+            var notes = noteSeq.Notes;
+            var timesteps = notes.GroupBy(x => x.StartTime).ToArray();
+
+            var result = new Note[timesteps.Length][];
+
+            for (int i = 0; i < timesteps.Length; i++)
+                result[i] = timesteps[i].ToArray();
+            
+            return result;
         }
 
         private static List<List<MidiEvent>> GetMidiEvents(MidiFile midiFile)
@@ -75,32 +115,15 @@ namespace Midi.NoteSeqData
             return channels;
         }
 
-        private static NoteSeq ToNoteSeq(Vector[] vecs)
-        {
-            NoteSeq seq = new NoteSeq();
-            float len = 0;
-            foreach(var vec in vecs)
-            {
-                var bagOfWords = vec.GetInterval(0, Midi.Base.Constants._tonesCount);
-                var noteParams = vec.GetInterval(Midi.Base.Constants._tonesCount, vec.Count);
-                var note = NoteForSeq.NoteFromVector(len, noteParams);
-                seq.Add(note);
-
-                len += note.EndTime;
-            }
-
-            return seq;
-        }
-
         private void Sort()
         {
             if (!IsSorted)
             {
                 Notes.Sort((left, right) => {
                     var dif = right.StartTime - left.StartTime;
-                    if (dif > 0)
+                    if (dif < 0)
                         return 1;
-                    else if (dif < 0)
+                    else if (dif > 0)
                         return -1;
                     else return 0;
                 });
@@ -108,6 +131,10 @@ namespace Midi.NoteSeqData
             }
         }
 
-
+        private float GetLastEndTime()
+        {
+            Sort();
+            return Notes.Last().EndTime;
+        }
     }
 }

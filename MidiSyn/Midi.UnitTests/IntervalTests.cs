@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Midi.Base;
+using Midi.NoteBase;
 using NUnit.Framework;
 
 namespace Midi.UnitTests

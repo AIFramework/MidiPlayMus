@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Midi.Base
+namespace Midi.NoteBase
 {
-    public static class Constants
+    public static partial class Constants
     {
         public static readonly string[] _notesBase = { "C", "D", "E", "F", "G", "A", "B" };
         public static readonly string[] _notesAll = { "C", "C#",  "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };

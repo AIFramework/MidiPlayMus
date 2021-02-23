@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Midi.Extensions;
 
-namespace Midi.Base
+namespace Midi.NoteBase
 {
     public class Interval
     { 

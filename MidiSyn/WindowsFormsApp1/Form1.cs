@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Midi.NoteSeqData;
 using System.Diagnostics;
-using Midi.Base;
+using Midi.NoteBase;
 using Midi.NoteSeqData.Base;
 
 namespace WindowsFormsApp1
@@ -23,6 +23,8 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
+
+            var noteSeq = NoteSeq.LoadMidiAsNoteSequence("Cadillac.mid");
 
             var accord = new string[] { "C1", "E2", "B2" };
 

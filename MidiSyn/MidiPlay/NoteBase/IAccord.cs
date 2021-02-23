@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Midi.Base
+namespace Midi.NoteBase
 {
     //public interface IAccord
     //{
