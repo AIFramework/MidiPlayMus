@@ -56,10 +56,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\AINetFrame\AI\AI.csproj">
-      <Project>{165d777e-8a8e-450b-891a-9046913b6143}</Project>
-      <Name>AI</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MidiPlay\Midi.csproj">
       <Project>{9d61202e-ba35-4946-89b3-b6f2fa2efb98}</Project>
       <Name>Midi</Name>

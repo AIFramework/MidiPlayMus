@@ -29,33 +29,22 @@ namespace WindowsFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
-            this.chartVisual1 = new AI.Charts.Control.ChartVisual();
+            this.heatMapControl1 = new AI.Charts.Control.HeatMapControl();
             this.SuspendLayout();
             // 
-            // chartVisual1
+            // heatMapControl1
             // 
-            this.chartVisual1.AutoScroll = true;
-            this.chartVisual1.BackColor = System.Drawing.Color.White;
-            this.chartVisual1.ChartName = "График";
-            this.chartVisual1.ForeColor = System.Drawing.Color.Black;
-            this.chartVisual1.IsContextMenu = true;
-            this.chartVisual1.IsLogScale = false;
-            this.chartVisual1.IsMoove = true;
-            this.chartVisual1.IsScale = true;
-            this.chartVisual1.IsShowXY = true;
-            this.chartVisual1.LabelX = "Ось Х";
-            this.chartVisual1.LabelY = "Ось Y";
-            this.chartVisual1.Location = new System.Drawing.Point(13, 13);
-            this.chartVisual1.Name = "chartVisual1";
-            this.chartVisual1.Size = new System.Drawing.Size(775, 528);
-            this.chartVisual1.TabIndex = 0;
+            this.heatMapControl1.Location = new System.Drawing.Point(13, 13);
+            this.heatMapControl1.Name = "heatMapControl1";
+            this.heatMapControl1.Size = new System.Drawing.Size(891, 623);
+            this.heatMapControl1.TabIndex = 0;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 553);
-            this.Controls.Add(this.chartVisual1);
+            this.ClientSize = new System.Drawing.Size(907, 638);
+            this.Controls.Add(this.heatMapControl1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -65,7 +54,7 @@ namespace WindowsFormsApp1
 
         #endregion
 
-        private AI.Charts.Control.ChartVisual chartVisual1;
+        private AI.Charts.Control.HeatMapControl heatMapControl1;
     }
 }
 
