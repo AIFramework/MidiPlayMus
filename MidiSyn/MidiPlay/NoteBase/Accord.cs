@@ -15,14 +15,12 @@ namespace Midi.NoteBase
             var notesAll = Constants._notesAll;
             Array.Sort(timestep, (left, right) =>
             {
-                var indLeft = Array.IndexOf(notesAll, left.Name);
-                var indRight = Array.IndexOf(notesAll, right.Name);
-                if (indLeft == indRight)
+                var cmp = left.Pitch - right.Pitch;
+                if (cmp > 0)
+                    return 1;
+                if (cmp == 0)
                     return 0;
 
-                if (indLeft > indRight)
-                    return 1;
-                
                 return -1;
             });
 

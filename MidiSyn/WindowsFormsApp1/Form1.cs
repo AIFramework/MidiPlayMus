@@ -24,26 +24,28 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
 
-            var noteSeq = NoteSeq.LoadMidiAsNoteSequence("Cadillac.mid");
+            var noteSeq = NoteSeq.LoadMidiAsNoteSequence("11.mid");
+            var timesteps = NoteSeq.GroupByTimeStep(noteSeq);
+            Vector[] melody = new Vector[timesteps.Length];
+            
+            for (int i = 0; i < melody.Length; i++)
+            {
+                melody[i] = Accord.ToBOW(timesteps[i]).TransformVector(x => x>0?1:0);
+            }
 
-            var accord = new string[] { "C1", "E2", "B2" };
 
-            var tone1 = Interval.RecognizeTone(accord[0], accord[1]);
-            var tone2 = Interval.RecognizeTone(accord[1], accord[2]);
+            Matrix ritmgramm = new Matrix(melody[0].Count, melody.Length);
 
+            for (int i = 0; i < melody[0].Count; i++)
+            {
+                for (int j = 0; j < melody.Length; j++)
+                {
+                    ritmgramm[i, j] = melody[j][i];
+                }
+            }
 
-            Note note = new Note();
-            note.Name = "C1";
+            heatMapControl1.CalculateHeatMap(ritmgramm);
 
-            var v1 = ToneConverter.ToneToVector(tone1);
-            var v2 = ToneConverter.ToneToVector(tone2);
-
-            var v = v1 + v2;
-            v.Add(note.ToVector());
-            //NoteSeq noteS = NoteSeq.MidiFileToNoteSequence("2020-12-29_213219_3.mid");
-            //Vector[] data = noteS.ToVectors();
-            //var melody = new Midi2Wav(noteS, Setting.Fd);
-            //melody.Play();
         }
 
         private void Form1_Load(object sender, EventArgs e)
