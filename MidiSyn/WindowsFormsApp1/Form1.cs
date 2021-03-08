@@ -24,26 +24,14 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
 
-            var noteSeq = NoteSeq.LoadMidiAsNoteSequence("Cadillac.mid");
+            var noteSeq = NoteSeq.LoadMidiAsNoteSequence("11.mid");
+            var timesteps = NoteSeq.GroupByTimeStep(noteSeq);
+            Vector[] melody = new Vector[timesteps.Length];
 
-            var accord = new string[] { "C1", "E2", "B2" };
-
-            var tone1 = Interval.RecognizeTone(accord[0], accord[1]);
-            var tone2 = Interval.RecognizeTone(accord[1], accord[2]);
-
-
-            Note note = new Note();
-            note.Name = "C1";
-
-            var v1 = ToneConverter.ToneToVector(tone1);
-            var v2 = ToneConverter.ToneToVector(tone2);
-
-            var v = v1 + v2;
-            v.Add(note.ToVector());
-            //NoteSeq noteS = NoteSeq.MidiFileToNoteSequence("2020-12-29_213219_3.mid");
-            //Vector[] data = noteS.ToVectors();
-            //var melody = new Midi2Wav(noteS, Setting.Fd);
-            //melody.Play();
+            for (int i = 0; i < melody.Length; i++)
+            {
+                melody[i] = Accord.ToBOW(timesteps[i]).TransformVector(x => x > 0 ? 1 : 0);
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)

@@ -1,5 +1,5 @@
-﻿using AI;
-using System;
+﻿using System;
+using AI;
 
 namespace Midi.NoteSeqData.Base
 {
@@ -32,7 +32,7 @@ namespace Midi.NoteSeqData.Base
         /// Преобразование ноты в вектор по правилу 
         /// { pitch/127, velocity/100.0, (endTime - startTime)/2.0 }
         /// </summary>
-        public Vector ToVector() 
+        public Vector ToVector()
         {
             double pitch = Pitch / 127.0;
             double velocity = Velocity / 100.0;
@@ -48,7 +48,7 @@ namespace Midi.NoteSeqData.Base
         /// <summary>
         /// Вектор в ноту
         /// </summary>
-        public static Note NoteFromVector(float startTime, Vector noteV) 
+        public static Note NoteFromVector(float startTime, Vector noteV)
         {
             return new Note((int)(noteV[0] * 127), (int)(noteV[1] * 100), startTime, startTime + (float)noteV[2] * 2, Instrument.Default, "");
         }

@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Midi.Extensions;
+﻿using Midi.Extensions;
 
 namespace Midi.NoteBase
 {
     public class Interval
-    { 
+    {
         public string Note { get; set; }
 
         public float Tone { get; }

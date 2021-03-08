@@ -1,10 +1,10 @@
-﻿using AI;
+﻿using System.Collections.Generic;
+using System.Linq;
+using AI;
 using Midi.NoteSeqData.Base;
 using NAudio.Midi;
-using System.Collections.Generic;
-using System.Linq;
-using Source = Midi.NoteSeqData.Base.SourceInfo;
 using Constants = Midi.NoteBase.Constants;
+using Source = Midi.NoteSeqData.Base.SourceInfo;
 
 namespace Midi.NoteSeqData
 {
@@ -100,7 +100,7 @@ namespace Midi.NoteSeqData
 
             for (int i = 0; i < timesteps.Length; i++)
                 result[i] = timesteps[i].ToArray();
-            
+
             return result;
         }
 
@@ -119,7 +119,8 @@ namespace Midi.NoteSeqData
         {
             if (!IsSorted)
             {
-                Notes.Sort((left, right) => {
+                Notes.Sort((left, right) =>
+                {
                     var dif = right.StartTime - left.StartTime;
                     if (dif < 0)
                         return 1;
