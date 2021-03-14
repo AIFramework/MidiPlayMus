@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Midi", "MidiPlay\Midi.cspro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Midi.UnitTests", "Midi.UnitTests\Midi.UnitTests.csproj", "{0D4A8D1F-5C54-486E-A7B7-932A1AD6B74C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AI", "..\..\..\git\AINetFrame\AI\AI.csproj", "{165D777E-8A8E-450B-891A-9046913B6143}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AI", "..\..\AINetFrame\AI\AI.csproj", "{165D777E-8A8E-450B-891A-9046913B6143}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

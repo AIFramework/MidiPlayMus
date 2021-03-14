@@ -4791,6 +4791,11 @@
             Complete classifier metrics report
             </summary>
         </member>
+        <member name="M:AI.ML.AlgorithmAnalysis.MetricsForRegression.RMSLE(AI.IAlgebraicStructureDouble,AI.IAlgebraicStructureDouble)">
+            <summary>
+            RMLE (target[i]>-1, output[i]>-1 for all i \in [0; N-1])
+            </summary>
+        </member>
         <member name="T:AI.ML.AlgorithmAnalysis.SimilarityOfBases">
             <summary>
             Проверка схожести двух базисов
@@ -12059,6 +12064,16 @@
         <member name="F:AI.ML.NeuralNetwork.CoreNNW.TrainType.MiniBatch">
             <summary>
             Mini batch training
+            </summary>
+        </member>
+        <member name="M:AI.ML.NeuralNetwork.CoreNNW.Utilities.OverfitDetector.IsOverfit(AI.Vector,AI.Vector)">
+            <summary>
+            Overfit test
+            </summary>
+        </member>
+        <member name="F:AI.ML.NeuralNetwork.CoreNNW.Utilities.Tests.RMSLE">
+            <summary>
+            RMLE (target[i]>-1, output[i]>-1 for all i \in [0; N-1])
             </summary>
         </member>
         <member name="T:AI.ML.NeuralNetwork.CoreNNW.Saver">

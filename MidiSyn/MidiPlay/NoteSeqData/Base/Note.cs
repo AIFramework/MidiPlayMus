@@ -1,5 +1,7 @@
 ﻿using System;
 using AI;
+using Midi.Extensions;
+using Midi.NoteBase;
 
 namespace Midi.NoteSeqData.Base
 {
@@ -51,6 +53,60 @@ namespace Midi.NoteSeqData.Base
         public static Note NoteFromVector(float startTime, Vector noteV)
         {
             return new Note((int)(noteV[0] * 127), (int)(noteV[1] * 100), startTime, startTime + (float)noteV[2] * 2, Instrument.Default, "");
+        }
+
+        public static int GetPitch(string noteName)
+        {
+            if (TryParseOctave(noteName, out int octave) && TryParseNote(noteName, out string note))
+            {
+                var notes = MConstants._notesAll;
+                return octave * notes.Length + notes.IndexOf(note);
+            }
+
+            throw new Exception("Incorrect note name");
+        }
+
+        public static bool TryParseOctave(string noteName, out int num)
+        {
+            num = int.MinValue;
+            var pos = noteName.Length;
+            for (int i = noteName.Length - 1; i > -1; i--)
+            {
+                if (!int.TryParse(noteName[i] + "", out _))
+                {
+                    pos = i + 1;
+                    break;
+                }
+            }
+
+            if (pos == noteName.Length)
+                return false;
+
+            noteName = noteName.Substring(pos);
+            num = int.Parse(noteName);
+
+            return true;
+        }
+
+        public static bool TryParseNote(string noteName, out string note)
+        {
+            note = null;
+            var pos = noteName.Length;
+            for (int i = noteName.Length - 1; i > -1; i--)
+            {
+                if (!int.TryParse(noteName[i] + "", out _))
+                {
+                    pos = i + 1;
+                    break;
+                }
+            }
+
+            if (pos == noteName.Length)
+                return false;
+
+            note = noteName.Substring(0, pos);
+
+            return true;
         }
     }
 }

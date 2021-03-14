@@ -55,7 +55,7 @@
   <ItemGroup>
     <Compile Include="BaseFreqsNote.cs" />
     <Compile Include="NoteBase\Accord.cs" />
-    <Compile Include="NoteBase\Constants.cs" />
+    <Compile Include="NoteBase\MConstants.cs" />
     <Compile Include="NoteBase\IAccord.cs" />
     <Compile Include="NoteBase\Interval.cs" />
     <Compile Include="Data\ArrayETF.cs" />
@@ -86,13 +86,12 @@
     <Compile Include="NoteSeqData\NoteSeq.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Setting.cs" />
-    <Compile Include="NoteBase\ToneConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\git\AINetFrame\AI\AI.csproj">
+    <ProjectReference Include="..\..\..\AINetFrame\AI\AI.csproj">
       <Project>{165d777e-8a8e-450b-891a-9046913b6143}</Project>
       <Name>AI</Name>
     </ProjectReference>

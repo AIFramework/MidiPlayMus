@@ -3,7 +3,7 @@ using System.Linq;
 using AI;
 using Midi.NoteSeqData.Base;
 using NAudio.Midi;
-using Constants = Midi.NoteBase.Constants;
+using MConstants = Midi.NoteBase.MConstants;
 using Source = Midi.NoteSeqData.Base.SourceInfo;
 
 namespace Midi.NoteSeqData
@@ -19,7 +19,7 @@ namespace Midi.NoteSeqData
 
         public NoteSeq()
         {
-            Notes = new List<Note>();
+            Notes = new List<Note>();            
         }
 
         public void Add(Note note)
@@ -75,8 +75,8 @@ namespace Midi.NoteSeqData
             float len = 0;
             foreach (var vec in vecs)
             {
-                var bagOfWords = vec.GetInterval(0, Constants._tonesCount);
-                var noteParams = vec.GetInterval(Constants._tonesCount, vec.Count);
+                var bagOfWords = vec.GetInterval(0, MConstants._tonesCount);
+                var noteParams = vec.GetInterval(MConstants._tonesCount, vec.Count);
                 var note = Note.NoteFromVector(len, noteParams);
                 seq.Add(note);
 

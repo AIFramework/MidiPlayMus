@@ -1,14 +1,16 @@
 ﻿using System;
 using AI;
+using Midi.Extensions;
 using Midi.NoteSeqData.Base;
 
 namespace Midi.NoteBase
 {
     public class Accord
     {
+        private const int _intervalCount = 5;
         public static Vector ToBOW(Note[] timestep)
         {
-            var notesAll = Constants._notesAll;
+            var notesAll = MConstants._notesAll;
             Array.Sort(timestep, (left, right) =>
             {
                 var cmp = left.Pitch - right.Pitch;
@@ -20,15 +22,98 @@ namespace Midi.NoteBase
                 return -1;
             });
 
-            var vec = new Vector(Constants._tonesCount);
+            int l = _intervalCount * MConstants._bowLen;
+            var vec = new Vector(0);
 
-            for (int i = 1; i < timestep.Length; i++)
+            for (int i = 1; i < timestep.Length && i < _intervalCount + 1; i++)
             {
                 var tone = Interval.RecognizeTone(timestep[i - 1].Name, timestep[i].Name);
-                vec += ToneConverter.ToneToVector(tone);
+                var interval = new Interval(timestep[i - 1].Name, tone);
+                vec = Vector.Concatinate(new Vector[] { vec, interval.ToVector() });
             }
 
+            if (vec.Count != l)
+                vec = Vector.Concatinate(new Vector[] { vec, new Vector(l - vec.Count) });
+
             return vec;
+        }
+
+        public static Note[] ToAccord(Vector bow, int startTime, int endTime)
+        {
+            int l = GetIntervalsCount(bow);
+            var notes = new Note[2 * l];
+
+            int g = 0;
+            for (int pos = 0; pos < bow.Count; pos+= MConstants._bowLen)
+            {
+                int octave = -1;
+                for (int i = 0; i < MConstants._octavesCount; i++)
+                {
+                    if (bow[pos + i] == 1)
+                    {
+                        octave = i;
+                        break;
+                    }
+                }
+
+                int noteInd1 = 0;
+                for (int i = 0; i < MConstants._notesAll.Length; i++)
+                {
+                    if (bow[MConstants._octavesCount + pos + i] == 1)
+                    {
+                        noteInd1 = i;
+                        break;
+                    }
+                }
+
+                float tone = 0;
+                for (int i = 0; i < MConstants._tonesCount; i++)
+                {
+                    if (bow[MConstants._octavesCount + MConstants._notesAll.Length + pos + i] == 1)
+                    {
+                        tone = i;
+                        break;
+                    }
+                }
+                tone /= 2f;
+
+                if (octave != -1)
+                {
+                    var noteName1 = MConstants._notesAll[noteInd1];
+                    noteName1 += octave;
+                    var pitch1 = Note.GetPitch(noteName1);
+                    notes[g++] = new Note(pitch1, 100, startTime, endTime, Instrument.Default, noteName1);
+
+                    var noteName2 = AddTone(noteName1, tone);
+                    var pitch2 = Note.GetPitch(noteName2);
+                    notes[g++] = new Note(pitch2, 100, startTime, endTime, Instrument.Default, noteName2);
+                }
+            }
+
+            return notes;
+        }
+
+        private static int GetIntervalsCount(Vector bow)
+        {
+            int count = 0;
+            for (int i = 0; i < bow.Count; i+= MConstants._bowLen)
+            {
+                for (int j = 0; j < MConstants._octavesCount; j++)
+                {
+                    if(bow[i + j] == 1)
+                    {
+                        count++;
+                        break;
+                    }
+                }
+            }
+
+            return count;
+        }
+
+        private static string AddTone(string note, float tone)
+        {
+            throw new NotImplementedException();
         }
     }
 }

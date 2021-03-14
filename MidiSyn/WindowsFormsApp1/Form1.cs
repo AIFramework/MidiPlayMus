@@ -1,19 +1,9 @@
 ﻿using AI;
-using Midi;
-using Midi.Data;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Midi.NoteSeqData;
-using System.Diagnostics;
 using Midi.NoteBase;
+using NAudio.Midi;
 using Midi.NoteSeqData.Base;
 
 namespace WindowsFormsApp1
@@ -23,6 +13,31 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
+
+            string S = "";
+            for (int noteNumber = 127; noteNumber >= 0; noteNumber--)
+            {
+                var noteEvent = new NoteEvent(0, 1, MidiCommandCode.NoteOn, noteNumber, 100);
+
+                var name = noteEvent.NoteName;
+                var pitch = noteEvent.NoteNumber;
+
+                var pitch1 = Note.GetPitch(name);
+                if (pitch != pitch1)
+                {
+
+                }
+            }
+
+            //Example of use BOW
+            var notes = new Note[2];
+            notes[0] = new Note() { Name = "C0" };
+            notes[1] = new Note() { Name = "D0" };
+            var bow = Accord.ToBOW(notes);
+            var notes1 = Accord.ToAccord(bow, 0, 1);
+
+            
+
 
             var noteSeq = NoteSeq.LoadMidiAsNoteSequence("11.mid");
             var timesteps = NoteSeq.GroupByTimeStep(noteSeq);
