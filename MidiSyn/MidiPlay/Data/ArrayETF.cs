@@ -3,7 +3,7 @@
     /// <summary>
     /// Массив элементов шрифта
     /// </summary>
-    public static class ArrayETF 
+    public static class ArrayETF
     {
 
         public const double MAX = 100000;
@@ -38,7 +38,7 @@
             return min;
         }
 
-        public static ElementTableFont ClosesFtromBottom(this ElementTableFont[] elementTableFonts, double freq) 
+        public static ElementTableFont ClosesFtromBottom(this ElementTableFont[] elementTableFonts, double freq)
         {
             for (int i = 0; i < elementTableFonts.Length; i++)
             {
@@ -58,7 +58,7 @@
 
             for (int i = 1; i < elementTableFonts.Length; i++)
             {
-                if (ret.Dist > elementTableFonts[i].Dist) 
+                if (ret.Dist > elementTableFonts[i].Dist)
                 {
                     ret = elementTableFonts[i];
                 }

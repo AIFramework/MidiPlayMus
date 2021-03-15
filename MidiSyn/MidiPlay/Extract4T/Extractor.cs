@@ -6,7 +6,7 @@ namespace Midi.Extract4T
 {
     public class Extractor
     {
-        
+
 
         public Extractor(string path)
         {

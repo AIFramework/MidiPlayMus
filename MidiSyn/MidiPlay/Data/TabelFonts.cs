@@ -36,7 +36,7 @@ namespace Midi.Data
         /// Сохранение нот
         /// </summary>
         /// <param name="path">Путь до нот</param>
-        public void Save(string path) 
+        public void Save(string path)
         {
             using (Stream stream = File.Open(path, FileMode.Create))
             {
@@ -53,7 +53,7 @@ namespace Midi.Data
         /// Загрузка нот
         /// </summary>
         /// <param name="path">Путь до нот</param>
-        public static TabelFonts Load(string path) 
+        public static TabelFonts Load(string path)
         {
             if (File.Exists(path))
             {

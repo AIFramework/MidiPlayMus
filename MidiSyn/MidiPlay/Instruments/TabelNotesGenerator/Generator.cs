@@ -17,7 +17,7 @@ namespace Midi.Instruments.TabelNotesGenerator
 
         public static TabelFonts GenFonts(SimpleSoundFont soundFont)
         {
-            ElementTableFont[] elementTableFonts =  InitFont(soundFont);
+            ElementTableFont[] elementTableFonts = InitFont(soundFont);
             Dictionary<double, Vector> font = new Dictionary<double, Vector>();
             double min = elementTableFonts.MinFreq();
 
@@ -56,7 +56,7 @@ namespace Midi.Instruments.TabelNotesGenerator
         {
             if (freq < minFreq)
             {
-                return  BaseFreqsNote.Generator.GetNoteSignal(name, oct, 4);
+                return BaseFreqsNote.Generator.GetNoteSignal(name, oct, 4);
             }
 
             ElementTableFont elementTableFont = elementTableFonts.ClosesFtromBottom(freq);

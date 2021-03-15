@@ -1,7 +1,7 @@
-﻿using System;
-using AI;
+﻿using AI;
 using Midi.Extensions;
 using Midi.NoteSeqData.Base;
+using System;
 
 namespace Midi.NoteBase
 {
@@ -44,7 +44,7 @@ namespace Midi.NoteBase
             var notes = new Note[2 * l];
 
             int g = 0;
-            for (int pos = 0; pos < bow.Count; pos+= MConstants._bowLen)
+            for (int pos = 0; pos < bow.Count; pos += MConstants._bowLen)
             {
                 int octave = -1;
                 for (int i = 0; i < MConstants._octavesCount; i++)
@@ -96,11 +96,11 @@ namespace Midi.NoteBase
         private static int GetIntervalsCount(Vector bow)
         {
             int count = 0;
-            for (int i = 0; i < bow.Count; i+= MConstants._bowLen)
+            for (int i = 0; i < bow.Count; i += MConstants._bowLen)
             {
                 for (int j = 0; j < MConstants._octavesCount; j++)
                 {
-                    if(bow[i + j] == 1)
+                    if (bow[i + j] == 1)
                     {
                         count++;
                         break;
@@ -111,9 +111,21 @@ namespace Midi.NoteBase
             return count;
         }
 
-        private static string AddTone(string note, float tone)
+        public static string AddTone(string noteName, float tone)
         {
-            throw new NotImplementedException();
+            if (Note.TryParseNote(noteName, out string note) && Note.TryParseOctave(noteName, out int octave))
+            {
+                var di = (int)(tone * 2f);
+                var doct = di / MConstants._notesAll.Length;
+                var dnote = di % MConstants._notesAll.Length;
+                var ind = MConstants._notesAll.IndexOf(note);
+                octave += doct;
+                ind += dnote;
+
+                return MConstants._notesAll[ind] + octave;
+            }
+
+            throw new Exception("Incorrect note");
         }
     }
 }

@@ -32,7 +32,7 @@ namespace Midi.Instruments
             double freq = BaseFreqsNote.GetFreqNote(name, octave);
             int len = (int)(time * _fd);
             Vector window = PhaseCorrectingWindow.Trapezoid(len, 0.07);
-            Vector signal = tFont.GetSignal(freq).CutAndZero(len)*window;
+            Vector signal = tFont.GetSignal(freq).CutAndZero(len) * window;
             return new NoteVec(nameNote, time, signal);
         }
     }

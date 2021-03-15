@@ -6,7 +6,7 @@ namespace Midi.Instruments
 {
     public class GSyntPiano : IInstrument
     {
-        
+
         /// Массив апмлитуд
         /// </summary>
         public Vector Magns { get; protected set; }
@@ -87,7 +87,7 @@ namespace Midi.Instruments
 
         protected virtual Vector Postprocessing(Vector inp, Vector freqs, Vector window)
         {
-            return inp*window;
+            return inp * window;
         }
     }
 }

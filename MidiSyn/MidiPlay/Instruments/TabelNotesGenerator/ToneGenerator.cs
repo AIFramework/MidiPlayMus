@@ -18,10 +18,10 @@ namespace Midi.Instruments.TabelNotesGenerator
         protected double alpha = 0.04;
 
 
-        public ToneGenerator() 
+        public ToneGenerator()
         {
             Fd = Setting.Fd;
-            Magns = new double[] { 1};
+            Magns = new double[] { 1 };
         }
 
 
@@ -63,7 +63,7 @@ namespace Midi.Instruments.TabelNotesGenerator
             }
 
 
-           
+
             return Signal / Magns.Sum();
         }
 

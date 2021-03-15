@@ -1,7 +1,7 @@
-﻿using System;
-using AI;
+﻿using AI;
 using Midi.Extensions;
 using Midi.NoteBase;
+using System;
 
 namespace Midi.NoteSeqData.Base
 {
@@ -66,9 +66,9 @@ namespace Midi.NoteSeqData.Base
             throw new Exception("Incorrect note name");
         }
 
-        public static bool TryParseOctave(string noteName, out int num)
+        public static bool TryParseOctave(string noteName, out int octave)
         {
-            num = int.MinValue;
+            octave = int.MinValue;
             var pos = noteName.Length;
             for (int i = noteName.Length - 1; i > -1; i--)
             {
@@ -83,7 +83,7 @@ namespace Midi.NoteSeqData.Base
                 return false;
 
             noteName = noteName.Substring(pos);
-            num = int.Parse(noteName);
+            octave = int.Parse(noteName);
 
             return true;
         }

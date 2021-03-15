@@ -10,7 +10,7 @@ namespace Midi.Data
         private double time = 0;
         public int Fd;
 
-        public Vector Generate() 
+        public Vector Generate()
         {
             CalcMeta(); // Расчет длительностей
             Vector data = new Vector(end); // Создание вектора волны
@@ -24,16 +24,16 @@ namespace Midi.Data
 
             data = Filters.ExpAv(data, 0.7);
             //EchoReverb echo = new EchoReverb(Fd);
-           // echo.Echo(data, 0.05); // Эхо
+            // echo.Echo(data, 0.05); // Эхо
             //echo.EchoInvers(data, 0.05); // Эхо
 
             //data = Filters.ExpAv(data, 0.7);
 
-            return data/data.Max(); // Нормализация
+            return data / data.Max(); // Нормализация
         }
 
         // Добавление ноты
-        private static void AddNote(Vector dat, NoteWithTime note, int fd) 
+        private static void AddNote(Vector dat, NoteWithTime note, int fd)
         {
             int margin = (int)(note.StartTime * fd);
             Vector sig = note.Note.Signal;
@@ -44,7 +44,7 @@ namespace Midi.Data
                 {
                     dat[margin + i] += note.Volume * sig[i];
                 }
-                else 
+                else
                 {
                     break;
                 }
@@ -57,7 +57,7 @@ namespace Midi.Data
 
             for (int i = 0; i < Count; i++)
             {
-                if (time < this[i].EndTime) 
+                if (time < this[i].EndTime)
                 {
                     time = this[i].EndTime;
                 }
@@ -69,7 +69,7 @@ namespace Midi.Data
 
     }
 
-    public class NoteWithTime 
+    public class NoteWithTime
     {
         public NoteVec Note { get; set; }
         public double StartTime { get; set; }

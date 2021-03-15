@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using AI;
+﻿using AI;
 using Midi.NoteSeqData.Base;
 using NAudio.Midi;
+using System.Collections.Generic;
+using System.Linq;
 using MConstants = Midi.NoteBase.MConstants;
 using Source = Midi.NoteSeqData.Base.SourceInfo;
 
@@ -19,7 +19,7 @@ namespace Midi.NoteSeqData
 
         public NoteSeq()
         {
-            Notes = new List<Note>();            
+            Notes = new List<Note>();
         }
 
         public void Add(Note note)

@@ -9,7 +9,8 @@ namespace Midi.Extensions
         public static void AddByStartTime(this List<NoteSeqData.Base.Note> notes, NoteSeqData.Base.Note note)
         {
             notes.Add(note);
-            notes.Sort((left, right) => {
+            notes.Sort((left, right) =>
+            {
                 var dif = right.StartTime - left.StartTime;
                 if (dif > 0)
                     return 1;
@@ -27,7 +28,7 @@ namespace Midi.Extensions
             return t.ToList();
         }
 
-        public static int IndexOf<T>(this IEnumerable<T> array, T value) where T: IEquatable<T>
+        public static int IndexOf<T>(this IEnumerable<T> array, T value) where T : IEquatable<T>
         {
             int i = 0;
             foreach (var item in array)

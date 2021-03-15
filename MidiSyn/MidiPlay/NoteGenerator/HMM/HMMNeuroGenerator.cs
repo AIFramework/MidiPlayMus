@@ -1,12 +1,12 @@
-﻿using System;
-using KHMM = AI.ML.HMM.KMeanHMM;
-using Encoder = AI.ML.NeuralNetwork.Architectures.Encoders.VectorWithPositionEncoder;
-using Decoder = AI.ML.NeuralNetwork.Architectures.ClassifierNet.VectorPredictorStates;
-using EncoderPositionCoder = AI.ML.DataEncoding.PositionalEncoding.MultiscaleEncoder;
-using DecoderPositionCoder = AI.ML.DataEncoding.PositionalEncoding.MultiscaleEncoder;
-using StateEncoder = AI.ML.DataEncoding.PositionalEncoding.OneHotPositionEncoder;
+﻿using AI;
 using AI.ML.NeuralNetwork.CoreNNW.Activations;
-using AI;
+using System;
+using Decoder = AI.ML.NeuralNetwork.Architectures.ClassifierNet.VectorPredictorStates;
+using DecoderPositionCoder = AI.ML.DataEncoding.PositionalEncoding.MultiscaleEncoder;
+using Encoder = AI.ML.NeuralNetwork.Architectures.Encoders.VectorWithPositionEncoder;
+using EncoderPositionCoder = AI.ML.DataEncoding.PositionalEncoding.MultiscaleEncoder;
+using KHMM = AI.ML.HMM.KMeanHMM;
+using StateEncoder = AI.ML.DataEncoding.PositionalEncoding.OneHotPositionEncoder;
 
 namespace Midi.NoteGenerator.HMM
 {
@@ -18,7 +18,7 @@ namespace Midi.NoteGenerator.HMM
         int n = 100;
 
 
-        public HMMNeuroGenerator() 
+        public HMMNeuroGenerator()
         {
             hmm = new KHMM(9);
             encoder = new Encoder(new EncoderPositionCoder(32), 3, 10, new ReLU(0.3));
@@ -26,7 +26,7 @@ namespace Midi.NoteGenerator.HMM
         }
 
         // генерация нот
-        public Vector[] Generate(Vector note) 
+        public Vector[] Generate(Vector note)
         {
             Vector latent = encoder.Forward(note, 0);
             var states = hmm.Generate(latent, n);
@@ -43,7 +43,7 @@ namespace Midi.NoteGenerator.HMM
         }
 
         // Обучение генератора
-        public void Train(Vector[][] notes) 
+        public void Train(Vector[][] notes)
         {
             var vectInt = GetVectsPositions(notes);
             encoder.Train(vectInt.Item1, vectInt.Item2);
@@ -53,7 +53,7 @@ namespace Midi.NoteGenerator.HMM
         }
 
 
-        private Tuple<Vector[], int[]> GetVectsPositions(Vector[][] data) 
+        private Tuple<Vector[], int[]> GetVectsPositions(Vector[][] data)
         {
             int len = 0;
             for (int i = 0; i < data.Length; i++) len += data.Length;

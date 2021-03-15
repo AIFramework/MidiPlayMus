@@ -36,7 +36,7 @@ namespace Midi.Instruments
         {
 
             string nameNote = $"{name}_{octave}";
-            
+
             double freq = BaseFreqsNote.GetFreqNote(name, octave);
 
 
@@ -60,10 +60,10 @@ namespace Midi.Instruments
             for (int i = 0; i < steps; i++)
             {
                 double timeStep = (double)i / Fd;
-                double s = kS1 *Math.Sin(6.282 * timeStep * freq);
+                double s = kS1 * Math.Sin(6.282 * timeStep * freq);
                 s += kS2 * Math.Sin(6.282 * timeStep * freq2);
 
-                kS1 = Math.Cos(6.282 * timeStep * 9*Math.Abs( Math.Cos(6.282 * timeStep * freq)));
+                kS1 = Math.Cos(6.282 * timeStep * 9 * Math.Abs(Math.Cos(6.282 * timeStep * freq)));
                 kS1 = Math.Abs(kS1);
                 kS2 = 1.0 - kS1;
 
@@ -73,7 +73,7 @@ namespace Midi.Instruments
             Signal = Filters.FilterKontur(Signal, 2, freq, Fd);
             Signal *= window;
 
-            return Signal/ Signal.Max();
+            return Signal / Signal.Max();
         }
 
 

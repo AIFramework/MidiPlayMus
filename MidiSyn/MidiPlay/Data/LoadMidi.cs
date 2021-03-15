@@ -9,12 +9,12 @@ namespace Midi.Data
         private MidiFile midiFile { get; set; }
 
 
-        public LoadMidi(string path) 
+        public LoadMidi(string path)
         {
             midiFile = new MidiFile(path, false);
         }
 
-        public Matrix ToMatrix() 
+        public Matrix ToMatrix()
         {
             throw new Exception();
         }

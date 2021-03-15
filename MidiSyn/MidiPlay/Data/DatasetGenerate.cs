@@ -9,7 +9,7 @@ namespace Midi.Data
     public class DatasetGenerate
     {
         private readonly string outDir;
-        private const int fr =  256;
+        private const int fr = 256;
         private long time;
 
 
@@ -23,11 +23,11 @@ namespace Midi.Data
         /// Dataset generator
         /// </summary>
         /// <param name="outpDirectory">Output folder</param>
-        public DatasetGenerate(string outpDirectory) 
+        public DatasetGenerate(string outpDirectory)
         {
             outDir = outpDirectory;
 
-            if (!Directory.Exists(outDir)) 
+            if (!Directory.Exists(outDir))
             {
                 Directory.CreateDirectory(outDir);
             }
@@ -37,7 +37,7 @@ namespace Midi.Data
         /// Add music file to dataset
         /// </summary>
         /// <param name="pathToFile">path to music file (only mp3 or wav)</param>
-        public void Add(string pathToFile, SaveInfo saveInfo = SaveInfo.SaveAsMatrix) 
+        public void Add(string pathToFile, SaveInfo saveInfo = SaveInfo.SaveAsMatrix)
         {
             FileInfo fileInfo = new FileInfo(pathToFile);
             Vector sound;
@@ -77,24 +77,24 @@ namespace Midi.Data
                 {
                     MatrixSaver.Save($"{outDir}\\{NameGen(i)}.matr", spectrogram);
                 }
-                else 
+                else
                 {
                     double min = spectrogram.Min();
                     double max = spectrogram.Max();
-                    Bitmap bitmap = ImgConverter.ToBitmap((spectrogram-min)/(max-min));
+                    Bitmap bitmap = ImgConverter.ToBitmap((spectrogram - min) / (max - min));
                     bitmap.Save($"{outDir}\\{NameGen(i)}.jpg");
                 }
 
             }
         }
 
-        private string NameGen(int i) 
+        private string NameGen(int i)
         {
             return $"{i}_{time}";
         }
 
 
-        public enum SaveInfo 
+        public enum SaveInfo
         {
             SaveAsImg,
             SaveAsMatrix

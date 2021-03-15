@@ -12,7 +12,7 @@ namespace Midi
     public class Midi2Wav
     {
         private readonly Notes notes = new Notes();
-        private readonly double ticsPerSeconds = 1.0/1000;
+        private readonly double ticsPerSeconds = 1.0 / 1000;
         private readonly int _fd;
 
         public Midi2Wav(string path, int fd)
@@ -76,10 +76,10 @@ namespace Midi
         {
             _fd = notes.Fd = fd;
 
-           //  TabelFonts tabelFonts = TabelFonts.Load("tabel.tsf");
+            //  TabelFonts tabelFonts = TabelFonts.Load("tabel.tsf");
 
             IInstrument gPiano = new GSyntPiano();
-           // IInstrument gPiano = new PianoWithFonts(tabelFonts);
+            // IInstrument gPiano = new PianoWithFonts(tabelFonts);
             gPiano.Create(Setting.Fd);
 
             foreach (var item in noteSeq.Notes)
@@ -107,10 +107,10 @@ namespace Midi
 
                 notes.Add(noteWithTime); // Добавлнение ноты в список
             }
-             
+
         }
 
-        private double VelocityToVolum(int velocity) 
+        private double VelocityToVolum(int velocity)
         {
             double log = Math.Log(velocity / 127.0);
             return Math.Pow(10, 2 * log);
@@ -130,9 +130,9 @@ namespace Midi
             WavMp3.Save(sig, _fd, path);
         }
 
-        public Vector ToVector() 
+        public Vector ToVector()
         {
-          return notes.Generate();
+            return notes.Generate();
         }
 
 

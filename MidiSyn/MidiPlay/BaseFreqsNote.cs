@@ -48,7 +48,7 @@ namespace Midi
 
             for (int i = 0; i < count; i++)
             {
-                fr[i] = (i+1) * fGarm;
+                fr[i] = (i + 1) * fGarm;
             }
 
             return fr;
@@ -60,7 +60,7 @@ namespace Midi
         /// <param name="note"></param>
         /// <param name="octave"></param>
         /// <returns></returns>
-        public static double GetFreqNote(string note, int octave) 
+        public static double GetFreqNote(string note, int octave)
         {
             return (1 << octave) * freqNotes[note.ToLower()];
         }
@@ -82,7 +82,7 @@ namespace Midi
             double k = target / baseFreq;
 
             Vector s = SpectrumStretching.SpectrumStretch(signalBase, k).CutAndZero(signalBase.Count);
-          //  s += 0.3 * Generator.GetNoteSignal(nameTargetNote, octaveTarget, signalBase.Count / 44100).CutAndZero(signalBase.Count);
+            //  s += 0.3 * Generator.GetNoteSignal(nameTargetNote, octaveTarget, signalBase.Count / 44100).CutAndZero(signalBase.Count);
             return s;
         }
 
