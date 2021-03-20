@@ -91,7 +91,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="D:\Проекты\git\AINetFrame\AI\AI.csproj">
+    <ProjectReference Include="..\..\..\AINetFrame\AI\AI.csproj">
       <Project>{165d777e-8a8e-450b-891a-9046913b6143}</Project>
       <Name>AI</Name>
     </ProjectReference>
