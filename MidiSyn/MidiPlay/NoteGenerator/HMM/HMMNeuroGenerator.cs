@@ -18,11 +18,11 @@ namespace Midi.NoteGenerator.HMM
         int n = 100;
 
 
-        public HMMNeuroGenerator()
+        public HMMNeuroGenerator(int vDim, int statesCount)
         {
-            hmm = new KHMM(9);
-            encoder = new Encoder(new EncoderPositionCoder(32), 3, 10, new ReLU(0.3));
-            decoder = new Decoder(new DecoderPositionCoder(16), new StateEncoder(9), 100, 3, 2);
+            hmm = new KHMM(statesCount);
+            encoder = new Encoder(new EncoderPositionCoder(32), vDim, 15, new ReLU(0.3));
+            decoder = new Decoder(new DecoderPositionCoder(16), new StateEncoder(statesCount), 30, vDim, 1);
         }
 
         // генерация нот
@@ -56,7 +56,7 @@ namespace Midi.NoteGenerator.HMM
         private Tuple<Vector[], int[]> GetVectsPositions(Vector[][] data)
         {
             int len = 0;
-            for (int i = 0; i < data.Length; i++) len += data.Length;
+            for (int i = 0; i < data.Length; i++) len += data[i].Length;
 
             Vector[] outp = new Vector[len]; // признаки
             int[] outpInt = new int[len]; // позиции

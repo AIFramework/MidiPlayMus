@@ -47,19 +47,19 @@ namespace Midi.NoteBase
         /// Recognize tone of interval (noteGoal must be more or equal than noteBase)
         /// </summary>
         /// <param name="noteBase">(examle: D#1)</param>
-        /// <param name="noteGoal">(examle: F#5)</param>
+        /// <param name="noteTarget">(examle: F#5)</param>
         /// <returns></returns>
-        public static float RecognizeTone(string noteBase, string noteGoal)
+        public static float RecognizeTone(string noteBase, string noteTarget)
         {
             int l = MConstants._notesAll.Length;
             NoteC.TryParseOctave(noteBase, out int octaveBase);
-            NoteC.TryParseOctave(noteGoal, out int octaveGoal);
+            NoteC.TryParseOctave(noteTarget, out int octaveGoal);
 
             noteBase = noteBase.Substring(0, noteBase.Length - $"{octaveBase}".Length);
-            noteGoal = noteGoal.Substring(0, noteGoal.Length - $"{octaveGoal}".Length);
+            noteTarget = noteTarget.Substring(0, noteTarget.Length - $"{octaveGoal}".Length);
 
             var indBase = MConstants._notesAll.IndexOf(noteBase);
-            var indGoal = MConstants._notesAll.IndexOf(noteGoal);
+            var indGoal = MConstants._notesAll.IndexOf(noteTarget);
 
             indBase = (octaveBase - 1) * l + indBase;
             indGoal = (octaveGoal - 1) * l + indGoal;
