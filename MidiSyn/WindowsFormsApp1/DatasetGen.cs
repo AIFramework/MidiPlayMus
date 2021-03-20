@@ -6,7 +6,7 @@ namespace WindowsFormsApp1
 {
     public class DatasetGen
     {
-        public static Vector[] VectorsFromAudio(string name) 
+        public static Vector[] VectorsFromAudio(string name)
         {
             var noteSeq = NoteSeq.LoadMidiAsNoteSequence(name);
             var timesteps = NoteSeq.GroupByTimeStep(noteSeq);

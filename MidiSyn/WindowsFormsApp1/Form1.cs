@@ -1,11 +1,7 @@
 ﻿using AI;
+using Midi.NoteGenerator.HMM;
 using System;
 using System.Windows.Forms;
-using Midi.NoteSeqData;
-using Midi.NoteBase;
-using NAudio.Midi;
-using Midi.NoteSeqData.Base;
-using Midi.NoteGenerator.HMM;
 
 namespace WindowsFormsApp1
 {
@@ -33,14 +29,14 @@ namespace WindowsFormsApp1
             heatMapControl1.CalculateHeatMap(ritmgramm);
 
 
-            
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
         }
-   
+
     }
 
-   
+
 }

@@ -31,7 +31,7 @@ namespace Midi.NoteBase
                 vec = ConcatinateTimestep(vec, timestep[i - 1].Name, timestep[i].Name);
             }
 
-            if(timestep.Length == 1)
+            if (timestep.Length == 1)
             {
                 vec = ConcatinateTimestep(vec, timestep[0].Name, timestep[0].Name);
             }

@@ -1,19 +1,8 @@
 ﻿using AI;
-using AI.DSP;
-using AI.DSP.Modulation;
 using Midi;
 using Midi.Data;
-using Midi.Instruments;
 using Midi.Instruments.TabelNotesGenerator;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SSFTest
@@ -30,7 +19,7 @@ namespace SSFTest
 
             for (int i = 0; i < ssf.Semples.Length; i++)
             {
-                comboBox1.Items.Add(""+i);
+                comboBox1.Items.Add("" + i);
             }
 
         }
