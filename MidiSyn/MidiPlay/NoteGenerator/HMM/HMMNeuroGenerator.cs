@@ -21,8 +21,8 @@ namespace Midi.NoteGenerator.HMM
         public HMMNeuroGenerator(int vDim, int statesCount)
         {
             hmm = new KHMM(statesCount);
-            encoder = new Encoder(new EncoderPositionCoder(32), vDim, 15, new ReLU(0.3));
-            decoder = new Decoder(new DecoderPositionCoder(16), new StateEncoder(statesCount), 30, vDim, 1);
+            encoder = new Encoder(new EncoderPositionCoder(2), vDim, 32, new ReLU(0.3));
+            decoder = new Decoder(new DecoderPositionCoder(2), new StateEncoder(statesCount), 16, vDim, 1, oActivation: new SigmoidUnit());
         }
 
         // генерация нот

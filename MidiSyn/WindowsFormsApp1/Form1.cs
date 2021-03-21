@@ -1,5 +1,8 @@
 ﻿using AI;
+using Midi;
+using Midi.NoteBase;
 using Midi.NoteGenerator.HMM;
+using Midi.NoteSeqData;
 using System;
 using System.Windows.Forms;
 
@@ -28,8 +31,16 @@ namespace WindowsFormsApp1
 
             heatMapControl1.CalculateHeatMap(ritmgramm);
 
+            NoteSeq noteSeq = new NoteSeq();
 
+            float d = MConstants._duration;
+            for (int i = 0; i < melody.Length; i++)
+            {
+                noteSeq.AddRange(Accord.ToAccord(melody[i], i * d / 1000.0f));
+            }
 
+            Midi2Wav midi2Wav = new Midi2Wav(noteSeq, 8000);
+            midi2Wav.Play();
         }
 
         private void Form1_Load(object sender, EventArgs e)

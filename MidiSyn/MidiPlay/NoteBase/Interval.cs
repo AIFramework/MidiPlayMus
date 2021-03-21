@@ -27,7 +27,7 @@ namespace Midi.NoteBase
             if (NoteC.TryParseNote(Note, out string note) && NoteC.TryParseOctave(Note, out int octave))
             {
                 int posNote = MConstants._notesAll.IndexOf(note);
-                Vector v = new Vector(MConstants._bowLen);
+                Vector v = new Vector(MConstants._bowLen - 2 * MConstants._durationCount);
                 v[octave] = 1;
                 v[MConstants._octavesCount + posNote] = 1;
                 v[MConstants._octavesCount + MConstants._notesAll.Length + posTone] = 1;

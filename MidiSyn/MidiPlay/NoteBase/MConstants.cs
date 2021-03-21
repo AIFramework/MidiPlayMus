@@ -7,6 +7,9 @@
         public static readonly int _tonesCount = 108; // 0, 0.5, 1, 1.5, ..., 53.5
         public static readonly int _octavesCount = 10;
         public static readonly int _notesWithOctaveCount = 128;
-        public static readonly int _bowLen = _octavesCount + _notesAll.Length + _tonesCount;
+        public static readonly int _durationCount = 30;
+        public static readonly int _duration = 50; // ms
+        public static readonly float _durationMax = _durationCount * _duration; // ms
+        public static readonly int _bowLen = _octavesCount + _notesAll.Length + _tonesCount + 2 * _durationCount;
     }
 }

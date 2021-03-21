@@ -31,6 +31,48 @@ namespace Midi.NoteSeqData.Base
         }
 
         /// <summary>
+        /// Натягивает ноты на новую сетку с фиксированным шагом по времени
+        /// </summary>
+        /// <param name="notes">Музыкальные ноты</param>
+        /// <param name="time">фиксированный шаг по времени(например, 50)</param>
+        /// <returns></returns>
+        public static NoteSeq ToNewGrid(NoteSeq noteSeq, int time)
+        {
+            var result = new NoteSeq();
+            float timeMax = noteSeq.Notes.Max(note => note.EndTime);
+            double count = 1000.0 * timeMax / time + 1;
+            count += count - (int)count == 0 ? 0 : 1;
+            float[] times = Enumerable.Range(0, (int)count).Select(t => t * time / 1000.0f).ToArray();
+            result.AddRange(Enumerable.Range(0, (int)count).Select(t => new Note()));
+
+
+            for (int i = 0; i < noteSeq.Notes.Count; i++)
+            {
+                bool isFind = false;
+                for (int j = 1; j < times.Length; j++)
+                {
+                    var note = noteSeq.Notes[i];
+                    if (note.EndTime >= times[j - 1] && note.EndTime < times[j])
+                    {
+                        result.Notes[j] = new Note(note.Pitch, note.Velocity, times[j], times[j], note.Instrument, note.Name);
+                        isFind = true;
+                        break;
+                    }
+                }
+
+                if (!isFind)
+                    throw new Exception(nameof(isFind));
+
+                //List<long> arr = copy.Select(x => Math.Abs(x - copy[i].AbsoluteTime)).ToList();
+                //long min = arr.Min();
+                //int block = arr.IndexOf(min);
+                //copy[i].AbsoluteTime = times[block];
+            }
+
+            return result;
+        }
+
+        /// <summary>
         /// Преобразование абсолютного времени нот в миллисекунды 
         /// </summary>
         /// <param name="midiEvents"></param>

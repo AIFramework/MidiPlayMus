@@ -1,6 +1,7 @@
 ﻿using AI;
 using Midi.NoteBase;
 using Midi.NoteSeqData;
+using Midi.NoteSeqData.Base;
 
 namespace WindowsFormsApp1
 {
@@ -9,6 +10,7 @@ namespace WindowsFormsApp1
         public static Vector[] VectorsFromAudio(string name)
         {
             var noteSeq = NoteSeq.LoadMidiAsNoteSequence(name);
+            //noteSeq = MidiConverter.ToNewGrid(noteSeq, 100);
             var timesteps = NoteSeq.GroupByTimeStep(noteSeq);
             Vector[] melody = new Vector[timesteps.Length];
 

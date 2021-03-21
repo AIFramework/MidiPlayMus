@@ -6392,7 +6392,7 @@
             <param name="outDim"></param>
             <param name="countHLayers"></param>
             <param name="countState"></param>
-            <param name="outActivation"></param>
+            <param name="oActivation"></param>
             <param name="hActivation"></param>
         </member>
         <member name="M:AI.ML.NeuralNetwork.Architectures.ClassifierNet.VectorPredictorStates.Predict(System.Int32[],System.Int32)">
